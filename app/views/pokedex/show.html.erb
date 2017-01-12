@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @pokemon.name %></title>
+  </head>
+  <body>
+    <h1><%= @pokemon.name %></h1>
+      <p><strong>Trainer(s):</strong></p>
+        <ul>
+        <% @pokemon.trainers.each do |trainer| %>
+          <li><%= link_to trainer.name, trainer_path(trainer)%></li>
+        <% end %>
+        </ul>
+    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get %>
+  </body>
+</html>

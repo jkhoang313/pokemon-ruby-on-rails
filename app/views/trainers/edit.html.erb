@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Trainer</title>
+  </head>
+  <body>
+    <h1>Edit A Trainer</h1>
+    <%= form_for @trainer do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <br></br>
+
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+      <br></br>
+
+      <%= f.submit %>
+    <% end %>
+    <br>
+
+    <%= button_to "Cancel", trainer_path(@trainer), method: :get %>
+  </body>
+</html>

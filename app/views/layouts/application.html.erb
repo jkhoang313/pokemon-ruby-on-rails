@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PokemonGame</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="nav-bar">
+      <%= button_to "Home", root_path, method: :get %>
+      <%= button_to "About", about_path, method: :get %>
+      <%= button_to "Trainers", trainers_path, method: :get %>
+      <%= button_to "Pokedex", pokedex_index_path, method: :get %>
+      <% if logged_in? %>
+        <p>Signed in as Trainer <%= current_trainer.name %></p>
+        <%= button_to "User Page", trainer_path(current_trainer), method: :get %>
+        <%= button_to "Logout", logout_path, method: :delete %>
+      <% else  %>
+        <p>Not signed in</p>
+        <%= button_to "Sign Up", new_trainer_path, method: :get %>
+        <%= button_to "Login", login_path, method: :get %>
+      <% end  %>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+      <p class="flash"><%= flash[:message] if flash[:message] %></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trainers</title>
+  </head>
+  <body>
+    <h1>All Trainers</h1>
+
+    <% @trainers.each do |trainer| %>
+      <%= link_to trainer.name, trainer_path(trainer) %><br></br>
+    <% end %>
+    <br>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemons Page</title>
+  </head>
+  <body>
+    <h1>Current Team</h1>
+    <% if @trainer.starters.blank? %>
+      <p>No Pokemon in current team</p>
+    <% else %>
+    <ul>
+      <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
+      <li><%= link_to pokemon.name, pokemon_path(@trainer, index)%></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <h1>In Storage</h1>
+    <% if @trainer.storage.blank? %>
+      <p>No Pokemon in storage</p>
+    <% else %>
+    <ul>
+      <% @trainer.storage.each.with_index(7) do |pokemon, index| %>
+
+      <li><%= link_to pokemon.name, pokemon_path(@trainer, index)%></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </body>
+</html>

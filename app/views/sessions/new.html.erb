@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h1>Login Page</h1>
+    <%= form_tag new_session_path do %>
+      <%= label_tag :name %>
+      <%= text_field_tag 'trainer[name]' %>
+      <%= label_tag :password %>
+      <%= password_field_tag 'trainer[password]' %>
+      <%= submit_tag "Login" %>
+    <% end %>
+  </body>
+</html>

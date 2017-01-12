@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Pokemon</title>
+  </head>
+  <body>
+    <h1>Pokédex</h1>
+    <% @pokedex.each.with_index(1) do |pokemon, index| %>
+      <% @count = Pokemon.where(name: "#{pokemon.name}").count %>
+      <p><%= "#{index}. #{pokemon.name}: "%> <%= link_to "#{@count} trainer(s)", pokedex_path(pokemon) %></p>
+    <% end %>
+  </body>
+</html>
