@@ -3,6 +3,7 @@ class Trainer < ApplicationRecord
   before_save :capitalize_name, :set_token
   has_secure_password
   validates :name, presence: true, uniqueness: true
+  #add emails
 
   def capitalize_name
     self.name = self.name.downcase.split.collect(&:capitalize).join(' ') if self.name && !self.name.blank?
@@ -31,14 +32,14 @@ class Trainer < ApplicationRecord
   def token_time_passed?
     time_passed = last_token + 14400
 
-    time_passed - Time.now.to_i > 0 ? false : true
+    time_passed - current_time > 0 ? false : true
   end
 
   def token_status
     if token_time_passed?
       "Available upon login"
     else
-      total_seconds = last_token + 14400 - Time.now.to_i
+      total_seconds = last_token + 14400 - current_time
       hours_left = total_seconds / 3600
       seconds_left = total_seconds % 3600
 
@@ -50,7 +51,7 @@ class Trainer < ApplicationRecord
 
   def add_token
     @new_token = self.poke_tokens + 1
-    self.update(poke_tokens: @new_token, last_token: Time.now.to_i)
+    self.update(poke_tokens: @new_token, last_token: current_time)
   end
 
   def starters
@@ -65,4 +66,8 @@ class Trainer < ApplicationRecord
     self.last_token = Time.now.to_i
   end
   #make method for moving starters and storage pokemon
+
+  def current_time
+    Time.now.to_i
+  end
 end

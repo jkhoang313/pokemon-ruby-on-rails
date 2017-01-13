@@ -16,7 +16,6 @@ class PokemonsController < ApplicationController
     find_trainer
     @pokemon = @trainer.pokemons[params[:pokemon_id].to_i-1]
     @pokemon.destroy
-    #you could hack around this by changing the html
 
     redirect_to pokemons_path(@trainer)
   end

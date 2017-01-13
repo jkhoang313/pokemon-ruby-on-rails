@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :trainers
   resources :pokedex
-  # resources :pokemons
 
   root 'game#index'
   get '/about', to: 'game#about', as: "about"

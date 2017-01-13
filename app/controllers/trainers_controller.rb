@@ -9,10 +9,14 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(trainer_params)
+    if params[:trainer][:starter_pokemon] == "Random"
+      @starter = Pokedex.find_by(name: Trainer.random_starter)
+    else
+      @starter = Pokedex.find_by(name: params[:trainer][:starter_pokemon])
+    end
     if @trainer.authenticate(params[:trainer][:password_confirmation])
       @trainer.save
-      @pokemon_base = Pokedex.find_by(name: params[:trainer][:starter_pokemon])
-      @trainer.pokemons << @pokemon_base.create_pokemon(@trainer)
+      @trainer.pokemons << @starter.create_pokemon(@trainer)
 
       session[:trainer_id] = @trainer.id
 
@@ -27,8 +31,7 @@ class TrainersController < ApplicationController
   end
 
   def destroy
-    # ask user for confirmation
-    @trainer = Trainer.find(params[:id])
+    find_trainer
     @trainer.destroy
     session.clear
     # put in method in application?
@@ -37,22 +40,22 @@ class TrainersController < ApplicationController
   end
 
   def show
-    @trainer = Trainer.find(params[:id])
+    find_trainer
   end
 
   def edit
-    @trainer = Trainer.find(params[:id])
+    find_trainer
   end
 
   def update
-    @trainer = Trainer.find(params[:id])
+    find_trainer
     @trainer.update(name: params[:trainer][:name], age: params[:trainer][:age])
 
     redirect_to trainer_path(@trainer)
   end
 
   def reset_token
-    @trainer = Trainer.find(params[:id])
+    find_trainer
     @trainer.add_token
 
     render :'trainers/show'
@@ -61,6 +64,10 @@ class TrainersController < ApplicationController
   private
 
   def trainer_params
-    params.require(:trainer).permit(:name, :password, :age, :gender, :starter_pokemon)
+    params.require(:trainer).permit(:name, :password, :age, :gender)
+  end
+
+  def find_trainer
+    @trainer = Trainer.find(params[:id])
   end
 end
