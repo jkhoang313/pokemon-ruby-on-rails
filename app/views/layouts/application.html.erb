@@ -17,12 +17,13 @@
        </ul>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
          <% if logged_in? %>
-           <li><%= link_to current_trainer.name, trainer_path(current_trainer) %></li>
-           <li><%= link_to "Logout", logout_path, method: :delete %></li>
-         <% else  %>
-           <li><%= link_to "Sign Up", new_trainer_path %></li>
-           <li><%= link_to "Login", login_path %></li>
-         <% end  %>
+            <li><%= link_to "Capture Pokemon", wild_encounter_path, method: :post, data: {confirm: "Spend a Poke-Token to find a wild Pokemon?"} %></li>
+            <li><%= link_to current_trainer.name, trainer_path(current_trainer) %></li>
+            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+          <% else  %>
+            <li><%= link_to "Sign Up", new_trainer_path %></li>
+            <li><%= link_to "Login", login_path %></li>
+          <% end  %>
        </ul>
      </div>
     </nav>
@@ -32,7 +33,11 @@
     <div class="container">
       <%= image_tag("pokeball.png") %>
       <%= yield %>
-      <p class="flash"><%= flash[:message] if flash[:message] %></p>
+      <div class="row">
+        <div class="col">
+        <p class="flash"><%= flash[:message] if flash[:message] %></p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

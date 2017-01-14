@@ -1,0 +1,25 @@
+
+<div class="row">
+  <div class="col s12 center">
+    <h3>A Wild <%= @wild_pokemon %> Appeared!</h3>
+    <br><br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s3">
+    <%= image_tag("pokemon/#{current_trainer.starter_pokemon.downcase}.jpg", class: "pokemon-image") %>
+    <h5 class="center">My <%= current_trainer.starter_pokemon %></h5>
+  </div>
+  <div class="col s3 offset-s5">
+    <%= image_tag("pokemon/#{@wild_pokemon.downcase}.jpg", class: "pokemon-image") %>
+    <h5 class="center">Wild <%= @wild_pokemon %></h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 center">
+    <%= button_to "Throw Pokeball", capture_pokemon_path(Pokedex.find_by(name: @wild_pokemon)) %>
+    <%#= refactor this %>
+  </div>
+</div>

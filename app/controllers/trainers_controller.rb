@@ -9,32 +9,29 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(trainer_params)
-    if params[:trainer][:starter_pokemon] == "Random"
-      @starter = Pokedex.find_by(name: Trainer.random_starter)
-    else
-      @starter = Pokedex.find_by(name: params[:trainer][:starter_pokemon])
-    end
+    @starter = Pokedex.starter_pokemon(params[:trainer][:starter_pokemon])
     if @trainer.authenticate(params[:trainer][:password_confirmation])
-      @trainer.save
-      @trainer.pokemons << @starter.create_pokemon(@trainer)
-
+      @trainer.create_conditions(@starter)
       session[:trainer_id] = @trainer.id
+      flash[:message] = "Welcome to Pokemon Ruby-On-Rails Trainer #{@trainer.name}!"
 
       redirect_to trainer_path(@trainer)
     else
       flash[:message] = "Password confirmation must match password"
+
       redirect_to new_trainer_path
-      # add validations and flash message
+      # add validations
     end
-    # don't create if it has errors
-    # get rid of starter_pokemon attribute
+    # get rid of starter_pokemon attribute?
   end
 
   def destroy
     find_trainer
+    delete_pokemon
     @trainer.destroy
     session.clear
-    # put in method in application?
+    flash[:message] = "You have left Pokemon Ruby-On-Rails :("
+    #change message
 
     redirect_to trainers_path
   end
@@ -50,15 +47,17 @@ class TrainersController < ApplicationController
   def update
     find_trainer
     @trainer.update(name: params[:trainer][:name], age: params[:trainer][:age])
+    flash[:message] = "Trainer profile successfully updated"
 
     redirect_to trainer_path(@trainer)
   end
 
-  def reset_token
+  def claim_token
     find_trainer
-    @trainer.add_token
+    @trainer.claim_token
+    flash[:message] = "Poke-Token claimed"
 
-    render :'trainers/show'
+    redirect_to trainer_path(@trainer)
   end
 
   private
@@ -69,5 +68,11 @@ class TrainersController < ApplicationController
 
   def find_trainer
     @trainer = Trainer.find(params[:id])
+  end
+
+  def delete_pokemon
+    @trainer.pokemons.each do |pokemon|
+      pokemon.destroy
+    end
   end
 end

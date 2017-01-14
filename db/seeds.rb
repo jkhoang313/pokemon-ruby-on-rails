@@ -26,7 +26,7 @@ end
 
 def seed_trainer_jackson
   puts "Creating Trainer Jackson..."
-  @jackson = Trainer.create(name: "Jackson", password: "lily", age: 24, starter_pokemon: "charmander", gender: "Male", last_token: Time.now.to_i)
+  @jackson = Trainer.create(name: "Jackson", password: "lily", age: 24, starter_pokemon: "Charmander", poke_tokens: 20, gender: "Male", last_token: Time.now.to_i)
   @jackson_starter = Pokedex.find_by(name: "Charmander")
   @jackson.pokemons << @jackson_starter.create_pokemon(@jackson)
   @jackson_second_pokemon = Pokedex.find_by(name: "Dratini")
@@ -35,7 +35,7 @@ end
 
 def seed_trainer_lily
   puts "Creating Trainer Lily..."
-  @lily = Trainer.create(name: "Lily", password: "jackson", age: 24, starter_pokemon: "squirtle", gender: "Female", last_token: Time.now.to_i)
+  @lily = Trainer.create(name: "Lily", password: "jackson", age: 24, starter_pokemon: "Squirtle", poke_tokens: 20, gender: "Female", last_token: Time.now.to_i)
   @lily_starter = Pokedex.find_by(name: "Squirtle")
   @lily.pokemons << @lily_starter.create_pokemon(@lily)
   @lily_second_pokemon = Pokedex.find_by(name: "Pikachu")

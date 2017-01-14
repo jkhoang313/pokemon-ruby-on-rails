@@ -12,7 +12,7 @@
     <p> Next Poke-Token: <%= @trainer.token_status %> </p>
 
     <% if current_trainer == @trainer %>
-      <%= button_to "Claim Poke-Token", reset_token_path(@trainer), class: 'new-line' if @trainer.token_time_passed? %>
+      <%= button_to "Claim Poke-Token", claim_token_path(@trainer), class: 'new-line' if @trainer.token_time_passed? %>
       <%= button_to "Edit Trainer", edit_trainer_path, method: :get %>
       <%= button_to "Delete Trainer", @trainer, method: :delete, data: {confirm: 'Are you sure you want to delete this trainer?'} %>
     <% end %>
