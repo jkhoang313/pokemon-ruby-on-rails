@@ -20,12 +20,16 @@
     <%= f.label :starter_pokemon %>
     <br>
     <%= f.radio_button :starter_pokemon, "Bulbasaur" %>
-    <%= f.label :starter_pokemon_bulbasaur,"Bulbasaur" %>
+    <%= f.label :starter_pokemon_bulbasaur, image_tag("pokemon/bulbasaur.jpg", class: "small-picture") %>
+    <%= f.label :starter_pokemon_bulbasaur, "Bulbasaur" %>
     <%= f.radio_button :starter_pokemon, "Charmander" %>
+    <%= f.label :starter_pokemon_charmander, image_tag("pokemon/charmander.jpg", class: "small-picture") %>
     <%= f.label :starter_pokemon_charmander, "Charmander" %>
     <%= f.radio_button :starter_pokemon, "Squirtle" %>
+    <%= f.label :starter_pokemon_squirtle, image_tag("pokemon/squirtle.jpg", class: "small-picture") %>
     <%= f.label :starter_pokemon_squirtle, "Squirtle" %>
     <%= f.radio_button :starter_pokemon, "Random" %>
+    <%= f.label :starter_pokemon_random, image_tag("question.png", class: "small-picture") %>
     <%= f.label :starter_pokemon_random, "Random" %>
     <br>
     <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>

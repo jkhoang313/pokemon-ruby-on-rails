@@ -30,12 +30,15 @@
   </head>
 
   <body>
+    <% if flash[:message] %>
+    <div class="card-panel light-blue lighten-2 flow-text center"><p><%= flash[:message] %></p></div>
+    <% end %>
     <div class="container">
       <%= image_tag("pokeball.png") %>
       <%= yield %>
       <div class="row">
         <div class="col">
-        <p class="flash"><%= flash[:message] if flash[:message] %></p>
+        <!-- <p class="flash"><%= flash[:message] if flash[:message] %></p> -->
         </div>
       </div>
     </div>

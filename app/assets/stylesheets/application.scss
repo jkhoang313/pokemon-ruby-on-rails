@@ -30,10 +30,6 @@ p.flash {
   color: red;
 }
 
-.center {
-  text-align: center;
-}
-
 html, body, .container {
   height: 100%;
   width: 100%;
@@ -48,14 +44,37 @@ div.container > img {
   margin-top: 50px;
   width: 30%;
   opacity: 0.2;
+  z-index: -1;
+}
+
+div.row {
+  z-index: 0;
 }
 
 .container div.row {
   margin: 10px;
-  font-family: Verdana;
 }
 
 img.pokemon-image {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
+}
+
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+.small-picture {
+  height: 50px;
+  width: 50px;
+}
+
+div.card-panel {
+  height: 50px;
+}
+
+div.card-panel p {
+  display: inline;
+  bottom: 10px;
+  position: relative;
 }
