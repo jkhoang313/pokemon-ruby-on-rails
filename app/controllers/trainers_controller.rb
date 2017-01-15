@@ -54,7 +54,7 @@ class TrainersController < ApplicationController
   def claim_token
     find_trainer
     @trainer.claim_token
-    flash[:message] = "Poke-Token claimed"
+    flash[:message] = "Claimed Poke-Token"
 
     redirect_to trainer_path(@trainer)
   end

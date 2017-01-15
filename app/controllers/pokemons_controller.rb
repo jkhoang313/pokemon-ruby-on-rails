@@ -33,7 +33,7 @@ class PokemonsController < ApplicationController
     # if statement for capture works or not
     @captured_pokemon = Pokedex.find(params[:pokedex_id])
     @captured_pokemon.create_pokemon(current_trainer)
-    flash[:message] = "You caught a #{@captured_pokemon.name}!"
+    flash[:message] = "You caught a(n) #{@captured_pokemon.name}!"
 
     redirect_to trainer_path(current_trainer)
   end

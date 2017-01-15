@@ -54,6 +54,8 @@ class Trainer < ApplicationRecord
 
   def set_token_time
     self.last_token = Time.now.to_i
+    self.save
   end
   #make method for moving starters and storage pokemon
+  #add search bar
 end

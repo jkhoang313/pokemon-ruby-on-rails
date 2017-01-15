@@ -1,17 +1,23 @@
 <div class="row">
-  <div class="col s12">
+  <div class="col s4">
     <h2><%= @pokemon.name %></h2>
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", :class=> "pokemon-image") %>
+  </div>
+  <div class="col s4 offset-s4">
+    <h1>Caught By:</h1>
+    <ul>
+      <% if !@pokemon.trainers.empty? %>
+        <% @pokemon.trainers.each do |trainer| %>
+        <li><%= link_to trainer.name, trainer_path(trainer)%></li>
+        <% end %>
+      <% else %>
+        <li>None</li>
+      <% end %>
+    </ul>
   </div>
 </div>
 <div class="row">
   <div class="col s12">
-    <h6>Trainer(s):</strong></h6>
-    <ul>
-      <% @pokemon.trainers.each do |trainer| %>
-      <li><%= link_to trainer.name, trainer_path(trainer)%></li>
-      <% end %>
-    </ul>
     <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get %>
     <%= button_to "Previous Pokemon", pokedex_path(@pokemon.id-1), method: :get, class: "left" unless @pokemon.id == 1%>
     <%= button_to "Next Pokemon", pokedex_path(@pokemon.id+1), method: :get, class: "right" unless @pokemon.id == 151 %>
