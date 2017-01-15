@@ -6,8 +6,8 @@
 <div class="row">
   <div class="col s12">
     <%= form_tag new_session_path do %>
-      <%= label_tag :name %>
-      <%= text_field_tag 'trainer[name]' %>
+      <%= label_tag :email %>
+      <%= text_field_tag 'trainer[email]' %>
       <%= label_tag :password %>
       <%= password_field_tag 'trainer[password]' %>
       <%= submit_tag "Login" %>

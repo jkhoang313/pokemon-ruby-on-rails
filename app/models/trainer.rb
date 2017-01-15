@@ -12,7 +12,9 @@ class Trainer < ApplicationRecord
   def create_conditions(starter)
     self.set_token_time
     self.capitalize_name
+    self.email.downcase
     starter.create_pokemon(self)
+    binding.pry
     self.save
   end
 
