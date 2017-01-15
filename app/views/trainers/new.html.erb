@@ -7,17 +7,19 @@
 <div class="row">
   <div class="col s12">
     <%= form_for @trainer do |f| %>
-    <%= f.label "Name:" %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.label "Password:" %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :password %>
     <%= f.password_field :password %>
-    <%= f.label "Confirm Password:" %>
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
-    <%= f.label "Age:" %>
+    <%= f.label :age %>
     <%= f.number_field :age, min: 1 %>
-    <%= f.label "Starter Pokemon:" %>
+    <%= f.label :starter_pokemon %>
     <br>
-    <%= f.radio_button :starter_pokemon, "Bulbasaur", :type=>"radio" %>
+    <%= f.radio_button :starter_pokemon, "Bulbasaur" %>
     <%= f.label :starter_pokemon_bulbasaur,"Bulbasaur" %>
     <%= f.radio_button :starter_pokemon, "Charmander" %>
     <%= f.label :starter_pokemon_charmander, "Charmander" %>

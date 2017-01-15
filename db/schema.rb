@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20161227184459) do
 
   create_table "trainers", force: :cascade do |t|
     t.string   "name"
+    t.string   "email"
     t.string   "password_digest"
     t.string   "age"
     t.string   "gender"

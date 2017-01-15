@@ -9,20 +9,19 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(trainer_params)
-    @starter = Pokedex.starter_pokemon(params[:trainer][:starter_pokemon])
-    if @trainer.authenticate(params[:trainer][:password_confirmation])
+    #fix random starter pokemon or make main pokemon column
+    if @trainer.valid? && @trainer.authenticate(params[:trainer][:password_confirmation])
+      @starter = Pokedex.starter_pokemon(params[:trainer][:starter_pokemon])
       @trainer.create_conditions(@starter)
       session[:trainer_id] = @trainer.id
       flash[:message] = "Welcome to Pokemon Ruby-On-Rails Trainer #{@trainer.name}!"
 
       redirect_to trainer_path(@trainer)
     else
-      flash[:message] = "Password confirmation must match password"
+      flash[:message] = @trainer.errors.full_messages.first
 
       redirect_to new_trainer_path
-      # add validations
     end
-    # get rid of starter_pokemon attribute?
   end
 
   def destroy
@@ -63,7 +62,7 @@ class TrainersController < ApplicationController
   private
 
   def trainer_params
-    params.require(:trainer).permit(:name, :password, :age, :gender)
+    params.require(:trainer).permit(:name, :email, :password, :password_confirmation, :age, :gender, :starter_pokemon)
   end
 
   def find_trainer

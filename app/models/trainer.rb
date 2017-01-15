@@ -1,19 +1,18 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
   has_secure_password
-  validates :name, presence: true, uniqueness: true
-  #add emails
+  validates :name, :age, :starter_pokemon, :gender, presence: true
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  # make starter with sprite on search
 
   def capitalize_name
     self.name = self.name.downcase.split.collect(&:capitalize).join(' ') if !self.name.blank?
   end
 
   def create_conditions(starter)
-    self.starter_pokemon = starter.name
     self.set_token_time
     self.capitalize_name
     starter.create_pokemon(self)
-
     self.save
   end
 
