@@ -22,9 +22,10 @@
   </div>
   <div class="col s3 offset-s5">
     <p>Current Team:</p>
-    <ul>
+    <ul class="roster">
       <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
-      <li><%= pokemon.name %></li>
+      <!-- change this -->
+      <li class="sprite-image"><%= image_tag("pokemon-sprite/#{Pokedex.find_by(name: pokemon.name).id}.png", class: "sprite-image") %></li>
       <% end %>
     </ul>
   </div>
