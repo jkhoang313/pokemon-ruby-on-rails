@@ -59,6 +59,12 @@ class TrainersController < ApplicationController
     redirect_to trainer_path(@trainer)
   end
 
+  def run_away
+    flash[:message] = "Got away safely..."
+
+    redirect_to trainer_path(current_trainer)
+  end
+
   private
 
   def trainer_params

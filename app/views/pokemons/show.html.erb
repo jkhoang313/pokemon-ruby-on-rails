@@ -2,6 +2,7 @@
   <div class="col s12">
     <h3><%= @pokemon.name %></h3>
         <h6>Trainer: <%= @trainer.name  %></h6>
+        <h6>Captured On: <%= @pokemon.created_at.strftime('%B %d, %Y %I:%M %p') %></h6>
   </div>
 </div>
 
@@ -41,7 +42,7 @@
     </table>
     <br>
 
-    <%= button_to "Delete Pokemon", delete_pokemon_path(@trainer, @pokemon), method: :delete, class: 'new-line btn', data: {confirm: 'Are you sure you want to delete this pokemon?'} if current_trainer == @trainer %><br>
+    <%= button_to "Release Pokemon", delete_pokemon_path(@trainer, @pokemon), method: :delete, class: 'new-line btn', data: {confirm: "Are you sure you want to release your #{@pokemon.name}?"} if current_trainer == @trainer %><br>
     <%= button_to "Back To All Pokemon", pokemons_path(@trainer), method: :get, class: "btn" %><br>
     <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
   </div>

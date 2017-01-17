@@ -24,7 +24,7 @@ class Trainer < ApplicationRecord
 
   def token_status
     if token_time_passed?
-      "Available upon login"
+      "Available"
     else
       total_seconds = last_token + 14400 - current_time
       hours_left = total_seconds / 3600
@@ -41,8 +41,8 @@ class Trainer < ApplicationRecord
     set_token_time
   end
 
-  def minus_token
-    self.update(poke_tokens: self.poke_tokens-1)
+  def minus_token(number)
+    self.update(poke_tokens: self.poke_tokens-number)
   end
 
   def starters

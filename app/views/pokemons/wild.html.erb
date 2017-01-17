@@ -19,7 +19,10 @@
 
 <div class="row">
   <div class="col s12 center">
-    <%= button_to "Throw Pokeball", capture_pokemon_path(Pokedex.find_by(name: @wild_pokemon)), class: "btn" %>
+    <%= button_to "Throw Pokeball", pokeball_path(Pokedex.find_by(name: @wild_pokemon)), class: "btn", data: {confirm: "Spend 1 Poke-Token to throw a Pokeball?"} %>
+    <%= button_to "Throw Great ball", great_ball_path(Pokedex.find_by(name: @wild_pokemon)), class: "btn", data: {confirm: "Spend 2 Poke-Tokens to throw a Great Ball?"} %>
+    <%= button_to "Throw Ultra ball", ultra_ball_path(Pokedex.find_by(name: @wild_pokemon)), class: "btn", data: {confirm: "Spend 3 Poke-Tokens to throw an Ultra Ball?"} %>
+    <%= button_to "Run Away", run_away_path(current_trainer), class: "btn"%>
     <%#= refactor this %>
   </div>
 </div>
