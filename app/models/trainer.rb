@@ -14,7 +14,6 @@ class Trainer < ApplicationRecord
     self.capitalize_name
     self.email.downcase
     starter.create_pokemon(self)
-    binding.pry
     self.save
   end
 

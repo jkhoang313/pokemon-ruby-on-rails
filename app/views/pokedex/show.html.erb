@@ -18,8 +18,8 @@
 </div>
 <div class="row">
   <div class="col s12">
-    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get %>
-    <%= button_to "Previous Pokemon", pokedex_path(@pokemon.id-1), method: :get, class: "left" unless @pokemon.id == 1%>
-    <%= button_to "Next Pokemon", pokedex_path(@pokemon.id+1), method: :get, class: "right" unless @pokemon.id == 151 %>
+    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get, class: "btn" %><br>
+    <%= button_to "Previous Pokemon", pokedex_path(@pokemon.id-1), method: :get, class: "left btn" unless @pokemon.id == 1%>
+    <%= button_to "Next Pokemon", pokedex_path(@pokemon.id+1), method: :get, class: "right btn" unless @pokemon.id == 151 %>
   </div>
 </div>

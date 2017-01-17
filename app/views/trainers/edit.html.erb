@@ -12,8 +12,8 @@
       <%= f.label :age %>
       <%= f.text_field :age %>
       <br></br>
-      <%= f.submit %>
-    <% end %>
-    <%= button_to "Cancel", trainer_path(@trainer), method: :get %>
+      <%= f.submit class: "btn" %>
+    <% end %><br>
+    <%= button_to "Cancel", trainer_path(@trainer), method: :get, class: "btn" %>
   </div>
 </div>

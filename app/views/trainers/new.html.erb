@@ -35,9 +35,9 @@
     <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>
     <%= f.radio_button :gender, "Female" %><%= f.label :gender_female, "Female" %>
     <br><br>
-    <%= f.submit %>
+    <%= f.submit class: "btn" %>
     <% end %>
     <br>
-    <%= button_to "Cancel", trainers_path, method: :get %>
+    <%= button_to "Cancel", trainers_path, method: :get, class: "btn" %>
   </div>
 </div>
