@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pokedex_types
+  resources :types
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :pokedex
 
@@ -12,10 +14,10 @@ Rails.application.routes.draw do
   post '/trainers/:id/runaway', to: 'trainers#run_away', as: 'run_away'
   resources :trainers
 
-  post '/wild_encounter', to: 'pokemons#wild', as: 'wild_encounter'
-  post '/wild_encounter/:pokedex_id/pokeball', to: 'pokemons#pokeball', as: 'pokeball'
-  post '/wild_encounter/:pokedex_id/great_ball', to: 'pokemons#great_ball', as: 'great_ball'
-  post '/wild_encounter/:pokedex_id/ultra_ball', to: 'pokemons#ultra_ball', as: 'ultra_ball'
+  post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
+  post '/wild_encounter/:pokedex_id/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
+  post '/wild_encounter/:pokedex_id/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
+  post '/wild_encounter/:pokedex_id/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
 
 
   get '/login', to: 'sessions#new', as: "login"

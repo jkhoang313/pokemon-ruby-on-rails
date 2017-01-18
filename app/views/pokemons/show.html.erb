@@ -15,6 +15,10 @@
           <td><%= @pokemon.level %></td>
         </tr>
         <tr>
+          <td>Type:</td>
+          <td><%= @pokemon.types.pluck(:name).join(", ") %></td>
+        </tr>
+        <tr>
           <td>HP:</td>
           <td><%= @pokemon.hp %></td>
         </tr>

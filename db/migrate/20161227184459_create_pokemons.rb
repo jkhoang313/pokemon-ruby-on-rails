@@ -5,6 +5,7 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.integer :pokedex_id
       t.string :name
       t.integer :level, :default => 1
+      t.integer :experience
       t.string :hp
       t.string :attack
       t.string :defense

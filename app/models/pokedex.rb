@@ -1,6 +1,8 @@
 class Pokedex < ApplicationRecord
   has_many :pokemons
   has_many :trainers, through: :pokemons
+  has_many :pokedex_types
+  has_many :types, through: :pokedex_types
 
   def create_pokemon(trainer)
     @pokemon = Pokemon.create(trainer_id: trainer, pokedex_id: id, name: name, level: level, hp: hp, attack: attack, defense: defense, special_attack: special_attack, special_defense: special_defense, speed: speed)

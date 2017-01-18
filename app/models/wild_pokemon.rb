@@ -1,0 +1,3 @@
+class WildPokemon < ApplicationRecord
+
+end

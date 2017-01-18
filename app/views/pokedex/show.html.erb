@@ -2,6 +2,10 @@
   <div class="col s4">
     <h2><%= @pokemon.name %></h2>
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", :class=> "pokemon-image") %>
+    <% @pokemon.types.each do |type| %>
+      <h6><%= type.name %></td>
+    <% end %>
+    <!-- make this prettier -->
   </div>
   <div class="col s4 offset-s4">
     <h1>Caught By:</h1>
