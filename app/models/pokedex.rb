@@ -5,7 +5,7 @@ class Pokedex < ApplicationRecord
   has_many :types, through: :pokedex_types
 
   def create_pokemon(trainer)
-    @pokemon = Pokemon.create(trainer_id: trainer, pokedex_id: id, name: name, level: level, hp: hp, attack: attack, defense: defense, special_attack: special_attack, special_defense: special_defense, speed: speed)
+    @pokemon = Pokemon.create(trainer_id: trainer, pokedex_id: id, name: name, level: level, hp: randomize_stat(hp), attack: randomize_stat(attack), defense: randomize_stat(defense), special_attack: randomize_stat(special_attack), special_defense: randomize_stat(special_defense), speed: randomize_stat(speed))
 
     trainer.pokemons << @pokemon
     @pokemon
@@ -37,5 +37,11 @@ class Pokedex < ApplicationRecord
     else
       ultra_rare.sample
     end
+  end
+
+  private
+
+  def randomize_stat(stat)
+    (rand(0.9..1.1) * stat.to_i).to_i.to_s
   end
 end
