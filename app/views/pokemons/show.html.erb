@@ -16,7 +16,9 @@
         </tr>
         <tr>
           <td>Type:</td>
-          <td><%= @pokemon.types.pluck(:name).join(", ") %></td>
+          <td><% @pokemon.types.each do |type| %>
+            <%= image_tag("types/#{type.name}", class: "type") %>
+          <% end %></td>
         </tr>
         <tr>
           <td>HP:</td>

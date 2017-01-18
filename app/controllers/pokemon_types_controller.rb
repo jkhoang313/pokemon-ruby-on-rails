@@ -1,2 +1,0 @@
-class PokedexTypesController < ApplicationController
-end

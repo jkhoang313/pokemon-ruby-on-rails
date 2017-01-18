@@ -5,8 +5,9 @@
     <h6>Type: <%= @pokemon.types.pluck(:name).join(", ") %></h6>
     <!-- make this prettier and add image -->
   </div>
-  <div class="col s4 offset-s4">
-    <h1>Caught By:</h1>
+
+  <div class="col s4">
+    <h2>Caught By:</h2>
     <ul>
       <% if !@pokemon.trainers.empty? %>
         <% @pokemon.trainers.each do |trainer| %>
@@ -17,7 +18,52 @@
       <% end %>
     </ul>
   </div>
-</div>
+
+  <div class="col s3">
+    <h2>Base Stats:</h2>
+    <table class="striped">
+      <tbody>
+      <tr>
+        <td>Level:</td>
+        <td><%= @pokemon.level %></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <!-- <td><%= @pokemon.types.pluck(:name).join(", ") %></td> -->
+        <td><% @pokemon.types.each do |type| %>
+          <%= image_tag("types/#{type.name}", class: "type") %>
+        <% end %></td>
+        <!-- <td><%= image_tag('types/fire.png') %></td> -->
+      </tr>
+      <tr>
+        <td>HP:</td>
+        <td><%= @pokemon.hp %></td>
+      </tr>
+      <tr>
+        <td>Attack:</td>
+        <td><%= @pokemon.attack %></td>
+      </tr>
+      <tr>
+        <td>Defense:</td>
+        <td><%= @pokemon.defense %></td>
+      </tr>
+      <tr>
+        <td>Special Attack:</td>
+        <td><%= @pokemon.special_attack %></td>
+      </tr>
+      <tr>
+        <td>Special Defense:</td>
+        <td><%= @pokemon.special_defense %></td>
+      </tr>
+      <tr>
+        <td>Speed:</td>
+        <td><%= @pokemon.speed %></td>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+  </div>
+
 <div class="row">
   <div class="col s12">
     <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get, class: "btn" %><br>

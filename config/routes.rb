@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   post '/wild_encounter/:pokedex_id/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
   post '/wild_encounter/:pokedex_id/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
 
-
   get '/login', to: 'sessions#new', as: "login"
   post '/login', to: 'sessions#create', as: "new_session"
   delete '/logout', to: 'sessions#destroy', as: "logout"
