@@ -1,8 +1,7 @@
 <div class="row">
   <div class="col s4">
-    <h2><%= @pokemon.name %></h2>
+    <h2><%= @pokemon.name %></h2><br><br><br>
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", :class=> "pokemon-image") %>
-    <h6>Type: <%= @pokemon.types.pluck(:name).join(", ") %></h6>
     <!-- make this prettier and add image -->
   </div>
 
