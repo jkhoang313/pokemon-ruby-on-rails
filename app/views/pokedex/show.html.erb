@@ -18,7 +18,7 @@
     </ul>
   </div>
 
-  <div class="col s3">
+  <div class="col s3 offset-s1">
     <h2>Base Stats:</h2>
     <table class="striped">
       <tbody>
@@ -28,11 +28,9 @@
       </tr>
       <tr>
         <td>Type:</td>
-        <!-- <td><%= @pokemon.types.pluck(:name).join(", ") %></td> -->
         <td><% @pokemon.types.each do |type| %>
           <%= image_tag("types/#{type.name}", class: "type") %>
         <% end %></td>
-        <!-- <td><%= image_tag('types/fire.png') %></td> -->
       </tr>
       <tr>
         <td>HP:</td>
