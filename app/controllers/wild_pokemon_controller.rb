@@ -6,7 +6,7 @@ class WildPokemonController < ApplicationController
       redirect_to trainer_path(current_trainer)
     else
       current_trainer.minus_token(1)
-      @wild_pokemon = Pokedex.wild_pokemon
+      @wild_pokemon = WildPokemon.wild_pokemon
     end
   end
 

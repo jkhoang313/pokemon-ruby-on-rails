@@ -13,7 +13,9 @@ class Trainer < ApplicationRecord
     self.set_token_time
     self.capitalize_name
     self.email.downcase
-    starter.create_pokemon(self)
+    @first_pokemon = starter.create_pokemon(self)
+    self.starter_pokemon = @first_pokemon.name
+    # fixes random pokemon starter
     self.save
   end
 

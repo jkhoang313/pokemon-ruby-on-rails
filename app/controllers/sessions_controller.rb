@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  private
+  # private
 
   # def capitalize_name(name)
   #   name.downcase.split.collect(&:capitalize).join(' ') if name && !name.blank?

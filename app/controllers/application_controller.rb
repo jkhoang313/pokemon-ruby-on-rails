@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     session[:trainer_id]
   end
+  
+  def find_trainer
+    @trainer = Trainer.find(params[:id])
+  end
 end

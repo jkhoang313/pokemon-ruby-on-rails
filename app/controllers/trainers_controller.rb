@@ -22,6 +22,7 @@ class TrainersController < ApplicationController
 
       redirect_to new_trainer_path
     end
+    #change images in new form so that background isn't messed up
   end
 
   def destroy
@@ -69,10 +70,6 @@ class TrainersController < ApplicationController
 
   def trainer_params
     params.require(:trainer).permit(:name, :email, :password, :password_confirmation, :age, :gender, :starter_pokemon)
-  end
-
-  def find_trainer
-    @trainer = Trainer.find(params[:id])
   end
 
   def delete_pokemon
