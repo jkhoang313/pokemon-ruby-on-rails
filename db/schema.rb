@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170118223509) do
     t.integer  "gym_leader_id"
     t.integer  "gym_pokemon_id"
     t.integer  "last_taken"
+    t.integer  "challenger_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

@@ -46,10 +46,6 @@ def create_pokedex_types
   end
 end
 
-def create_gym_leaders
-
-end
-
 def create_gyms
   Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
   Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 4, last_taken: Time.now)

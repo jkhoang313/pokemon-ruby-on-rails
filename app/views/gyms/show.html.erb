@@ -1,7 +1,11 @@
 <div class="row">
   <h3><%= @gym.name + " City Gym" %></h3>
-  <h5>Gym Leader: <%= link_to @gym.gym_leader.name, trainer_path(@gym.gym_leader) %></h5>
-  <h5>Pokemon: <%= link_to @gym.gym_pokemon.name, pokemon_path(@gym.gym_leader, @gym.gym_pokemon) %></h5>
-  <!-- put in controller? -->
   <!-- add gyms owned in trainer profile -->
+</div>
+
+<div class="row">
+  <h5>Gym Leader: <%= link_to @gym_leader.name, trainer_path(@gym_leader) %></h5>
+  <h5>Pokemon: <%= link_to @gym_pokemon.name, pokemon_path(@gym_leader, @gym_pokemon) %></h5>
+  <h4><%= image_tag("pokemon/#{@gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
+  <%= button_to "Challenge this Gym", challenge_gym_path(@gym), class: "btn", method: :get %>
 </div>
