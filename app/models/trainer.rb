@@ -3,6 +3,7 @@ class Trainer < ApplicationRecord
   has_secure_password
   validates :name, :age, :starter_pokemon, :gender, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  # has_many gyms
   # make starter with sprite on search
 
   def capitalize_name

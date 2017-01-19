@@ -35,7 +35,7 @@
       <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{Pokedex.find_by(name: pokemon.name).id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
       <% end %>
     <% end %>
-    <br>
+    <br><br>
     <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
     </ul>
   </div>
