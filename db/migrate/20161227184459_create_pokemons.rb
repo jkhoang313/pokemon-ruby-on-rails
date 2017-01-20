@@ -12,6 +12,7 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.string :special_attack
       t.string :special_defense
       t.string :speed
+      # add occupied/busy column, can't do multiple actions
 
       t.timestamps
     end

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: "logout"
   get '/logout', to: 'sessions#destroy'
 
-  get '/gyms/:id/challenge', to: 'gyms#challenge', as: "challenge_gym"
-  post '/gyms/:id', to: 'gyms#battle'
+  post '/gyms/:id', to: 'gyms#challenge'
+  get '/gyms/:id/results', to: 'gyms#results', as: "gym_results"
   resources :gyms
 end

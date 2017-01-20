@@ -5,6 +5,8 @@ class Trainer < ApplicationRecord
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   # has_many gyms
   # make starter with sprite on search
+  # add gyms owned in trainer profile
+
 
   def capitalize_name
     self.name = self.name.downcase.split.collect(&:capitalize).join(' ') if !self.name.blank?

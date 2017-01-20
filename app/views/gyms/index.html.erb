@@ -29,9 +29,16 @@
       <div class="card-content">
         <%= image_tag("types/#{gym.specialty}.png", class: "type center-image") %>
       </div><hr>
-      <div class="card-content">
-        <p class="center-align">Gym Leader: <%= link_to gym.gym_leader.name, trainer_path(gym.gym_leader) %></p><br>
-        <%= image_tag("pokemon/#{gym.gym_pokemon.name.downcase}.jpg", class: "gym-pokemon") %>
+      <div class="card-content center-align">
+        <p>Gym Leader: <%= link_to gym.gym_leader.name, trainer_path(gym.gym_leader) %></p><br>
+        <%= image_tag("pokemon/#{gym.gym_pokemon.name.downcase}.jpg", class: "gym-pokemon") %><br>
+
+        <% if gym.challenged? %>
+          <p class="red-text">CHALLENGED</p>
+        <% else %>
+          <p class="green-text">OPEN</p>
+        <% end %>
+        <!-- add css -->
       </div>
     </div>
   </div>

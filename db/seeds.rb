@@ -47,30 +47,30 @@ def create_pokedex_types
 end
 
 def create_gyms
-  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
+  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 2, gym_pokemon_id: 3, last_taken: Time.now)
   Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 4, last_taken: Time.now)
   Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
   Gym.create(name: "Celadon", specialty: "Grass", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
   Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 2, gym_pokemon_id: 3, last_taken: Time.now)
   Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 2, gym_pokemon_id: 4, last_taken: Time.now)
-  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 2, gym_pokemon_id: 3, last_taken: Time.now)
+  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
   Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
 end
 
 def seed_trainer_jackson
   @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, starter_pokemon: "Charmander", poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
   @jackson_starter = Pokedex.find_by(name: "Charmander")
-  @jackson.pokemons << @jackson_starter.create_pokemon(@jackson)
+  @jackson_starter.create_pokemon(@jackson)
   @jackson_second_pokemon = Pokedex.find_by(name: "Dratini")
-  @jackson.pokemons << @jackson_second_pokemon.create_pokemon(@jackson)
+  @jackson_second_pokemon.create_pokemon(@jackson)
 end
 
 def seed_trainer_lily
   @lily = Trainer.create(name: "Lily", email: "lily@lily.com", password: "jackson", password_confirmation: "jackson", age: 24, starter_pokemon: "Squirtle", poke_tokens: 100, gender: "Female", last_token: Time.now.to_i)
   @lily_starter = Pokedex.find_by(name: "Squirtle")
-  @lily.pokemons << @lily_starter.create_pokemon(@lily)
+  @lily_starter.create_pokemon(@lily)
   @lily_second_pokemon = Pokedex.find_by(name: "Pikachu")
-  @lily.pokemons << @lily_second_pokemon.create_pokemon(@lily)
+  @lily_second_pokemon.create_pokemon(@lily)
 end
 
 create_pokedex
@@ -78,5 +78,4 @@ create_types
 create_pokedex_types
 seed_trainer_jackson
 seed_trainer_lily
-
 create_gyms
