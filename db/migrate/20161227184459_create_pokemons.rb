@@ -5,13 +5,14 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.integer :pokedex_id
       t.string :name
       t.integer :level, :default => 1
-      t.integer :experience
+      t.integer :experience, :default => 0
       t.string :hp
       t.string :attack
       t.string :defense
       t.string :special_attack
       t.string :special_defense
       t.string :speed
+      t.boolean :occupied, default: :false
       # add occupied/busy column, can't do multiple actions
 
       t.timestamps

@@ -8,6 +8,8 @@ class CreateGyms < ActiveRecord::Migration[5.0]
       t.integer :last_taken
       t.integer :challenger_id
       t.integer :challenger_pokemon
+      # add teams?
+      # can aid your teammates gym
 
       t.timestamps
     end

@@ -12,6 +12,14 @@
       <li class="collection-item">Current Poke-tokens: <%= @trainer.poke_tokens %></li>
       <li class="collection-item">Next Poke-Token: <%= @trainer.token_status %></li>
       <li class="collection-item"><%= link_to "See All Pokemon", pokemons_path(@trainer) %></li>
+      <li class="collection-item">Gyms Owned:
+        <ul>
+        <% @a = @trainer.gyms.collect do |gym| %>
+          <li><%= link_to "#{gym.name} Gym", gym_path(gym) %></li>
+          <!-- add badges -->
+        <% end %>
+        </ul>
+      </li>
     </ul>
 
     <% if current_trainer == @trainer %>

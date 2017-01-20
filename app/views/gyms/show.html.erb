@@ -1,5 +1,6 @@
 <div class="row center-align">
-  <h2><%= @gym.name %> City Gym</h2>
+  <h2><%= @gym.name %> Gym</h2>
+  <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
   <% if @gym.challenged? %>
     <h5>Currently being challenged</h5>
   <% else %>
@@ -9,7 +10,7 @@
 <div class="row">
   <div class="col s3 center-align">
     <h3>Gym Leader</h3>
-    <h4><%= link_to @gym_leader.name, trainer_path(@gym_leader) %></h4>
+    <h4><%= link_to @gym_leader.name, trainer_path(@gym_leader) %></h4><br>
     <h4><%= image_tag("pokemon/#{@gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
   </div>
 
@@ -19,7 +20,7 @@
     </div>
     <div class="col s3 center-align">
       <h3>Challenger</h3>
-      <h4><%= link_to @challenger.name, trainer_path(@challenger) %></h4>
+      <h4><%= link_to @challenger.name, trainer_path(@challenger) %></h4><br>
       <h4><%= image_tag("pokemon/#{@challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
     </div>
   <% else %>
@@ -30,7 +31,7 @@
     </div>
     <% if logged_in? && current_trainer != @gym_leader %>
     <div class="col s3 center-align">
-      <h3>Challenger</h3>
+      <h3>Challenger</h3><br>
       <h4><%= current_trainer.name %></h4><br>
       <h6>Choose your pokemon</h6>
       <%= form_tag gym_path(@gym) do %>

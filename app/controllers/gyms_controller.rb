@@ -15,10 +15,13 @@ class GymsController < ApplicationController
 
       redirect_to gym_path(@gym)
     else
-      @pokemon_choice = params["challenger"]["pokemon"]
       flash[:message] = "You challenged the #{@gym.name} City Gym!"
+      @pokemon_choice = Pokemon.find(params["challenger"]["pokemon"])
+      # @pokemon_choice.update(occupied: true)
+      # changes order of pokemon
       current_trainer.minus_token(5)
-      @gym.update(challenger_id: current_trainer.id, challenger_pokemon: @pokemon_choice)
+
+      @gym.update(challenger_id: current_trainer.id, challenger_pokemon: @pokemon_choice.id)
 
       redirect_to gym_path(@gym)
     end

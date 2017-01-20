@@ -7,7 +7,7 @@
   <div class="col s12 m3">
     <div class="card">
       <div class="card-content">
-        <p class="card-title center-align"><%= gym.name + " City Gym" %></p><hr>
+        <p class="card-title center-align"><%= gym.name + " Gym" %></p><hr>
         <%= image_tag("gyms/#{gym.name}.png", class: "gym-image") %>
         <h6 class="center-align">Gym Leader: <%= gym.gym_leader.name %></h6>
         <h6><%= image_tag("pokemon/#{gym.gym_pokemon.name.downcase}.jpg", class: "gym-pokemon") %></h6><hr>
@@ -24,7 +24,7 @@
     <div class="card">
       <div class="card-image">
         <%= link_to image_tag("gyms/#{gym.name}.png", class: "gym-image"), gym_path(gym) %>
-        <span class="card-title"><%= gym.name + " City Gym" %></span>
+        <span class="card-title"><%= gym.name + " Gym" %></span>
       </div>
       <div class="card-content">
         <%= image_tag("types/#{gym.specialty}.png", class: "type center-image") %>

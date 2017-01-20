@@ -52,15 +52,16 @@ ActiveRecord::Schema.define(version: 20170118223509) do
     t.integer  "pokedex_id"
     t.string   "name"
     t.integer  "level",           default: 1
-    t.integer  "experience"
+    t.integer  "experience",      default: 0
     t.string   "hp"
     t.string   "attack"
     t.string   "defense"
     t.string   "special_attack"
     t.string   "special_defense"
     t.string   "speed"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "occupied",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "trainers", force: :cascade do |t|
@@ -69,11 +70,13 @@ ActiveRecord::Schema.define(version: 20170118223509) do
     t.string   "password_digest"
     t.string   "age"
     t.string   "gender"
+    t.integer  "level",           default: 1
+    t.integer  "experience",      default: 0
     t.string   "starter_pokemon"
-    t.integer  "poke_tokens",     default: 5
+    t.integer  "poke_tokens",     default: 20
     t.integer  "last_token"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "types", force: :cascade do |t|

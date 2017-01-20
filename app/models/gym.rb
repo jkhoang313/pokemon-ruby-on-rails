@@ -22,7 +22,7 @@ class Gym < ApplicationRecord
   end
 
   def stat_boost(value)
-    " + #{(value.to_i*0.2).floor}" if self.gym_pokemon.types.include?(self.specialty)
+    " + #{(value.to_i*0.2).floor}" if self.gym_pokemon.types.pluck(:name).include?(self.specialty)
     # add stat boost for all pokemon? including challenger
     # add stat boost for being gym leader?
   end

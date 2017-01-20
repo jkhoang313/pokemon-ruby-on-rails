@@ -1,12 +1,14 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
+  has_many :gyms, :foreign_key => "gym_leader_id"
   has_secure_password
   validates :name, :age, :starter_pokemon, :gender, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   # has_many gyms
   # make starter with sprite on search
   # add gyms owned in trainer profile
-
+  # add gym leader of in pokemon
+  # add badges images
 
   def capitalize_name
     self.name = self.name.downcase.split.collect(&:capitalize).join(' ') if !self.name.blank?

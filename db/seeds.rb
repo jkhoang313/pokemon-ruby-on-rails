@@ -47,30 +47,31 @@ def create_pokedex_types
 end
 
 def create_gyms
-  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 2, gym_pokemon_id: 3, last_taken: Time.now)
-  Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 4, last_taken: Time.now)
-  Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
+  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
+  Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 5, last_taken: Time.now)
+  Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 2, gym_pokemon_id: 6, last_taken: Time.now)
   Gym.create(name: "Celadon", specialty: "Grass", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
-  Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 2, gym_pokemon_id: 3, last_taken: Time.now)
-  Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 2, gym_pokemon_id: 4, last_taken: Time.now)
-  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
-  Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
+  Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 2, gym_pokemon_id: 7, last_taken: Time.now)
+  Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 1, gym_pokemon_id: 3, last_taken: Time.now)
+  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 2, gym_pokemon_id: 8, last_taken: Time.now)
+  Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 4, last_taken: Time.now)
 end
 
 def seed_trainer_jackson
   @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, starter_pokemon: "Charmander", poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
-  @jackson_starter = Pokedex.find_by(name: "Charmander")
-  @jackson_starter.create_pokemon(@jackson)
-  @jackson_second_pokemon = Pokedex.find_by(name: "Dratini")
-  @jackson_second_pokemon.create_pokemon(@jackson)
+  # change starter_pokemon to current lead pokemon?
+  Pokedex.find_by(name: "Onix").create_pokemon(@jackson)
+  Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson)
+  Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson)
+  Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson)
 end
 
 def seed_trainer_lily
   @lily = Trainer.create(name: "Lily", email: "lily@lily.com", password: "jackson", password_confirmation: "jackson", age: 24, starter_pokemon: "Squirtle", poke_tokens: 100, gender: "Female", last_token: Time.now.to_i)
-  @lily_starter = Pokedex.find_by(name: "Squirtle")
-  @lily_starter.create_pokemon(@lily)
-  @lily_second_pokemon = Pokedex.find_by(name: "Pikachu")
-  @lily_second_pokemon.create_pokemon(@lily)
+  Pokedex.find_by(name: "Starmie").create_pokemon(@lily)
+  Pokedex.find_by(name: "Raichu").create_pokemon(@lily)
+  Pokedex.find_by(name: "Venomoth").create_pokemon(@lily)
+  Pokedex.find_by(name: "Magmar").create_pokemon(@lily)
 end
 
 create_pokedex
