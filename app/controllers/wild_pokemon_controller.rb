@@ -1,30 +1,34 @@
 class WildPokemonController < ApplicationController
   def wild
-    @wild_pokemon = WildPokemon.wild_pokemon
+    @wild_pokemon = Pokedex.wild
   end
 
   def pokeball
     @chance = rand(1..11)
-    @wild_pokemon = Pokedex.find(params[:pokedex_id])
+    find_wild_pokemon
 
     capture_pokemon(@chance, "Pokeball", 1)
   end
 
   def great_ball
     @chance = rand(3..13)
-    @wild_pokemon = Pokedex.find(params[:pokedex_id])
+    find_wild_pokemon
 
     capture_pokemon(@chance, "Great Ball", 2)
   end
 
   def ultra_ball
     @chance = rand(5..15)
-    @wild_pokemon = Pokedex.find(params[:pokedex_id])
+    find_wild_pokemon
 
     capture_pokemon(@chance, "Ultra Ball", 3)
   end
 
   private
+
+  def find_wild_pokemon
+    @wild_pokemon = Pokedex.find_by(name: params[:pokemon_name])
+  end
 
   def capture_pokemon(chance, ball, tokens)
     if current_trainer.poke_tokens < tokens
@@ -37,7 +41,6 @@ class WildPokemonController < ApplicationController
       current_trainer.minus_token(tokens)
       if @chance <= 5
         flash[:message] = "Threw a(n) #{ball}. Wild #{@wild_pokemon.name} ran away!"
-        @wild_pokemon = @wild_pokemon.name
 
         redirect_to trainer_path(current_trainer)
       elsif @chance <= 7
@@ -47,8 +50,8 @@ class WildPokemonController < ApplicationController
         render :'wild_pokemon/wild'
         flash.clear
       else
-        @wild_pokemon.create_pokemon(current_trainer)
         flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
+        @wild_pokemon.create_pokemon(current_trainer)
         @pokemon_count = current_trainer.pokemons.count
 
         redirect_to pokemon_path(current_trainer, @pokemon_count)

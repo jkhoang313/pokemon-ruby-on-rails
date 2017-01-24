@@ -16,10 +16,10 @@
       <h3 class="green-text">Winner</h3>
       <h5><%= @gym.winner.name %></h5>
       <h4>Cooldown Time</h4>
-      <h6><%= @gym.time_format("grace") %></h6>
+      <h6><%= @gym.gym_time_left("Challenge") %></h6>
   <% elsif @gym.challenged? %>
       <h3>Challenge Time</h3>
-      <h6><%= @gym.time_format("challenge") %></h6>
+      <h6><%= @gym.gym_time_left("Grace") %></h6>
   <% else %>
       <h3>Current Streak</h3>
       <h6><%= @gym.current_streak %></h6>

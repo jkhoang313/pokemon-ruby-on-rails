@@ -6,7 +6,6 @@ class Trainer < ApplicationRecord
   validates :name, :age, :starter_pokemon, :gender, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   # make starter with sprite on search
-  # add gym leader of in pokemon
   # add badges images
 
   def capitalize_name
@@ -24,21 +23,16 @@ class Trainer < ApplicationRecord
   end
 
   def token_time_passed?
-    next_token = last_token + 14400
-    next_token < current_time
+    last_token + 14400 < current_time
   end
 
   def token_status
     if token_time_passed?
       "Available"
     else
-      total_seconds = last_token + 14400 - current_time
-      hours_left = total_seconds / 3600
-      seconds = total_seconds % 3600
+      time_left = last_token + 14400 - current_time
 
-      minutes_left = seconds / 60
-      seconds_left = seconds % 60
-      "#{hours_left} Hour(s) #{minutes_left} Minute(s) #{seconds_left} Second(s)"
+      time_format(time_left)
     end
   end
 

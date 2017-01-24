@@ -9,6 +9,7 @@ class CreatePokedexes < ActiveRecord::Migration[5.0]
       t.string :special_attack
       t.string :special_defense
       t.string :speed
+      # add experience?
 
       t.timestamps
     end

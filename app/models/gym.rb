@@ -11,17 +11,8 @@ class Gym < ApplicationRecord
   end
 
   def current_streak
-    total_seconds = current_time - self.last_taken
-
-    days_left = total_seconds / 86400
-    total_seconds = total_seconds % 86400
-
-    hours_left = total_seconds / 3600
-    seconds = total_seconds % 3600
-
-    minutes_left = seconds / 60
-    seconds_left = seconds % 60
-    "#{days_left} Day(s) #{hours_left} Hour(s) #{minutes_left} Minute(s) #{seconds_left} Second(s)"
+    total_time = current_time - self.last_taken
+    time_format(total_time)
   end
 
   def challenged?
@@ -34,20 +25,14 @@ class Gym < ApplicationRecord
     # add stat boost for being gym leader?
   end
 
-  def time_format(period)
-    if period == "challenge"
+  def gym_time_left(kind)
+    if kind == "Challenge"
       time_left = self.challenge_time + 7200 - current_time
-    elsif period == "grace"
-      time_left = self.challenge_time + 7200 - current_time
+      time_format(time_left)
+    elsif kind == "Grace"
+      time_left = self.challenge_time + 14400 - current_time
+      time_format(time_left)
     end
-
-    hours_left = time_left / 3600
-    seconds = time_left % 3600
-
-    minutes_left = seconds / 60
-    seconds_left = seconds % 60
-
-    "#{hours_left} Hour(s) #{minutes_left} Minute(s) #{seconds_left} Second(s) left"
   end
 
   def challenge_over?

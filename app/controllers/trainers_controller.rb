@@ -9,7 +9,6 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(trainer_params)
-    #fix random starter pokemon or make main pokemon column
     if @trainer.valid? && @trainer.authenticate(params[:trainer][:password_confirmation])
       @starter = Pokedex.starter_pokemon(params[:trainer][:starter_pokemon])
       @trainer.create_conditions(@starter)
@@ -22,7 +21,6 @@ class TrainersController < ApplicationController
 
       redirect_to new_trainer_path
     end
-    #change images in new form so that background isn't messed up
   end
 
   def destroy
@@ -30,8 +28,7 @@ class TrainersController < ApplicationController
     delete_pokemon
     @trainer.destroy
     session.clear
-    flash[:message] = "You have left Pokemon Ruby-On-Rails :("
-    #change message
+    flash[:message] = "You have left Pokemon Ruby-On-Rails"
 
     redirect_to trainers_path
   end
