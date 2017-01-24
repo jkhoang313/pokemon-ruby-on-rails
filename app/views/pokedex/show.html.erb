@@ -32,6 +32,22 @@
         <% end %></td>
       </tr>
       <tr>
+        <td>1/2 Damage Against:</td>
+        <td>
+          <% @pokemon.fixed_weakness.each do |weakness| %>
+            <%= image_tag("types/#{weakness.name}", class: "type") %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>2x Damage Against:</td>
+        <td>
+          <% @pokemon.fixed_strength.each do |strength| %>
+            <%= image_tag("types/#{strength.name}", class: "type") %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
         <td>HP:</td>
         <td><%= @pokemon.hp %></td>
       </tr>

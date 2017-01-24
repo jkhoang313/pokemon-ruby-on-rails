@@ -33,19 +33,21 @@ class Gym < ApplicationRecord
   end
 
   def challenge_over?
-    # self.challenge_time + 7200 < current_time
-    self.challenge_time + 10 < current_time
+    self.challenge_time + 7200 < current_time
+    # self.challenge_time + 10 < current_time
   end
 
   def grace_over?
-    # self.challenge_time + 14400 < current_time
-    self.challenge_time + 20 < current_time
+    self.challenge_time + 14400 < current_time
+    # self.challenge_time + 20 < current_time
   end
 
   def find_winner
     if !self.winner
-      c = challenger_pokemon.total_stats(self.specialty)
-      g = gym_pokemon.total_stats(self.specialty)
+      c = attacker_totals(challenger_pokemon, gym_pokemon)
+      g = attacker_totals(gym_pokemon, challenger_pokemon)
+      binding.pry
+
       c_chance = c/(c+g).to_f
       if rand > c_chance
         self.update(winner_id: self.gym_pokemon_id)
@@ -53,6 +55,15 @@ class Gym < ApplicationRecord
         self.update(winner_id: self.challenger_pokemon_id)
       end
     end
+  end
+
+  def attacker_totals(attacker, defender)
+    effective = 2**attacker.strengths.where(id: defender.types.pluck(:id)).count
+
+    not_effective = 2**attacker.weaknesses.where(id: defender.types.pluck(:id)).count
+
+    multiplier = effective.to_f / not_effective.to_f
+    multiplier * attacker.total_stats(self.specialty).to_f
   end
 
   def gym_results

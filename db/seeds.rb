@@ -75,19 +75,19 @@ end
 def seed_trainer_jackson
   @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, starter_pokemon: "Charmander", poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
   Pokedex.find_by(name: "Charmander").create_pokemon(@jackson)
-  Pokedex.find_by(name: "Onix").create_pokemon(@jackson)
-  Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson)
-  Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson)
-  Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson)
+  Pokedex.find_by(name: "Onix").create_pokemon(@jackson).update(occupied: true)
+  Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson).update(occupied: true)
+  Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson).update(occupied: true)
+  Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson).update(occupied: true)
 end
 
 def seed_trainer_lily
   @lily = Trainer.create(name: "Lily", email: "lily@lily.com", password: "jackson", password_confirmation: "jackson", age: 24, starter_pokemon: "Squirtle", poke_tokens: 100, gender: "Female", last_token: Time.now.to_i)
   Pokedex.find_by(name: "Squirtle").create_pokemon(@lily)
-  Pokedex.find_by(name: "Starmie").create_pokemon(@lily)
-  Pokedex.find_by(name: "Raichu").create_pokemon(@lily)
-  Pokedex.find_by(name: "Venomoth").create_pokemon(@lily)
-  Pokedex.find_by(name: "Magmar").create_pokemon(@lily)
+  Pokedex.find_by(name: "Starmie").create_pokemon(@lily).update(occupied: true)
+  Pokedex.find_by(name: "Raichu").create_pokemon(@lily).update(occupied: true)
+  Pokedex.find_by(name: "Venomoth").create_pokemon(@lily).update(occupied: true)
+  Pokedex.find_by(name: "Magmar").create_pokemon(@lily).update(occupied: true)
 end
 
 create_pokedex

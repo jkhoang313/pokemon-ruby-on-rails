@@ -12,7 +12,7 @@
       <li class="collection-item">Current Poke-tokens: <%= @trainer.poke_tokens %></li>
       <li class="collection-item">Next Poke-Token: <%= @trainer.token_status %></li>
       <li class="collection-item"><%= link_to "See All Pokemon", pokemons_path(@trainer) %></li>
-      <li class="collection-item">Gyms Badges Owned:<br>
+      <li class="collection-item">Gyms Badges:<br>
         <% @a = @trainer.gyms.collect do |gym| %>
           <%= link_to image_tag("badges/#{gym.name}.png", class: "badge"), gym_path(gym) %>
         <% end %>
