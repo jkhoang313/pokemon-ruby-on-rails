@@ -1,6 +1,7 @@
 class WildPokemonController < ApplicationController
   def wild
     @wild_pokemon = Pokedex.wild
+    #for some reason, this lists 2nd last pokemon when you click button while on page
   end
 
   def pokeball

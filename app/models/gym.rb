@@ -19,10 +19,8 @@ class Gym < ApplicationRecord
     self.challenger_id && self.challenger_pokemon_id
   end
 
-  def stat_boost(value)
-    " + #{(value.to_i*0.2).floor}" if self.gym_pokemon.types.pluck(:name).include?(self.specialty)
-    # add stat boost for all pokemon? including challenger
-    # add stat boost for being gym leader?
+  def stat_boost(value, pokemon)
+    " + #{(value.to_i*0.2).floor}" if pokemon.types.pluck(:name).include?(self.specialty)
   end
 
   def gym_time_left(kind)
@@ -48,8 +46,8 @@ class Gym < ApplicationRecord
 
   def find_winner
     if !self.winner
-      c = challenger_pokemon.total_stats
-      g = gym_pokemon.total_stats
+      c = challenger_pokemon.total_stats(self.specialty)
+      g = gym_pokemon.total_stats(self.specialty)
       c_chance = c/(c+g).to_f
       if rand > c_chance
         self.update(winner_id: self.gym_pokemon_id)

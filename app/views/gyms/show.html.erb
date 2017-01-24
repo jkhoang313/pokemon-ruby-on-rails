@@ -1,5 +1,5 @@
 <div class="row center-align">
-  <h2><%= @gym.name %> Gym</h2>
+  <h2><%= image_tag("badges/#{@gym.name}", class: "badge") %> <%= @gym.name %> Gym <%= image_tag("badges/#{@gym.name}", class: "badge") %></h2>
   <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
   <h5><%= @gym.status %></h5>
 </div>
@@ -60,27 +60,27 @@
         </tr>
         <tr>
           <td>HP:</td>
-          <td><%= @gym.gym_pokemon.hp %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.hp) %></span></td>
+          <td><%= @gym.gym_pokemon.hp %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.hp, @gym.gym_pokemon) %></span></td>
         </tr>
         <tr>
           <td>Attack:</td>
-          <td><%= @gym.gym_pokemon.attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.attack) %></span></td>
+          <td><%= @gym.gym_pokemon.attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.attack, @gym.gym_pokemon) %></span></td>
         </tr>
         <tr>
           <td>Defense:</td>
-          <td><%= @gym.gym_pokemon.defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.defense) %></span></td>
+          <td><%= @gym.gym_pokemon.defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.defense, @gym.gym_pokemon) %></span></td>
         </tr>
         <tr>
           <td>Special Attack:</td>
-          <td><%= @gym.gym_pokemon.special_attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_attack) %></span></td>
+          <td><%= @gym.gym_pokemon.special_attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_attack, @gym.gym_pokemon) %></span></td>
         </tr>
         <tr>
           <td>Special Defense:</td>
-          <td><%= @gym.gym_pokemon.special_defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_defense) %></span></td>
+          <td><%= @gym.gym_pokemon.special_defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_defense, @gym.gym_pokemon) %></span></td>
         </tr>
         <tr>
           <td>Speed:</td>
-          <td><%= @gym.gym_pokemon.speed %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.speed) %></span></td>
+          <td><%= @gym.gym_pokemon.speed %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.speed, @gym.gym_pokemon) %></span></td>
         </tr>
       </tbody>
     </table>
@@ -102,27 +102,27 @@
         </tr>
         <tr>
           <td>HP:</td>
-          <td><%= @gym.challenger_pokemon.hp %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.hp, @gym.challenger_pokemon) %></td>
         </tr>
         <tr>
           <td>Attack:</td>
-          <td><%= @gym.challenger_pokemon.attack %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.attack, @gym.challenger_pokemon) %></td>
         </tr>
         <tr>
           <td>Defense:</td>
-          <td><%= @gym.challenger_pokemon.defense %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.defense, @gym.challenger_pokemon) %></td>
         </tr>
         <tr>
           <td>Special Attack:</td>
-          <td><%= @gym.challenger_pokemon.special_attack %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.special_attack, @gym.challenger_pokemon) %></td>
         </tr>
         <tr>
           <td>Special Defense:</td>
-          <td><%= @gym.challenger_pokemon.special_defense %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.special_defense, @gym.challenger_pokemon) %></td>
         </tr>
         <tr>
           <td>Speed:</td>
-          <td><%= @gym.challenger_pokemon.speed %></td>
+          <td><%= @gym.stat_boost(@gym.challenger_pokemon.speed, @gym.challenger_pokemon) %></td>
         </tr>
       </tbody>
     </table>
