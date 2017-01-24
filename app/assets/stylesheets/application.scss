@@ -26,16 +26,12 @@ nav {
   background-color: red;
 }
 
-p.flash {
-  color: red;
-}
-
 html, body, .container {
   height: 100%;
   width: 100%;
 }
 
-div.container > img {
+.background-image {
   position: fixed;
   left: 0;
   right: 0;
@@ -98,7 +94,7 @@ td {
   width: 150px;
 }
 
-.type {
+img.type {
   height: 21px;
   width: 48px;
 }

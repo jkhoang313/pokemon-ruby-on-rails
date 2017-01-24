@@ -11,6 +11,10 @@ class Pokemon < ApplicationRecord
     else
       @multipler = 1
     end
-    total = @multipler*(hp.to_i + attack.to_i + defense.to_i + special_attack.to_i + special_defense.to_i + speed.to_i)
+    total = @multipler * (hp.to_i + attack.to_i + defense.to_i + special_attack.to_i + special_defense.to_i + speed.to_i)
+  end
+
+  def found_on
+    self.created_at.strftime('%B %d, %Y %I:%M %p')
   end
 end

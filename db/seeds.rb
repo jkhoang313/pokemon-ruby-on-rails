@@ -59,7 +59,6 @@ end
 
 def seed_trainer_jackson
   @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, starter_pokemon: "Charmander", poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
-  # change starter_pokemon to current lead pokemon?
   Pokedex.find_by(name: "Charmander").create_pokemon(@jackson)
   Pokedex.find_by(name: "Onix").create_pokemon(@jackson)
   Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson)

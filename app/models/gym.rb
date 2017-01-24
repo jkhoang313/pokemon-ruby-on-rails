@@ -4,7 +4,6 @@ class Gym < ApplicationRecord
   belongs_to :challenger, class_name: "Trainer", optional: true
   belongs_to :challenger_pokemon, class_name: "Pokemon", optional: true
   belongs_to :winner, class_name: "Pokemon", optional: true
-  # add training tab in nav
 
   def status
     self.challenged? ? "Currently being challenged" : "Open to Challengers"
@@ -41,7 +40,6 @@ class Gym < ApplicationRecord
   def grace_over?
     # self.challenge_time + 14400 < current_time
     self.challenge_time + 20 < current_time
-    ## add previous results
   end
 
   def find_winner

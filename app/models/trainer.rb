@@ -5,8 +5,6 @@ class Trainer < ApplicationRecord
   has_secure_password
   validates :name, :age, :starter_pokemon, :gender, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  # make starter with sprite on search
-  # add badges images
 
   def capitalize_name
     self.name = self.name.downcase.split.collect(&:capitalize).join(' ') if !self.name.blank?
@@ -57,6 +55,4 @@ class Trainer < ApplicationRecord
     self.last_token = Time.now.to_i
     self.save
   end
-  #make method for moving starters and storage pokemon
-  #add search bar
 end

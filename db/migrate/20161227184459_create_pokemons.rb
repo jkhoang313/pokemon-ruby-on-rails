@@ -6,7 +6,6 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :level, :default => 1
       t.integer :experience, :default => 0
-      # add feature
       t.string :hp
       t.string :attack
       t.string :defense
@@ -15,7 +14,6 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.string :speed
       t.boolean :occupied, default: :false
       t.string :group
-      # add nickname
 
       t.timestamps
     end
