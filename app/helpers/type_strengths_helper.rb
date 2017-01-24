@@ -1,0 +1,2 @@
+module TypeStrengthsHelper
+end
