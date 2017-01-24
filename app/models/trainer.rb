@@ -21,14 +21,14 @@ class Trainer < ApplicationRecord
   end
 
   def token_time_passed?
-    last_token + 14400 < current_time
+    last_token + 7200 < current_time
   end
 
   def token_status
     if token_time_passed?
       "Available"
     else
-      time_left = last_token + 14400 - current_time
+      time_left = last_token + 7200 - current_time
 
       time_format(time_left)
     end

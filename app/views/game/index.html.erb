@@ -1,9 +1,27 @@
-<div class="center">
-  <h2>Pokemon</h1>
-  <h2>Ruby-On-Rails</h1>
-  <%= link_to "All Trainers", trainers_path %>
-  <br></br>
-  <%= link_to "Pokédex", pokedex_index_path %>
-  <br></br>
-  <%= link_to "About", about_path %>
+<div class="row">
+  <br><br>
+  <div class="col s2">
+    <%= image_tag("root/Female.png", class: "trainer-left") %>
+  </div>
+
+  <div class="col s2">
+    <%= image_tag("root/pikachu.png", class: "root") %>
+  </div>
+
+  <!-- add more pictures -->
+
+  <div class="col s4 center">
+    <br><br><br>
+    <h1>Pokemon</h1>
+    <h3>Ruby-On-Rails</h3>
+    <%= link_to "All Trainers", trainers_path %>
+    <br></br>
+    <%= link_to "Pokédex", pokedex_index_path %>
+    <br></br>
+    <%= link_to "About", about_path %>
+  </div>
+
+  <div class="col s3 offset-s1">
+    <%= image_tag("root/Male.png", class: "trainer-right") %>
+  </div>
 </div>

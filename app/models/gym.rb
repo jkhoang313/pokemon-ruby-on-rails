@@ -25,9 +25,10 @@ class Gym < ApplicationRecord
   def gym_time_left(kind)
     if kind == "Challenge"
       time_left = self.challenge_time + 7200 - current_time
+
       time_format(time_left)
     elsif kind == "Grace"
-      time_left = self.challenge_time + 14400 - current_time
+      time_left = self.challenge_time + 10800 - current_time
       time_format(time_left)
     end
   end
@@ -38,7 +39,7 @@ class Gym < ApplicationRecord
   end
 
   def grace_over?
-    self.challenge_time + 14400 < current_time
+    self.challenge_time + 10800 < current_time
     # self.challenge_time + 20 < current_time
   end
 
@@ -70,7 +71,7 @@ class Gym < ApplicationRecord
     find_winner
     if winner_id == challenger_pokemon_id
       self.gym_pokemon.update(occupied: false)
-      self.update(gym_leader_id: challenger_id, gym_pokemon_id: challenger_pokemon_id, last_taken: (self.challenge_time + 14400))
+      self.update(gym_leader_id: challenger_id, gym_pokemon_id: challenger_pokemon_id, last_taken: (self.challenge_time + 10800))
     else
       self.challenger_pokemon.update(occupied: false)
     end
