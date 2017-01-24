@@ -52,10 +52,13 @@ def create_weaknesses
     TypeWeakness.create(weakness)
   end
 end
-#add to instructions
 
 def create_strengths
-  @strengths_params = 
+  @strength_params = [{:type_id=>2, :strength_id=>1}, {:type_id=>2, :strength_id=>6}, {:type_id=>2, :strength_id=>9}, {:type_id=>2, :strength_id=>15}, {:type_id=>2, :strength_id=>17}, {:type_id=>3, :strength_id=>2}, {:type_id=>3, :strength_id=>7}, {:type_id=>3, :strength_id=>12}, {:type_id=>4, :strength_id=>12}, {:type_id=>4, :strength_id=>18}, {:type_id=>5, :strength_id=>4}, {:type_id=>5, :strength_id=>6}, {:type_id=>5, :strength_id=>9}, {:type_id=>5, :strength_id=>10}, {:type_id=>5, :strength_id=>13}, {:type_id=>6, :strength_id=>3}, {:type_id=>6, :strength_id=>7}, {:type_id=>6, :strength_id=>10}, {:type_id=>6, :strength_id=>15}, {:type_id=>7, :strength_id=>12}, {:type_id=>7, :strength_id=>14}, {:type_id=>7, :strength_id=>17}, {:type_id=>8, :strength_id=>8}, {:type_id=>8, :strength_id=>14}, {:type_id=>9, :strength_id=>6}, {:type_id=>9, :strength_id=>15}, {:type_id=>9, :strength_id=>18}, {:type_id=>10, :strength_id=>7}, {:type_id=>10, :strength_id=>9}, {:type_id=>10, :strength_id=>12}, {:type_id=>10, :strength_id=>15}, {:type_id=>11, :strength_id=>5}, {:type_id=>11, :strength_id=>6}, {:type_id=>11, :strength_id=>10}, {:type_id=>12, :strength_id=>5}, {:type_id=>12, :strength_id=>6}, {:type_id=>12, :strength_id=>11}, {:type_id=>13, :strength_id=>3}, {:type_id=>13, :strength_id=>11}, {:type_id=>14, :strength_id=>2}, {:type_id=>14, :strength_id=>4}, {:type_id=>15, :strength_id=>3}, {:type_id=>15, :strength_id=>5}, {:type_id=>15, :strength_id=>12}, {:type_id=>15, :strength_id=>16}, {:type_id=>16, :strength_id=>16}, {:type_id=>17, :strength_id=>8}, {:type_id=>17, :strength_id=>14}, {:type_id=>18, :strength_id=>2}, {:type_id=>18, :strength_id=>16}, {:type_id=>18, :strength_id=>17}]
+
+  @strength_params.each do |strength|
+    TypeStrength.create(strength)
+  end
 end
 
 def create_gyms
@@ -94,3 +97,4 @@ seed_trainer_jackson
 seed_trainer_lily
 create_gyms
 create_weaknesses
+create_strengths
