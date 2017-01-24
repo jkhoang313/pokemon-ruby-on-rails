@@ -53,7 +53,12 @@
     <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
   </div>
 
-  <div class="col s3 offset-s6">
+  <div class="col s3 offset-s6 center-align">
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+    <h4>Status:
+      <!-- add different statuses -->
+      <br><%= link_to "#{@pokemon.gym.name} Gym", gym_path(@pokemon.gym) if @pokemon.gym %>
+
+    </h4>
   </div>
 </div>

@@ -2,22 +2,6 @@
   <h2>All Gyms</h2>
 </div>
 
-<!-- <div class="row">
-  <% @gyms.each do |gym| %>
-  <div class="col s12 m3">
-    <div class="card">
-      <div class="card-content">
-        <p class="card-title center-align"><%= gym.name + " Gym" %></p><hr>
-        <%= image_tag("gyms/#{gym.name}.png", class: "gym-image") %>
-        <h6 class="center-align">Gym Leader: <%= gym.gym_leader.name %></h6>
-        <h6><%= image_tag("pokemon/#{gym.gym_pokemon.name.downcase}.jpg", class: "gym-pokemon") %></h6><hr>
-        <h6><%= image_tag("types/#{gym.specialty}.png", class: "type center-image") %></h6>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div> -->
-
 <div class="row">
   <% @gyms.each do |gym| %>
   <div class="col s12 m3">

@@ -13,8 +13,9 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.string :special_defense
       t.string :speed
       t.boolean :occupied, default: :false
-      # add occupied/busy column, can't do multiple actions
-
+      t.string :group
+      # add nickname
+      
       t.timestamps
     end
   end

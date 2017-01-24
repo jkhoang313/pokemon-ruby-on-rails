@@ -24,6 +24,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   post '/gyms/:id', to: 'gyms#challenge'
-  get '/gyms/:id/results', to: 'gyms#results', as: "gym_results"
   resources :gyms
 end

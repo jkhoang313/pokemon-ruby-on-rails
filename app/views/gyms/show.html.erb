@@ -1,46 +1,47 @@
 <div class="row center-align">
   <h2><%= @gym.name %> Gym</h2>
   <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
-  <% if @gym.challenged? %>
-    <h5>Currently being challenged</h5>
-  <% else %>
-    <h5>Open to Challengers</h5>
-  <% end %>
+  <h5><%= @gym.status %></h5>
 </div>
+
 <div class="row">
   <div class="col s3 center-align">
     <h3>Gym Leader</h3>
-    <h4><%= link_to @gym_leader.name, trainer_path(@gym_leader) %></h4><br>
-    <h4><%= image_tag("pokemon/#{@gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
+    <h4><%= link_to @gym.gym_leader.name, trainer_path(@gym.gym_leader) %></h4><br>
+    <h4><%= image_tag("pokemon/#{@gym.gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
   </div>
-
-  <% if @gym.challenged? %>
-    <div class="col s6 center-align">
-      <!-- put gif of pokemon battle -->
-    </div>
-    <div class="col s3 center-align">
-      <h3>Challenger</h3>
-      <h4><%= link_to @challenger.name, trainer_path(@challenger) %></h4><br>
-      <h4><%= image_tag("pokemon/#{@challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
-    </div>
+  <div class="col s6 center-align">
+    <br><br><br>
+  <% if @gym.challenged? && @gym.challenge_over? %>
+      <h3 class="green-text">Winner</h3>
+      <h5><%= @gym.winner.name %></h5>
+      <h4>Cooldown Time</h4>
+      <h6><%= @gym.time_format("grace") %></h6>
+  <% elsif @gym.challenged? %>
+      <h3>Challenge Time</h3>
+      <h6><%= @gym.time_format("challenge") %></h6>
   <% else %>
-    <div class="col s6 center-align">
-      <br><br>
       <h3>Current Streak</h3>
       <h6><%= @gym.current_streak %></h6>
-    </div>
-    <% if logged_in? && current_trainer != @gym_leader %>
-    <div class="col s3 center-align">
-      <h3>Challenger</h3><br>
-      <h4><%= current_trainer.name %></h4><br>
+  <% end %>
+  </div>
+
+  <div class="col s3 center-align">
+    <% if @gym.challenged? %>
+      <h3>Challenger</h3>
+      <h4><%= link_to @gym.challenger.name, trainer_path(@gym.challenger) %></h4><br>
+      <h4><%= image_tag("pokemon/#{@gym.challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
+    <% elsif logged_in? && current_trainer != @gym.gym_leader %>
+      <h3>Challenger</h3>
+      <h4><%= link_to current_trainer.name, trainer_path(current_trainer) %></h4><br>
       <h6>Choose your pokemon</h6>
       <%= form_tag gym_path(@gym) do %>
-        <%= collection_select :challenger, :pokemon, current_trainer.starters, :id, :name, {}, {class: "browser-default"}%><br>
+        <%= collection_select :challenger, :pokemons, current_trainer.starters, :id, :name, {}, {class: "browser-default"}%><br>
+        <!-- change with starters -->
         <%= submit_tag "Challenge with this Pokemon!", class: "btn", data: {confirm: "Spend 5 Poke-Tokens to challenge this gym?"} %>
       <% end %>
-    </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <div class="row">
@@ -49,37 +50,37 @@
       <tbody>
         <tr>
           <td>Level:</td>
-          <td><%= @gym_pokemon.level %></td>
+          <td><%= @gym.gym_pokemon.level %></td>
         </tr>
         <tr>
           <td>Type:</td>
-          <td><% @gym_pokemon.types.each do |type| %>
+          <td><% @gym.gym_pokemon.types.each do |type| %>
             <%= image_tag("types/#{type.name}", class: "type") %>
           <% end %></td>
         </tr>
         <tr>
           <td>HP:</td>
-          <td><%= @gym_pokemon.hp %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.hp) %></span></td>
+          <td><%= @gym.gym_pokemon.hp %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.hp) %></span></td>
         </tr>
         <tr>
           <td>Attack:</td>
-          <td><%= @gym_pokemon.attack %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.attack) %></span></td>
+          <td><%= @gym.gym_pokemon.attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.attack) %></span></td>
         </tr>
         <tr>
           <td>Defense:</td>
-          <td><%= @gym_pokemon.defense %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.defense) %></span></td>
+          <td><%= @gym.gym_pokemon.defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.defense) %></span></td>
         </tr>
         <tr>
           <td>Special Attack:</td>
-          <td><%= @gym_pokemon.special_attack %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.special_attack) %></span></td>
+          <td><%= @gym.gym_pokemon.special_attack %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_attack) %></span></td>
         </tr>
         <tr>
           <td>Special Defense:</td>
-          <td><%= @gym_pokemon.special_defense %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.special_defense) %></span></td>
+          <td><%= @gym.gym_pokemon.special_defense %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.special_defense) %></span></td>
         </tr>
         <tr>
           <td>Speed:</td>
-          <td><%= @gym_pokemon.speed %><span class="green-text"><%= @gym.stat_boost(@gym_pokemon.speed) %></span></td>
+          <td><%= @gym.gym_pokemon.speed %><span class="green-text"><%= @gym.stat_boost(@gym.gym_pokemon.speed) %></span></td>
         </tr>
       </tbody>
     </table>
@@ -91,37 +92,37 @@
       <tbody>
         <tr>
           <td>Level:</td>
-          <td><%= @challenger_pokemon.level %></td>
+          <td><%= @gym.challenger_pokemon.level %></td>
         </tr>
         <tr>
           <td>Type:</td>
-          <td><% @challenger_pokemon.types.each do |type| %>
+          <td><% @gym.challenger_pokemon.types.each do |type| %>
             <%= image_tag("types/#{type.name}", class: "type") %>
           <% end %></td>
         </tr>
         <tr>
           <td>HP:</td>
-          <td><%= @challenger_pokemon.hp %></td>
+          <td><%= @gym.challenger_pokemon.hp %></td>
         </tr>
         <tr>
           <td>Attack:</td>
-          <td><%= @challenger_pokemon.attack %></td>
+          <td><%= @gym.challenger_pokemon.attack %></td>
         </tr>
         <tr>
           <td>Defense:</td>
-          <td><%= @challenger_pokemon.defense %></td>
+          <td><%= @gym.challenger_pokemon.defense %></td>
         </tr>
         <tr>
           <td>Special Attack:</td>
-          <td><%= @challenger_pokemon.special_attack %></td>
+          <td><%= @gym.challenger_pokemon.special_attack %></td>
         </tr>
         <tr>
           <td>Special Defense:</td>
-          <td><%= @challenger_pokemon.special_defense %></td>
+          <td><%= @gym.challenger_pokemon.special_defense %></td>
         </tr>
         <tr>
           <td>Speed:</td>
-          <td><%= @challenger_pokemon.speed %></td>
+          <td><%= @gym.challenger_pokemon.speed %></td>
         </tr>
       </tbody>
     </table>

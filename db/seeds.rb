@@ -64,6 +64,7 @@ def seed_trainer_jackson
   Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson)
   Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson)
   Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson)
+  Pokedex.find_by(name: "Charmander").create_pokemon(@jackson)
 end
 
 def seed_trainer_lily
@@ -72,6 +73,7 @@ def seed_trainer_lily
   Pokedex.find_by(name: "Raichu").create_pokemon(@lily)
   Pokedex.find_by(name: "Venomoth").create_pokemon(@lily)
   Pokedex.find_by(name: "Magmar").create_pokemon(@lily)
+  Pokedex.find_by(name: "Squirtle").create_pokemon(@lily)
 end
 
 create_pokedex

@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20170118223509) do
     t.integer  "gym_pokemon_id"
     t.integer  "last_taken"
     t.integer  "challenger_id"
-    t.integer  "challenger_pokemon"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "challenger_pokemon_id"
+    t.integer  "challenge_time"
+    t.integer  "winner_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "pokedex_types", force: :cascade do |t|
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170118223509) do
     t.string   "special_defense"
     t.string   "speed"
     t.boolean  "occupied",        default: false
+    t.string   "group"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end

@@ -1,14 +1,6 @@
 class WildPokemonController < ApplicationController
   def wild
-    # if current_trainer.poke_tokens < 1
-    #   # take out cost to look for pokemon?
-    #
-    #   redirect_to trainer_path(current_trainer)
-    # else
-      # current_trainer.minus_token(1)
-      @wild_pokemon = WildPokemon.wild_pokemon
-      #change to finding instance instead of name
-    # end
+    @wild_pokemon = WildPokemon.wild_pokemon
   end
 
   def pokeball

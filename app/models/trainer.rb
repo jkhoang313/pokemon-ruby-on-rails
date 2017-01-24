@@ -1,12 +1,11 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
   has_many :gyms, :foreign_key => "gym_leader_id"
+  has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password
   validates :name, :age, :starter_pokemon, :gender, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  # has_many gyms
   # make starter with sprite on search
-  # add gyms owned in trainer profile
   # add gym leader of in pokemon
   # add badges images
 
@@ -20,7 +19,7 @@ class Trainer < ApplicationRecord
     self.email.downcase
     @first_pokemon = starter.create_pokemon(self)
     self.starter_pokemon = @first_pokemon.name
-    # fixes random pokemon starter
+
     self.save
   end
 

@@ -10,7 +10,6 @@
     <p>No Pokemon in current team</p>
     <% else %>
     <ul>
-      <!-- change this -->
       <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
       <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{Pokedex.find_by(name: pokemon.name).id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
       <% end %>
