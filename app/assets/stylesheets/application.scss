@@ -60,7 +60,7 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
-.small-picture {
+img.small-picture {
   height: 50px;
   width: 50px;
 }
@@ -148,4 +148,13 @@ img.trainer-right {
   height: 330px;
   width: 140px;
   margin-top: 100px;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+img.logo {
+  height: 185px;
+  width: 500px;
 }

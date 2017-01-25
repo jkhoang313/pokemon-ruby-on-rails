@@ -43,13 +43,17 @@ class Gym < ApplicationRecord
     # self.challenge_time + 20 < current_time
   end
 
+  def challenger_percentage_win
+    c = attacker_totals(challenger_pokemon, gym_pokemon)
+    g = attacker_totals(gym_pokemon, challenger_pokemon)
+
+    c/(c+g).to_f
+  end
+
   def find_winner
     if !self.winner
-      c = attacker_totals(challenger_pokemon, gym_pokemon)
-      g = attacker_totals(gym_pokemon, challenger_pokemon)
 
-      c_chance = c/(c+g).to_f
-      if rand > c_chance
+      if rand > challenger_percentage_win
         self.update(winner_id: self.gym_pokemon_id)
       else
         self.update(winner_id: self.challenger_pokemon_id)

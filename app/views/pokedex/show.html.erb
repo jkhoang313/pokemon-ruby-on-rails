@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col s4">
-    <h2><%= @pokemon.name %></h2><br><br><br>
+    <h3><%= @pokemon.name %></h3><br><br><br>
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", :class=> "pokemon-image") %>
   </div>
 
   <div class="col s4">
-    <h2>Caught By:</h2>
+    <h3>Caught By:</h3>
     <ul>
       <% if !@pokemon.trainers.empty? %>
         <% @pokemon.trainers.each do |trainer| %>
-        <li><%= link_to trainer.name, trainer_path(trainer)%></li>
+        <li><h5><%= link_to trainer.name, trainer_path(trainer)%><h5></li>
         <% end %>
       <% else %>
         <li>None</li>
@@ -17,8 +17,8 @@
     </ul>
   </div>
 
-  <div class="col s3 offset-s1">
-    <h2>Base Stats:</h2>
+  <div class="col s4">
+    <h3>Base Stats:</h3>
     <table class="striped">
       <tbody>
       <tr>
@@ -79,7 +79,7 @@
 
 <div class="row">
   <div class="col s12">
-    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get, class: "btn" %><br>
+    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get, class: "btn" %>
     <%= button_to "Previous Pokemon", pokedex_path(@pokemon.id-1), method: :get, class: "left btn" unless @pokemon.id == 1%>
     <%= button_to "Next Pokemon", pokedex_path(@pokemon.id+1), method: :get, class: "right btn" unless @pokemon.id == 151 %>
   </div>

@@ -32,6 +32,11 @@ class GymsController < ApplicationController
     end
   end
 
+  def battle
+    find_gym
+    update_gym(@gym)
+  end
+
   private
 
   def find_gym
