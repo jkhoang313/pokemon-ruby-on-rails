@@ -14,10 +14,10 @@ class Pokedex < ApplicationRecord
   end
 
   def self.starter_pokemon(choice)
-    if choice == "Random"
-      Pokedex.find_by(name: self.random_starter)
+    if choice == 0
+      self.random_starter
     else
-      Pokedex.find_by(name: choice)
+      Pokedex.find(choice)
     end
   end
 
@@ -31,13 +31,13 @@ class Pokedex < ApplicationRecord
     random_number = rand(1..100)
 
     if random_number < 40
-      common.sample
+      Pokedex.find_by(name: common.sample)
     elsif random_number < 70
-      rare.sample
+      Pokedex.find_by(name: rare.sample)
     elsif random_number < 90
-      super_rare.sample
+      Pokedex.find_by(name: super_rare.sample)
     else
-      ultra_rare.sample
+      Pokedex.find_by(name: ultra_rare.sample)
     end
   end
 

@@ -1,9 +1,10 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
+  has_one :leading_pokemon, class_name: "Pokemon"
   has_many :gyms, :foreign_key => "gym_leader_id"
   has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password
-  validates :name, :age, :starter_pokemon, :gender, presence: true
+  validates :name, :age, :gender, :leading_pokemon_id, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   def capitalize_name
@@ -15,7 +16,7 @@ class Trainer < ApplicationRecord
     self.capitalize_name
     self.email.downcase
     @first_pokemon = starter.create_pokemon(self)
-    self.starter_pokemon = @first_pokemon.name
+    self.leading_pokemon = @first_pokemon
 
     self.save
   end

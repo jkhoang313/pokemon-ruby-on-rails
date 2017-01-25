@@ -13,13 +13,20 @@ class PokemonsController < ApplicationController
   def destroy
     find_trainer
     @pokemon = @trainer.pokemons[params[:pokemon_id].to_i-1]
-    if @trainer.pokemons.count == 1
-      @index = params[:pokemon_id]
+    @index = params[:pokemon_id]
+
+    if @pokemon.occupied == true
+      flash[:message] = "#{@pokemon.name} is currently performing an action, cannot release"
+
+      redirect_to pokemon_path(@trainer, @index)
+    elsif @trainer.pokemons.count == 1
       flash[:message] = "You can't release your last Pokemon!"
 
       redirect_to pokemon_path(@trainer, @index)
-    elsif @pokemon.occupied == true
-      flash[:message] = "#{@pokemon.name} is currently performing an action, cannot release"
+    elsif @pokemon == @trainer.leading_pokemon
+      flash[:message] = "Cannot release leading pokemon"
+
+      redirect_to pokemon_path(@trainer, @index)
     else
       flash[:message] = "Released #{@pokemon.name} into the wild...."
       @pokemon.destroy

@@ -8,7 +8,7 @@ class CreateTrainers < ActiveRecord::Migration[5.0]
       t.string :gender
       t.integer :level, :default => 1
       t.integer :experience, :default => 0
-      t.string :starter_pokemon
+      t.integer :leading_pokemon_id
       t.integer :poke_tokens, :default => 20
       t.integer :last_token
 
