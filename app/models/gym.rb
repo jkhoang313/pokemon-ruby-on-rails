@@ -55,10 +55,11 @@ class Gym < ApplicationRecord
     if !self.winner
       if rand > challenger_percentage_win
         self.update(winner_id: self.gym_pokemon_id)
+        Challenge.create(gym_id: self.id, gym_leader: gym_leader.name, gym_pokemon: gym_pokemon.name, challenger: challenger.name, challenger_pokemon: challenger_pokemon.name, winner: "Gym Leader")
       else
         self.update(winner_id: self.challenger_pokemon_id)
+        Challenge.create(gym_id: self.id, gym_leader: gym_leader.name, gym_pokemon: gym_pokemon.name, challenger: challenger.name, challenger_pokemon: challenger_pokemon.name, winner: "Challenger")
       end
-      Challenge.create(gym_id: self.id, gym_leader: gym_leader.name, gym_pokemon: gym_pokemon.name, challenger: challenger.name, challenger_pokemon: challenger_pokemon.name, winner: winner.name)
     end
   end
 

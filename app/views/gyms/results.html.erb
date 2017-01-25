@@ -8,7 +8,7 @@
   <h3 class="center">Last Challenge</h3>
   <% if @last_challenge %>
     <div class="col s4 center-align">
-      <h3>Gym Leader</h3>
+      <h3 class="gym_leader">Gym Leader</h3>
       <h4><%= @last_challenge.gym_leader %></h4><br>
       <%= image_tag("pokemon/#{@last_challenge.gym_pokemon.downcase}.jpg", class: "pokemon-image") %>
       <h5><%= @last_challenge.gym_pokemon %></h5>
@@ -16,12 +16,12 @@
 
     <div class="col s4 center-align">
       <br><br><br>
-      <h3 class="green-text">Winner</h3>
+      <h3  class="<%= @last_challenge.winner.downcase.gsub(" ","_") %>">Winner</h3>
       <h5><%= @last_challenge.winner %></h5>
     </div>
 
     <div class="col s4 center-align">
-      <h3>Challenger</h3>
+      <h3 class="challenger">Challenger</h3>
       <h4><%= @last_challenge.challenger %></h4><br>
       <%= image_tag("pokemon/#{@last_challenge.challenger_pokemon.downcase}.jpg", class: "pokemon-image") %>
       <h5><%= @last_challenge.challenger_pokemon %></h5>
@@ -34,7 +34,33 @@
 <div class="row">
   <h3 class="center">Previous Challenges</h3>
   <% if @challenge_history && !@challenge_history.empty? %>
-  <!-- add challenge history -->
+    <table class="bordered centered">
+      <thead>
+        <tr>
+          <th>Gym Leader</th>
+          <th>Pokemon</th>
+          <th>Winner</th>
+          <th>Pokemon</th>
+          <th>Challenger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @challenge_history.each do |challenge| %>
+          <tr>
+            <td class="red white-text"><%= challenge.gym_leader %></td>
+            <td class="red white-text"><%= challenge.gym_pokemon %></td>
+            <% if challenge.winner == "Gym Leader" %>
+              <td class="red white-text"><%= challenge.winner %></td>
+            <% else %>
+              <td class="blue white-text"><%= challenge.winner %></td>
+            <% end %>
+            <td class="blue white-text"><%= challenge.challenger_pokemon %></td>
+            <td class="blue white-text"><%= challenge.challenger %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br><br><br>
   <% else %>
     <h4 class="center red-text">None</h4>>
   <% end %>

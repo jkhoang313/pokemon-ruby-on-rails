@@ -35,8 +35,8 @@ class GymsController < ApplicationController
   def results
     find_gym
     update_gym(@gym)
-    @challenge_history = @gym.challenges.order(:created_at)[1..-1]
-    @last_challenge = @gym.challenges.order(:created_at).first
+    @challenge_history = @gym.challenges.order(created_at: :desc)
+    @last_challenge = @gym.challenges.order(created_at: :desc).first
   end
 
   private
