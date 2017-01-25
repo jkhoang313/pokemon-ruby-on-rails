@@ -4,6 +4,7 @@ class Gym < ApplicationRecord
   belongs_to :challenger, class_name: "Trainer", optional: true
   belongs_to :challenger_pokemon, class_name: "Pokemon", optional: true
   belongs_to :winner, class_name: "Pokemon", optional: true
+  has_many :challenges
 
   def status
     self.challenged? ? "Currently being challenged" : "Open to Challengers"
@@ -34,13 +35,13 @@ class Gym < ApplicationRecord
   end
 
   def challenge_over?
-    self.challenge_time + 7200 < current_time
-    # self.challenge_time + 10 < current_time
+    # self.challenge_time + 7200 < current_time
+    self.challenge_time + 10 < current_time
   end
 
   def grace_over?
-    self.challenge_time + 10800 < current_time
-    # self.challenge_time + 20 < current_time
+    # self.challenge_time + 10800 < current_time
+    self.challenge_time + 20 < current_time
   end
 
   def challenger_percentage_win
@@ -52,12 +53,12 @@ class Gym < ApplicationRecord
 
   def find_winner
     if !self.winner
-
       if rand > challenger_percentage_win
         self.update(winner_id: self.gym_pokemon_id)
       else
         self.update(winner_id: self.challenger_pokemon_id)
       end
+      Challenge.create(gym_id: self.id, gym_leader: gym_leader.name, gym_pokemon: gym_pokemon.name, challenger: challenger.name, challenger_pokemon: challenger_pokemon.name, winner: winner.name)
     end
   end
 

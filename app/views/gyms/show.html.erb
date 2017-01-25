@@ -2,13 +2,15 @@
   <h2><%= image_tag("badges/#{@gym.name}", class: "badge") %> <%= @gym.name %> Gym <%= image_tag("badges/#{@gym.name}", class: "badge") %></h2>
   <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
   <h5><%= @gym.status %></h5>
+  <h5><%= link_to "Challenge History", results_path(@gym) %></h5>
 </div>
 
 <div class="row">
   <div class="col s4 center-align">
     <h3>Gym Leader</h3>
     <h4><%= link_to @gym.gym_leader.name, trainer_path(@gym.gym_leader) %></h4><br>
-    <h4><%= image_tag("pokemon/#{@gym.gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
+    <%= image_tag("pokemon/#{@gym.gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+    <h5><%= @gym.gym_pokemon.name %></h5>
   </div>
   <div class="col s4 center-align">
     <br><br><br>
@@ -30,7 +32,8 @@
     <% if @gym.challenged? %>
       <h3>Challenger</h3>
       <h4><%= link_to @gym.challenger.name, trainer_path(@gym.challenger) %></h4><br>
-      <h4><%= image_tag("pokemon/#{@gym.challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %></h4>
+      <%= image_tag("pokemon/#{@gym.challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+      <h5><%= @gym.challenger_pokemon.name %></h5>
     <% elsif logged_in? && current_trainer != @gym.gym_leader %>
       <h3>Challenger</h3>
       <h4><%= link_to current_trainer.name, trainer_path(current_trainer) %></h4><br>

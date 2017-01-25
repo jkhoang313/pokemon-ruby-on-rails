@@ -1,0 +1,41 @@
+<div class="row center-align">
+  <h2><%= image_tag("badges/#{@gym.name}", class: "badge") %> <%= @gym.name %> Gym Challenge Results<%= image_tag("badges/#{@gym.name}", class: "badge") %></h2>
+  <h5><%= link_to "Back to #{@gym.name} Gym", gym_path(@gym) %></h5>
+  <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
+</div>
+
+<div class="row">
+  <h3 class="center">Last Challenge</h3>
+  <% if @last_challenge %>
+    <div class="col s4 center-align">
+      <h3>Gym Leader</h3>
+      <h4><%= @last_challenge.gym_leader %></h4><br>
+      <%= image_tag("pokemon/#{@last_challenge.gym_pokemon.downcase}.jpg", class: "pokemon-image") %>
+      <h5><%= @last_challenge.gym_pokemon %></h5>
+    </div>
+
+    <div class="col s4 center-align">
+      <br><br><br>
+      <h3 class="green-text">Winner</h3>
+      <h5><%= @last_challenge.winner %></h5>
+    </div>
+
+    <div class="col s4 center-align">
+      <h3>Challenger</h3>
+      <h4><%= @last_challenge.challenger %></h4><br>
+      <%= image_tag("pokemon/#{@last_challenge.challenger_pokemon.downcase}.jpg", class: "pokemon-image") %>
+      <h5><%= @last_challenge.challenger_pokemon %></h5>
+    </div>
+  <% else %>
+    <h4 class="center red-text">None</h4>
+  <% end %>
+</div>
+
+<div class="row">
+  <h3 class="center">Previous Challenges</h3>
+  <% if @challenge_history && !@challenge_history.empty? %>
+  <!-- add challenge history -->
+  <% else %>
+    <h4 class="center red-text">None</h4>>
+  <% end %>
+</div>

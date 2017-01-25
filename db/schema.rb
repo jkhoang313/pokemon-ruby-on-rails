@@ -17,15 +17,13 @@ ActiveRecord::Schema.define(version: 20170125151306) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer  "gym_id"
-    t.integer  "gym_leader_id"
-    t.integer  "gym_pokemon_id"
-    t.integer  "challenger_id"
-    t.integer  "challenger_pokemon_id"
-    t.integer  "challenge_time"
-    t.integer  "winner_id"
-    t.boolean  "over",                  default: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "gym_leader"
+    t.string   "gym_pokemon"
+    t.string   "challenger"
+    t.string   "challenger_pokemon"
+    t.string   "winner"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "gyms", force: :cascade do |t|
