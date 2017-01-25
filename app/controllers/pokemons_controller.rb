@@ -7,12 +7,12 @@ class PokemonsController < ApplicationController
   def show
     find_trainer
     @index = params[:pokemon_id]
-    @pokemon = @trainer.pokemons[params[:pokemon_id].to_i-1]
+    @pokemon = @trainer.pokemons.order(:id)[params[:pokemon_id].to_i-1]
   end
 
   def destroy
     find_trainer
-    @pokemon = @trainer.pokemons[params[:pokemon_id].to_i-1]
+    @pokemon = @trainer.pokemons.order(:id)[params[:pokemon_id].to_i-1]
     @index = params[:pokemon_id]
 
     if @pokemon.occupied == true

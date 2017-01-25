@@ -1,6 +1,6 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
-  belongs_to :leading_pokemon, class_name: "Pokemon"
+  belongs_to :leading_pokemon, class_name: "Pokemon", optional: true
   has_many :gyms, :foreign_key => "gym_leader_id"
   has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password
@@ -45,11 +45,11 @@ class Trainer < ApplicationRecord
   end
 
   def starters
-    self.pokemons[0..5]
+    self.pokemons.where(group: "starters").order(:id)
   end
 
   def storage
-    self.pokemons[6..-1]
+    self.pokemons.where(group: "storage").order(:id)
   end
 
   def set_token_time

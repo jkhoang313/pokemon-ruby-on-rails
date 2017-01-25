@@ -6,15 +6,11 @@
 
 <div class="row">
   <div class="col s12">
-    <% if @trainer.starters.blank? %>
-    <p>No Pokemon in current team</p>
-    <% else %>
     <ul>
       <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
       <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
       <% end %>
     </ul>
-    <% end %>
   </div>
 </div>
 

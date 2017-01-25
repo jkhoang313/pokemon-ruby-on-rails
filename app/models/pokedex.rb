@@ -7,7 +7,8 @@ class Pokedex < ApplicationRecord
   has_many :strengths, through: :types
 
   def create_pokemon(trainer)
-    @pokemon = Pokemon.create(trainer_id: trainer, pokedex_id: id, name: name, level: level, hp: randomize_stat(hp), attack: randomize_stat(attack), defense: randomize_stat(defense), special_attack: randomize_stat(special_attack), special_defense: randomize_stat(special_defense), speed: randomize_stat(speed))
+    group = trainer.starters.count < 6 ? "starters" : "storage"
+    @pokemon = Pokemon.create(trainer_id: trainer, pokedex_id: id, name: name, level: level, hp: randomize_stat(hp), attack: randomize_stat(attack), defense: randomize_stat(defense), special_attack: randomize_stat(special_attack), special_defense: randomize_stat(special_defense), speed: randomize_stat(speed), group: group)
 
     trainer.pokemons << @pokemon
     @pokemon

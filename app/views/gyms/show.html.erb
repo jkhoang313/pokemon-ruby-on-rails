@@ -40,7 +40,6 @@
       <h6>Choose your pokemon</h6>
       <%= form_tag gym_path(@gym) do %>
         <%= collection_select :challenger, :pokemons, current_trainer.starters, :id, :name, {}, {class: "browser-default"}%>
-        <!-- change with starters -->
         <%= submit_tag "Challenge with this Pokemon!", class: "btn", data: {confirm: "Spend 5 Poke-Tokens to challenge this gym?"} %>
       <% end %>
     <% end %>
