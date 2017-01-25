@@ -19,7 +19,7 @@ class TrainersController < ApplicationController
     else
       flash[:message] = @trainer.errors.full_messages.first
 
-      redirect_to new_trainer_path
+      redirect_to signup_path
     end
   end
 

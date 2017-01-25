@@ -2,24 +2,22 @@
   <div class="col s12">
     <h3>Search Results</h3>
     <ul class="collection">
-    <% if !@search.empty? %>
-      <% @search.each do |trainer| %>
-        <li class="collection-item avatar">
-          <a href="trainers/<%= trainer.id %>"><i class="material-icons circle red">perm_identity</i></a>
-          <!-- add profile pic -->
-          <span class="title">Trainer <%= trainer.name %></span>
-          <p>Email: <%= trainer.email %></p>
-          <p>Level: <%= trainer.level %></p>
-          <ul class="secondary-content">
-            <% trainer.starters.each do |pokemon| %>
-            <li class="sprite-image">
-              <%= image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image") %>
-            </li>
-            <% end %>
-          </ul>
-        </li>
-      <%end %>
-    <% end %>
+    <% @search.each do |trainer| %>
+      <li class="collection-item avatar">
+        <a href="trainers/<%= trainer.id %>"><i class="material-icons circle red">perm_identity</i></a>
+        <!-- add profile pic -->
+        <span class="title">Trainer <%= trainer.name %></span>
+        <p>Email: <%= trainer.email %></p>
+        <p>Level: <%= trainer.level %></p>
+        <ul class="secondary-content">
+          <% trainer.starters.each do |pokemon| %>
+          <li class="sprite-image">
+            <%= image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image") %>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+    <%end %>
     </ul>
   </div>
 </div>

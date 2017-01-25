@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 20170125151306) do
   create_table "pokedexes", force: :cascade do |t|
     t.string   "name"
     t.integer  "level",           default: 1
-    t.string   "hp"
-    t.string   "attack"
-    t.string   "defense"
-    t.string   "special_attack"
-    t.string   "special_defense"
-    t.string   "speed"
+    t.integer  "hp"
+    t.integer  "attack"
+    t.integer  "defense"
+    t.integer  "special_attack"
+    t.integer  "special_defense"
+    t.integer  "speed"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.string   "name"
     t.integer  "level",           default: 1
     t.integer  "experience",      default: 0
-    t.string   "hp"
-    t.string   "attack"
-    t.string   "defense"
-    t.string   "special_attack"
-    t.string   "special_defense"
-    t.string   "speed"
+    t.integer  "hp"
+    t.integer  "attack"
+    t.integer  "defense"
+    t.integer  "special_attack"
+    t.integer  "special_defense"
+    t.integer  "speed"
     t.boolean  "occupied",        default: false
     t.string   "group"
     t.datetime "created_at",                      null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "age"
+    t.integer  "age"
     t.string   "gender"
     t.integer  "level",              default: 1
     t.integer  "experience",         default: 0

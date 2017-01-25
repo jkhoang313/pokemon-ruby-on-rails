@@ -16,12 +16,6 @@
 
 @import "materialize";
 
-// body {
-//   background: url(pokeball.png) no-repeat center center fixed;
-//   background-size: 30%;
-//   background-color: #e3f2fd;
-// }
-
 nav {
   background-color: red;
 }
@@ -51,18 +45,8 @@ div.row {
   margin: 10px;
 }
 
-img.pokemon-image {
-  height: 200px;
-  width: 200px;
-}
-
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
-}
-
-img.small-picture {
-  height: 50px;
-  width: 50px;
 }
 
 div.card-panel {
@@ -73,12 +57,6 @@ div.card-panel p {
   display: inline;
   bottom: 10px;
   position: relative;
-}
-
-.sprite-image {
-  height: 50px;
-  width: 50px;
-  display: inline;
 }
 
 ul.roster {
@@ -94,14 +72,42 @@ td {
   width: 150px;
 }
 
-img.type {
-  height: 21px;
-  width: 48px;
+.gym_leader {
+  color: red;
+}
+
+.challenger {
+  color: blue;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+img.pokemon-image {
+  height: 200px;
+  width: 200px;
 }
 
 .card {
   height: 500px;
   width: 250px;
+}
+
+img.small-picture {
+  height: 50px;
+  width: 50px;
+}
+
+.sprite-image {
+  height: 50px;
+  width: 50px;
+  display: inline;
+}
+
+img.type {
+  height: 21px;
+  width: 48px;
 }
 
 img.gym-image {
@@ -150,19 +156,7 @@ img.trainer-right {
   margin-top: 100px;
 }
 
-.btn {
-  margin-top: 5px;
-}
-
 img.logo {
   height: 185px;
   width: 500px;
-}
-
-.gym_leader {
-  color: red;
-}
-
-.challenger {
-  color: blue;
 }

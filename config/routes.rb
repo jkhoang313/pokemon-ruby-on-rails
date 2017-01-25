@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/trainers/:id/pokemons', to: 'pokemons#index', as: "pokemons"
   delete '/trainers/:id/pokemons/:pokemon_id/delete', to: 'pokemons#destroy', as: "delete_pokemon"
   post '/trainers/:id/runaway', to: 'trainers#run_away', as: 'run_away'
+  get '/signup', to: 'trainers#new', as: "signup"
   resources :trainers
 
   resources :pokedex

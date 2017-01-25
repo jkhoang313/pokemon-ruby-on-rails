@@ -7,7 +7,7 @@ class CreateChallenges < ActiveRecord::Migration[5.0]
       t.string :challenger
       t.string :challenger_pokemon
       t.string :winner
-      # deleting pokemon after challenge will mess using id?
+      # deleting pokemon after challenge will mess using id
 
       t.timestamps
     end

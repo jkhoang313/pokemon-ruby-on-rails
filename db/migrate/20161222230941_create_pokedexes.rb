@@ -3,12 +3,12 @@ class CreatePokedexes < ActiveRecord::Migration[5.0]
     create_table :pokedexes do |t|
       t.string :name
       t.integer :level, :default => 1
-      t.string :hp
-      t.string :attack
-      t.string :defense
-      t.string :special_attack
-      t.string :special_defense
-      t.string :speed
+      t.integer :hp
+      t.integer :attack
+      t.integer :defense
+      t.integer :special_attack
+      t.integer :special_defense
+      t.integer :speed
 
       t.timestamps
     end

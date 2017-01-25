@@ -1,6 +1,6 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
-  has_one :leading_pokemon, class_name: "Pokemon"
+  belongs_to :leading_pokemon, class_name: "Pokemon"
   has_many :gyms, :foreign_key => "gym_leader_id"
   has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password

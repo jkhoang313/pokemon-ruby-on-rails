@@ -23,7 +23,7 @@
           <li><%= link_to current_trainer.name, trainer_path(current_trainer) %></li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
         <% else  %>
-          <li><%= link_to "Sign Up", new_trainer_path %></li>
+          <li><%= link_to "Sign Up", signup_path %></li>
           <li><%= link_to "Login", login_path %></li>
         <% end  %>
           <li>

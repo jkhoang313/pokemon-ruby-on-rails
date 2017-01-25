@@ -6,12 +6,12 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :level, :default => 1
       t.integer :experience, :default => 0
-      t.string :hp
-      t.string :attack
-      t.string :defense
-      t.string :special_attack
-      t.string :special_defense
-      t.string :speed
+      t.integer :hp
+      t.integer :attack
+      t.integer :defense
+      t.integer :special_attack
+      t.integer :special_defense
+      t.integer :speed
       t.boolean :occupied, default: :false
       t.string :group
 

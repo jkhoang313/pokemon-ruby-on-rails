@@ -26,7 +26,6 @@ class Gym < ApplicationRecord
   def gym_time_left(kind)
     if kind == "Challenge"
       time_left = self.challenge_time + 7200 - current_time
-
       time_format(time_left)
     elsif kind == "Grace"
       time_left = self.challenge_time + 10800 - current_time
