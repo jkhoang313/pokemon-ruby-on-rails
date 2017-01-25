@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <nav>
       <div class="nav-wrapper">
@@ -17,16 +18,27 @@
          <li><%= link_to "Pokemon Gyms", gyms_path %></li>
        </ul>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
-         <% if logged_in? %>
-            <li><%= link_to "Capture Pokemon", wild_encounter_path %></li>
-            <li><%= link_to current_trainer.name, trainer_path(current_trainer) %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
-          <% else  %>
-            <li><%= link_to "Sign Up", new_trainer_path %></li>
-            <li><%= link_to "Login", login_path %></li>
-          <% end  %>
-       </ul>
-     </div>
+        <% if logged_in? %>
+          <li><%= link_to "Capture Pokemon", wild_encounter_path, method: :post %></li>
+          <li><%= link_to current_trainer.name, trainer_path(current_trainer) %></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% else  %>
+          <li><%= link_to "Sign Up", new_trainer_path %></li>
+          <li><%= link_to "Login", login_path %></li>
+        <% end  %>
+          <li>
+            <nav>
+            <%= form_tag search_path do %>
+              <div class="input-field">
+              <%= text_field_tag :search, params[:search], :id =>"search", :type => "search", :value => "", :placeholder => "Search for Trainer" %>
+              <label for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+              </div>
+            <% end %>
+            </nav>
+          </li>
+        </ul>
+      </div>
     </nav>
   </head>
 

@@ -47,7 +47,6 @@ class Gym < ApplicationRecord
     if !self.winner
       c = attacker_totals(challenger_pokemon, gym_pokemon)
       g = attacker_totals(gym_pokemon, challenger_pokemon)
-      binding.pry
 
       c_chance = c/(c+g).to_f
       if rand > c_chance

@@ -55,4 +55,8 @@ class Trainer < ApplicationRecord
     self.last_token = Time.now.to_i
     self.save
   end
+
+  def self.search(keyword)
+    self.where('name ILIKE ? OR email ILIKE ?', "%#{keyword}%","%#{keyword}%").order(:id)
+  end
 end
