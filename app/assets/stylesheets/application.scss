@@ -84,14 +84,22 @@ td {
   margin-top: 5px;
 }
 
-img.pokemon-image {
-  height: 200px;
-  width: 200px;
-}
-
 .card {
   height: 500px;
   width: 250px;
+}
+
+label {
+  font-size: 20px;
+}
+
+select.select {
+  width: 200px;
+}
+
+img.pokemon-image {
+  height: 200px;
+  width: 200px;
 }
 
 img.small-picture {

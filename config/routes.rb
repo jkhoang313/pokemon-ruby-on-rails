@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/search', to: 'game#search', as: "search"
 
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
+  post '/trainers/:id/pokemons', to: 'pokemons#transfer'
   get '/trainers/:id/pokemons/:pokemon_id', to: 'pokemons#show', as: "pokemon"
   get '/trainers/:id/pokemons', to: 'pokemons#index', as: "pokemons"
   delete '/trainers/:id/pokemons/:pokemon_id/delete', to: 'pokemons#destroy', as: "delete_pokemon"

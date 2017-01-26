@@ -9,7 +9,8 @@
   <% if @last_challenge %>
     <div class="col s4 center-align">
       <h3 class="gym_leader">Gym Leader</h3>
-      <h4><%= @last_challenge.gym_leader %></h4><br>
+      <h4><%= @last_challenge.gym_leader %></h4>
+      <br>
       <%= image_tag("pokemon/#{@last_challenge.gym_pokemon.downcase}.jpg", class: "pokemon-image") %>
       <h5><%= @last_challenge.gym_pokemon %></h5>
     </div>
@@ -22,7 +23,8 @@
 
     <div class="col s4 center-align">
       <h3 class="challenger">Challenger</h3>
-      <h4><%= @last_challenge.challenger %></h4><br>
+      <h4><%= @last_challenge.challenger %></h4>
+      <br>
       <%= image_tag("pokemon/#{@last_challenge.challenger_pokemon.downcase}.jpg", class: "pokemon-image") %>
       <h5><%= @last_challenge.challenger_pokemon %></h5>
     </div>

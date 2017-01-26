@@ -2,7 +2,8 @@
   <div class="col s12">
     <h3>All Trainers</h3>
     <% @trainers.each do |trainer| %>
-      <h5><%= link_to trainer.name, trainer_path(trainer) %><br></h5>
+      <h5><%= link_to trainer.name, trainer_path(trainer) %></h5>
+      <br>
     <% end %>
   </div>
 </div>

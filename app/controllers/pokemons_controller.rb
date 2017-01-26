@@ -41,4 +41,37 @@ class PokemonsController < ApplicationController
       redirect_to pokemons_path(@trainer)
     end
   end
+
+  def transfer
+    find_trainer
+    if params["trainer"]["starters"]
+      transfer_starter
+    elsif params["trainer"]["storage"]
+      transfer_storage
+    end
+
+    redirect_to pokemons_path(@trainer)
+  end
+
+  def transfer_starter
+    @starter = Pokemon.find(params["trainer"]["starters"])
+    if @starter.occupied
+      flash[:message] = "#{@starter.name} is occupied, unable to transfer"
+    elsif @starter == current_trainer.leading_pokemon
+      flash[:message] = "Unable to transfer Lead Pokemon"
+    else
+      flash[:message] = "Transfered #{@starter.name} to storage"
+      @starter.update(group: "storage")
+    end
+  end
+
+  def transfer_storage
+    @storage = Pokemon.find(params["trainer"]["storage"])
+    if current_trainer.starters.count == 6
+      flash[:message] = "Transfer failed, current team is full"
+    else
+      flash[:message] = "Transfered #{@storage.name} to current team"
+      @storage.update(group: "starters")
+    end
+  end
 end

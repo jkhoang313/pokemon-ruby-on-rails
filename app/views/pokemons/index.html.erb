@@ -1,37 +1,44 @@
 <div class="row">
-  <div class="col s12">
+  <div class="col s8">
+    <br><br>
     <h3>Current Team</h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12">
     <ul>
       <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
       <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
       <% end %>
     </ul>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12">
+    <br>
     <h3>In Storage</h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12">
     <% if @trainer.storage.blank? %>
       <p>No Pokemon in storage</p>
     <% else %>
-    <ul>
-      <% @trainer.storage.each.with_index(7) do |pokemon, index| %>
-      <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
+      <ul>
+        <% @trainer.storage.each.with_index(7) do |pokemon, index| %>
+        <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image"), pokemon_path(@trainer, index)%></li>
       <% end %>
     <% end %>
-    <br><br>
-    <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
-    </ul>
+      <br><br>
+      <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
+      </ul>
+  </div>
+
+
+  <div class="col s3">
+    <% if current_trainer == @trainer %>
+    <br>
+    <h4>Transfer Pokemon</h4>
+    <br>
+      <%= form_tag pokemons_path(@trainer) do %>
+        <%= label_tag :starters, "To Storage" %>
+        <%= collection_select :trainer, :starters, current_trainer.starters, :id, :name, {},  {class: "browser-default select"}%>
+        <%= submit_tag "Transfer", class: "btn" %>
+      <% end %>
+      <br><br><br>
+      <%= form_tag pokemons_path(@trainer) do %>
+        <%= label_tag :storage, "To Current Team" %>
+        <%= collection_select :trainer, :storage, current_trainer.storage, :id, :name, {},  {class: "browser-default select"}%>
+        <%= submit_tag "Transfer", class: "btn" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
