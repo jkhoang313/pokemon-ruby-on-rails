@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'game#index'
   get '/about', to: 'game#about', as: "about"
   post '/search', to: 'game#search', as: "search"
+  get '/search', to: 'game#get_search'
 
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
   post '/trainers/:id/pokemons', to: 'pokemons#transfer'

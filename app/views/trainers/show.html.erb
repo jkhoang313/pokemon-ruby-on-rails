@@ -13,7 +13,7 @@
       <li class="collection-item">Next Poke-Token: <%= @trainer.token_status %></li>
       <li class="collection-item">Gyms Badges:
         <br>
-        <% @a = @trainer.gyms.collect do |gym| %>
+        <% @trainer.gyms.each do |gym| %>
           <%= link_to image_tag("badges/#{gym.name}.png", class: "badge"), gym_path(gym) %>
         <% end %>
       </li>

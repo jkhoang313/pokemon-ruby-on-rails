@@ -7,8 +7,12 @@
         <a href="trainers/<%= trainer.id %>"><i class="material-icons circle red">perm_identity</i></a>
         <!-- add profile pic -->
         <span class="title">Trainer <%= trainer.name %></span>
-        <p>Email: <%= trainer.email %></p>
         <p>Level: <%= trainer.level %></p>
+        <p>
+        <% trainer.gyms.each do |gym| %>
+          <%= link_to image_tag("badges/#{gym.name}.png", class: "badge"), gym_path(gym) %>
+        <% end %>
+        </p>
         <ul class="secondary-content">
           <% trainer.starters.each do |pokemon| %>
           <li class="sprite-image">

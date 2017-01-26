@@ -6,4 +6,8 @@ class GameController < ApplicationController
     flash.clear
     # same problem as pokemon capture
   end
+
+  def get_search
+    redirect_to root_path
+  end
 end
