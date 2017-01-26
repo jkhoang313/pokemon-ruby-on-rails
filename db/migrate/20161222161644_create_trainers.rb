@@ -11,6 +11,8 @@ class CreateTrainers < ActiveRecord::Migration[5.0]
       t.integer :leading_pokemon_id
       t.integer :poke_tokens, :default => 20
       t.integer :last_token
+      t.integer :training_pokemon_id
+      t.integer :training_start
 
       t.timestamps
     end

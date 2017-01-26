@@ -39,6 +39,7 @@
     <table class="bordered centered">
       <thead>
         <tr>
+          <th>Challenge Date</th>
           <th>Gym Leader</th>
           <th>Pokemon</th>
           <th>Winner</th>
@@ -49,6 +50,7 @@
       <tbody>
         <% @challenge_history.each do |challenge| %>
           <tr>
+            <td class="grey"><%= challenge.created_at.strftime('%_m/%d/%Y %_I:%M %p %Z') %></td>
             <td class="red white-text"><%= challenge.gym_leader %></td>
             <td class="red white-text"><%= challenge.gym_pokemon %></td>
             <% if challenge.winner == "Gym Leader" %>

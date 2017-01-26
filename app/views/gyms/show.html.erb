@@ -24,6 +24,9 @@
   <% elsif @gym.challenged? %>
       <h3>Challenge Time</h3>
       <h6><%= @gym.gym_time_left("Challenge") %></h6>
+      <br><br>
+      <h4 class="left gym_leader"><%= @gym.gym_percent %> %</h4>
+      <h4 class="right challenger"><%= @gym.challenger_percent %> %</h4>
   <% else %>
       <h3>Current Streak</h3>
       <h6><%= @gym.current_streak %></h6>
@@ -36,7 +39,7 @@
       <h4><%= link_to @gym.challenger.name, trainer_path(@gym.challenger) %></h4>
       <br>
       <%= image_tag("pokemon/#{@gym.challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %>
-      <h5 class="challenger"><%= @gym.challenger_pokemon.name %></h5>
+      <h5><%= @gym.challenger_pokemon.name %></h5>
     <% elsif logged_in? && current_trainer != @gym.gym_leader %>
       <h3 class="challenger">Challenger</h3>
       <h4><%= link_to current_trainer.name, trainer_path(current_trainer) %></h4>

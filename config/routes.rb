@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/about', to: 'game#about', as: "about"
   post '/search', to: 'game#search', as: "search"
   get '/search', to: 'game#get_search'
+  get '/train', to: 'game#train', as: "train"
+  post '/train', to: 'game#training', as: "training"
 
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
   post '/trainers/:id/pokemons', to: 'pokemons#transfer'
@@ -21,7 +23,9 @@ Rails.application.routes.draw do
   post '/wild_encounter/:pokemon_name/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
   post '/wild_encounter/:pokemon_name/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
   post '/wild_encounter/:pokemon_name/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
+  post '/wild_encounter/:pokemon_name/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
   post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
+  get '/wild_encounter', to: 'wild_pokemon#wild'
 
   get '/login', to: 'sessions#new', as: "login"
   post '/login', to: 'sessions#create', as: "new_session"

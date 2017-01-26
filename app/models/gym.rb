@@ -34,13 +34,13 @@ class Gym < ApplicationRecord
   end
 
   def challenge_over?
-    self.challenge_time + 7200 < current_time
-    # self.challenge_time + 10 < current_time
+    # self.challenge_time + 7200 < current_time
+    self.challenge_time + 10 < current_time
   end
 
   def grace_over?
-    self.challenge_time + 10800 < current_time
-    # self.challenge_time + 20 < current_time
+    # self.challenge_time + 10800 < current_time
+    self.challenge_time + 20 < current_time
   end
 
   def challenger_percentage_win
@@ -48,6 +48,14 @@ class Gym < ApplicationRecord
     g = attacker_totals(gym_pokemon, challenger_pokemon)
 
     c/(c+g).to_f
+  end
+
+  def challenger_percent
+    (challenger_percentage_win * 100).round(1)
+  end
+
+  def gym_percent
+    (100 - challenger_percent).round(2)
   end
 
   def find_winner

@@ -1,10 +1,11 @@
 class Trainer < ApplicationRecord
   has_many :pokemons
   belongs_to :leading_pokemon, class_name: "Pokemon", optional: true
+  belongs_to :training_pokemon, class_name: "Pokemon", optional: true
   has_many :gyms, :foreign_key => "gym_leader_id"
   has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password
-  validates :password, length: { minimum: 4 }
+  # validates :password, length: { minimum: 4 }
   validates :name, :age, :gender, :leading_pokemon_id, presence: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
@@ -34,6 +35,10 @@ class Trainer < ApplicationRecord
 
       time_format(time_left)
     end
+  end
+
+  def training_time_left
+    time_format(self.training_start + 7200 - current_time)
   end
 
   def claim_token

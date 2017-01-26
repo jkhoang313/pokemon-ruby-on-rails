@@ -17,7 +17,7 @@ class Pokemon < ApplicationRecord
   end
 
   def found_on
-    self.created_at.strftime('%B %d, %Y %I:%M %p %Z')
+    self.created_at.strftime('%B %d, %Y %_I:%M %p %Z')
   end
 
   def fixed_weakness

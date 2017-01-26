@@ -5,24 +5,31 @@ class WildPokemonController < ApplicationController
   end
 
   def pokeball
-    @chance = rand(1..11)
+    @chance = rand(1..100)
     find_wild_pokemon
 
     capture_pokemon(@chance, "Pokeball", 1)
   end
 
   def great_ball
-    @chance = rand(3..13)
+    @chance = rand(1..80)
     find_wild_pokemon
 
     capture_pokemon(@chance, "Great Ball", 2)
   end
 
   def ultra_ball
-    @chance = rand(5..15)
+    @chance = rand(1..60)
     find_wild_pokemon
 
     capture_pokemon(@chance, "Ultra Ball", 3)
+  end
+
+  def master_ball
+    @chance = 1
+    find_wild_pokemon
+
+    capture_pokemon(@chance, "Master Ball", 5)
   end
 
   private
@@ -40,22 +47,22 @@ class WildPokemonController < ApplicationController
       flash.clear
     else
       current_trainer.minus_token(tokens)
-      if @chance <= 5
+      if @chance <= 40
+          flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
+          @wild_pokemon.create_pokemon(current_trainer)
+          @pokemon_count = current_trainer.pokemons.count
+
+          redirect_to pokemon_path(current_trainer, @pokemon_count)
+      elsif @chance <= 50 || @chance % 2 == 0
+          flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
+          @wild_pokemon = @wild_pokemon.name
+
+          render :'wild_pokemon/wild'
+          flash.clear
+      else
         flash[:message] = "Threw a(n) #{ball}. Wild #{@wild_pokemon.name} ran away!"
 
         redirect_to trainer_path(current_trainer)
-      elsif @chance <= 7
-        flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
-        @wild_pokemon = @wild_pokemon.name
-
-        render :'wild_pokemon/wild'
-        flash.clear
-      else
-        flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
-        @wild_pokemon.create_pokemon(current_trainer)
-        @pokemon_count = current_trainer.pokemons.count
-
-        redirect_to pokemon_path(current_trainer, @pokemon_count)
       end
     end
   end

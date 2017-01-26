@@ -84,13 +84,15 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.string   "password_digest"
     t.integer  "age"
     t.string   "gender"
-    t.integer  "level",              default: 1
-    t.integer  "experience",         default: 0
+    t.integer  "level",               default: 1
+    t.integer  "experience",          default: 0
     t.integer  "leading_pokemon_id"
-    t.integer  "poke_tokens",        default: 20
+    t.integer  "poke_tokens",         default: 20
     t.integer  "last_token"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "training_pokemon_id"
+    t.integer  "training_start"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "type_strengths", force: :cascade do |t|

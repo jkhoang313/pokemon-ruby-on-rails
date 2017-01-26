@@ -34,10 +34,12 @@
         <%= submit_tag "Transfer", class: "btn" %>
       <% end %>
       <br><br><br>
+      <% if !@trainer.storage.empty? %>
       <%= form_tag pokemons_path(@trainer) do %>
         <%= label_tag :storage, "To Current Team" %>
         <%= collection_select :trainer, :storage, current_trainer.storage, :id, :name, {},  {class: "browser-default select"}%>
         <%= submit_tag "Transfer", class: "btn" %>
+      <% end %>
       <% end %>
     <% end %>
   </div>

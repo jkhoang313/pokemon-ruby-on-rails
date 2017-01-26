@@ -72,11 +72,12 @@
   <div class="col s4 offset-s4 center-align">
     <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", class: "pokemon-image") %>
     <h4>Status:
-      <!-- add different statuses -->
-      <% if @pokemon.gym %>
+      <% if !@pokemon.occupied %>
+        <span class="green-text">Available</span>
+      <% elsif @pokemon.gym %>
         <%= link_to "#{@pokemon.gym.name} Gym", gym_path(@pokemon.gym) %>
       <% else %>
-        <span class="green-text">Available</span>
+        <span class="orange-text">Training</span>
       <% end %>
     </h4>
   </div>
