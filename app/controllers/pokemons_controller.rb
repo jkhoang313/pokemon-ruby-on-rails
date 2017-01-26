@@ -1,19 +1,26 @@
 class PokemonsController < ApplicationController
   def index
     find_trainer
-    @pokemons = @trainer.pokemons
   end
 
   def show
     find_trainer
-    @index = params[:pokemon_id]
-    @pokemon = @trainer.pokemons.order(:id)[params[:pokemon_id].to_i-1]
+    @index = params[:pokemon_id].to_i
+    if @index <= 6
+    @pokemon = @trainer.starters.order(:id)[params[:pokemon_id].to_i-1]
+    else
+      @pokemon = @trainer.storage.order(:id)[params[:pokemon_id].to_i-7]
+    end
   end
 
   def destroy
     find_trainer
-    @pokemon = @trainer.pokemons.order(:id)[params[:pokemon_id].to_i-1]
-    @index = params[:pokemon_id]
+    @index = params[:pokemon_id].to_i
+    if @index <= 6
+    @pokemon = @trainer.starters.order(:id)[params[:pokemon_id].to_i-1]
+    else
+      @pokemon = @trainer.storage.order(:id)[params[:pokemon_id].to_i-7]
+    end
 
     if @pokemon.occupied == true
       flash[:message] = "#{@pokemon.name} is currently performing an action, cannot release"

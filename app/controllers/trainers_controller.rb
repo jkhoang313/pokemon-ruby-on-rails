@@ -63,6 +63,12 @@ class TrainersController < ApplicationController
     redirect_to trainer_path(current_trainer)
   end
 
+  def change_lead
+    current_trainer.update(leading_pokemon_id: params["trainer"]["starters"])
+
+    redirect_to trainer_path(current_trainer)
+  end
+
   private
 
   def trainer_params

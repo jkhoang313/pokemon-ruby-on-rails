@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   get '/about', to: 'game#about', as: "about"
   post '/search', to: 'game#search', as: "search"
 
-  post '/trainers/:id', to: 'trainers#claim_token', as: "claim_token"
+  post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
   get '/trainers/:id/pokemons/:pokemon_id', to: 'pokemons#show', as: "pokemon"
   get '/trainers/:id/pokemons', to: 'pokemons#index', as: "pokemons"
   delete '/trainers/:id/pokemons/:pokemon_id/delete', to: 'pokemons#destroy', as: "delete_pokemon"
   post '/trainers/:id/runaway', to: 'trainers#run_away', as: 'run_away'
   get '/signup', to: 'trainers#new', as: "signup"
+  post '/trainers/:id', to: 'trainers#change_lead'
   resources :trainers
 
   resources :pokedex

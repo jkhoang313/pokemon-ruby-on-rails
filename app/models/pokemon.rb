@@ -17,7 +17,7 @@ class Pokemon < ApplicationRecord
   end
 
   def found_on
-    self.created_at.strftime('%B %d, %Y %I:%M %p')
+    self.created_at.strftime('%B %d, %Y %I:%M %p %Z')
   end
 
   def fixed_weakness
@@ -26,5 +26,9 @@ class Pokemon < ApplicationRecord
 
   def fixed_strength
     self.strengths.where.not(id: self.weaknesses.pluck(:id)).uniq
+  end
+
+  def status
+    # for show page
   end
 end

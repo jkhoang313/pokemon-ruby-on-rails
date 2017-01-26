@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col s4">
     <ul class="collection">
-      <li class="collection-item">Leading Pokemon: <%= @trainer.leading_pokemon.name %></li>
+      <li class="collection-item">Lead Pokemon: <%= @trainer.leading_pokemon.name %></li>
       <li class="collection-item">Gender: <%= @trainer.gender %></li>
       <li class="collection-item">Age: <%= @trainer.age %></li>
       <li class="collection-item">Current Poke-tokens: <%= @trainer.poke_tokens %></li>
@@ -39,5 +39,12 @@
     <h5>
       <%= link_to "See All Pokemon", pokemons_path(@trainer) %>
     </h5>
+    <br><br>
+    <% if current_trainer == @trainer %>
+      <%= form_tag trainer_path(@trainer) do %>
+        <%= collection_select :trainer, :starters, current_trainer.starters, :id, :name, {:selected => @trainer.leading_pokemon_id},  {class: "browser-default"}%>
+        <%= submit_tag "Change Lead Pokemon", class: "btn" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
