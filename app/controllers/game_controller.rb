@@ -11,23 +11,90 @@ class GameController < ApplicationController
     redirect_to root_path
   end
 
-  def train
+  def training
     if logged_in?
       @status = current_trainer.training_pokemon ? "In Use" : "Open"
+      @pokemon = current_trainer.training_pokemon
     else
       redirect_to root_path
     end
   end
 
-  def training
+  def start_training
     @pokemon = Pokemon.find(params["trainer"]["pokemons"])
     if @pokemon.occupied
       flash[:message] = "#{@pokemon.name} is already performing an action"
     else
+      current_trainer.minus_token(3)
       current_trainer.update(training_pokemon_id: @pokemon.id, training_start: Time.now.to_i)
       @pokemon.update(occupied: true)
     end
 
-    redirect_to train_path
+    redirect_to training_path
+  end
+
+  def remove_training
+    flash[:message] = current_trainer.training_pokemon.action("train")
+    current_trainer.update(training_pokemon_id: nil)
+
+    redirect_to training_path
+  end
+
+  def contest
+    if logged_in?
+      @status = current_trainer.contest_pokemon ? "In Use" : "Open"
+      @pokemon = current_trainer.contest_pokemon
+    else
+      redirect_to root_path
+    end
+  end
+
+  def start_contest
+    @pokemon = Pokemon.find(params["trainer"]["pokemons"])
+    if @pokemon.occupied
+      flash[:message] = "#{@pokemon.name} is already performing an action"
+    else
+      current_trainer.minus_token(3)
+      current_trainer.update(contest_pokemon_id: @pokemon.id, contest_start: Time.now.to_i)
+      @pokemon.update(occupied: true)
+    end
+
+    redirect_to contest_path
+  end
+
+  def remove_contest
+    flash[:message] = current_trainer.contest_pokemon.action("contest")
+    current_trainer.update(contest_pokemon_id: nil)
+
+    redirect_to contest_path
+  end
+
+  def daycare
+    if logged_in?
+      @status = current_trainer.daycare_pokemon ? "In Use" : "Open"
+      @pokemon = current_trainer.daycare_pokemon
+    else
+      redirect_to root_path
+    end
+  end
+
+  def start_daycare
+    @pokemon = Pokemon.find(params["trainer"]["pokemons"])
+    if @pokemon.occupied
+      flash[:message] = "#{@pokemon.name} is already performing an action"
+    else
+      current_trainer.minus_token(3)
+      current_trainer.update(daycare_pokemon_id: @pokemon.id, daycare_start: Time.now.to_i)
+      @pokemon.update(occupied: true)
+    end
+
+    redirect_to daycare_path
+  end
+
+  def remove_daycare
+    flash[:message] = current_trainer.daycare_pokemon.action("daycare")
+    current_trainer.update(daycare_pokemon_id: nil)
+
+    redirect_to daycare_path
   end
 end

@@ -3,10 +3,19 @@ Rails.application.routes.draw do
 
   root 'game#index'
   get '/about', to: 'game#about', as: "about"
+
   post '/search', to: 'game#search', as: "search"
   get '/search', to: 'game#get_search'
-  get '/train', to: 'game#train', as: "train"
-  post '/train', to: 'game#training', as: "training"
+
+  get '/training', to: 'game#training', as: "training"
+  post '/training', to: 'game#start_training', as: "start_training"
+  get '/training/remove', to: 'game#remove_training', as: "remove_training"
+  get '/contest', to: 'game#contest', as: "contest"
+  post '/contest', to: 'game#start_contest', as: "start_contest"
+  get '/contest/remove', to: 'game#remove_contest', as: "remove_contest"
+  get '/daycare', to: 'game#daycare', as: "daycare"
+  post '/daycare', to: 'game#start_daycare', as: "start_daycare"
+  get '/daycare/remove', to: 'game#remove_daycare', as: "remove_daycare"
 
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
   post '/trainers/:id/pokemons', to: 'pokemons#transfer'

@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col s12 center">
+    <h2>Training</h2>
+    <h4 class="<%= @status.downcase.gsub(" ", "_") %>"><%= @status %></h4>
+  </div>
+</div>
+
+<div class="row">
+<br><br><br>
+<% if @status == "Open" %>
+  <div class="col s3">
+    <%= image_tag("gifs/open_training.gif", class: "gif") %>
+  </div>
+  <div class="col s3 offset-s5 right">
+      <%= form_tag start_training_path do %>
+        <%= collection_select :trainer, :pokemons, current_trainer.starters, :id, :name, {}, {class: "browser-default select"}%>
+        <%= submit_tag "Train", class: "btn", data: {confirm: "Spend 3 Poke-tokens to train this pokemon?"} %>
+      <% end %>
+  </div>
+  <% else %>
+  <div class="col s6">
+    <%= image_tag("gifs/training.gif", class: "gif") %>
+  </div>
+  <div class="col s3 center">
+    <h4>Time Left</h4>
+    <h5><%= current_trainer.training_time_left %></h5>
+    <% if current_trainer.training_time_passed? %>
+      <%= button_to "Take out of training", remove_training_path, method: :get, class: "btn"%>
+    <% end %>
+  </div>
+  <div class="col s3 center">
+    <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg") %>
+    <h5><%= @pokemon.name %></h5>
+    <table class="striped">
+      <tbody>
+        <tr>
+          <td>Level:</td>
+          <td><%= @pokemon.level %></td>
+        </tr>
+        <tr>
+          <td>Type:</td>
+          <td><% @pokemon.types.each do |type| %>
+            <%= image_tag("types/#{type.name}", class: "type") %>
+          <% end %></td>
+        </tr>
+        <tr>
+          <td>HP:</td>
+          <td><%= @pokemon.hp %></td>
+        </tr>
+        <tr>
+          <td>Attack:</td>
+          <td><%= @pokemon.attack %></td>
+        </tr>
+        <tr>
+          <td>Defense:</td>
+          <td><%= @pokemon.defense %></td>
+        </tr>
+        <tr>
+          <td>Special Attack:</td>
+          <td><%= @pokemon.special_attack %></td>
+        </tr>
+        <tr>
+          <td>Special Defense:</td>
+          <td><%= @pokemon.special_defense %></td>
+        </tr>
+        <tr>
+          <td>Speed:</td>
+          <td><%= @pokemon.speed %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </div>
+  <% end %>
+</div>

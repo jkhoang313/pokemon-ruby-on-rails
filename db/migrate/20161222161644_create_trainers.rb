@@ -13,6 +13,10 @@ class CreateTrainers < ActiveRecord::Migration[5.0]
       t.integer :last_token
       t.integer :training_pokemon_id
       t.integer :training_start
+      t.integer :contest_pokemon_id
+      t.integer :contest_start
+      t.integer :daycare_pokemon_id
+      t.integer :daycare_start
 
       t.timestamps
     end

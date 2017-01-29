@@ -2,6 +2,8 @@ class Trainer < ApplicationRecord
   has_many :pokemons
   belongs_to :leading_pokemon, class_name: "Pokemon", optional: true
   belongs_to :training_pokemon, class_name: "Pokemon", optional: true
+  belongs_to :contest_pokemon, class_name: "Pokemon", optional: true
+  belongs_to :daycare_pokemon, class_name: "Pokemon", optional: true
   has_many :gyms, :foreign_key => "gym_leader_id"
   has_many :challenged_gyms, :foreign_key => "challenger_id"
   has_secure_password
@@ -37,8 +39,43 @@ class Trainer < ApplicationRecord
     end
   end
 
+  def training_time_passed?
+    training_start + 10 < current_time
+    # training_start + 7200 < current_time
+  end
+
   def training_time_left
-    time_format(self.training_start + 7200 - current_time)
+    if training_time_passed?
+      "Finished"
+    else
+      time_format(self.training_start + 7200 - current_time)
+    end
+  end
+
+  def contest_time_passed?
+    contest_start + 10 < current_time
+    # training_start + 7200 < current_time
+  end
+
+  def contest_time_left
+    if contest_time_passed?
+      "Finished"
+    else
+      time_format(self.contest_start + 7200 - current_time)
+    end
+  end
+
+  def daycare_time_passed?
+    daycare_start + 10 < current_time
+    # daycare_start + 7200 < current_time
+  end
+
+  def daycare_time_left
+    if daycare_time_passed?
+      "Finished"
+    else
+      time_format(self.daycare_start + 7200 - current_time)
+    end
   end
 
   def claim_token

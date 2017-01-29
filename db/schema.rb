@@ -91,6 +91,10 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.integer  "last_token"
     t.integer  "training_pokemon_id"
     t.integer  "training_start"
+    t.integer  "contest_pokemon_id"
+    t.integer  "contest_start"
+    t.integer  "daycare_pokemon_id"
+    t.integer  "daycare_start"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end

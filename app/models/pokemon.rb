@@ -31,4 +31,25 @@ class Pokemon < ApplicationRecord
   def status
     # for show page
   end
+
+  def action(kind)
+    if kind == 'train'
+      stat_one = 'attack'
+      new_stat_one = self.attack * 1.05
+      stat_two = 'defense'
+      new_stat_two = self.defense * 1.05
+    elsif kind == 'contest'
+      stat_one = 'special_attack'
+      new_stat_one = self.special_attack * 1.05
+      stat_two = 'special_defense'
+      new_stat_two = self.special_defense * 1.05
+    elsif kind == 'daycare'
+      stat_one = 'hp'
+      new_stat_one = self.hp * 1.05
+      stat_two =  'speed'
+      new_stat_two = self.speed * 1.05
+    end
+    self.update(occupied: false, stat_one => new_stat_one, stat_two => new_stat_two)
+    "#{self.name} gained #{(self[stat_one]*0.05).floor} #{stat_one.gsub("_", " ")} and #{(self[stat_two]*0.05).floor} #{stat_two.gsub("_", " ")}."
+  end
 end
