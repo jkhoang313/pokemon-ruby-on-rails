@@ -43,7 +43,7 @@ class TrainersController < ApplicationController
 
   def update
     find_trainer
-    @trainer.update(name: params[:trainer][:name], age: params[:trainer][:age])
+    @trainer.update(trainer_params)
     flash[:message] = "Trainer profile successfully updated"
 
     redirect_to trainer_path(@trainer)

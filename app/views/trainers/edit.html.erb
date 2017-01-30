@@ -8,6 +8,16 @@
       <br></br>
       <%= f.label :age %>
       <%= f.number_field :age %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :new_password %>
+      <%= f.password_field :password %>
+      <%= f.label :confirm_new_password %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.label :age %>
+      <%= f.number_field :age, min: 1 %>
+      <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>
+      <%= f.radio_button :gender, "Female" %><%= f.label :gender_female, "Female" %>
       <br></br>
       <%= f.submit class: "btn" %>
     <% end %>

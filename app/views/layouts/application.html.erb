@@ -12,7 +12,7 @@
       <div class="nav-wrapper">
        <ul id="nav-mobile" class="left hide-on-med-and-down">
          <li><%= link_to "Home", root_path %></li>
-         <li><%= link_to "How To Play", about_path %></li>
+         <!-- <li><%= link_to "How To Play", about_path %></li> -->
          <li><%= link_to "Pokedex", pokedex_index_path %></li>
          <li><%= link_to "Pokemon Gyms", gyms_path %></li>
        </ul>
@@ -20,6 +20,7 @@
         <% if logged_in? %>
           <li><%= link_to "Capture Pokemon", wild_encounter_path, method: :post %></li>
           <li><%= link_to "My Pokemon", pokemons_path(current_trainer) %></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Pokemon Training<i class="material-icons right">arrow_drop_down</i></a></li>
           <!-- <li><%= link_to "Train", training_path %></li>
           <li><%= link_to "Pokemon Contest", contest_path %></li>
           <li><%= link_to "Daycare", daycare_path %></li> -->
@@ -42,9 +43,13 @@
           </li>
         </ul>
       </div>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><%= link_to "Physical Training", training_path %></li>
+        <li><%= link_to "Pokemon Contest", contest_path %></li>
+        <li><%= link_to "Daycare", daycare_path %></li>
+      </ul>
     </nav>
   </head>
-
   <body>
     <div class="main">
     <% if flash[:message] %>
@@ -54,5 +59,7 @@
       <%= image_tag("pokeball.png", class: "background-image") %>
       <%= yield %>
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </body>
 </html>

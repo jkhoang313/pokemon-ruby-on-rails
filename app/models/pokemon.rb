@@ -30,11 +30,11 @@ class Pokemon < ApplicationRecord
 
   def status
     if self == self.trainer.training_pokemon
-      "Training"
+      "Physical Training"
     elsif self == self.trainer.contest_pokemon
       "Pokemon Contest"
     elsif self == self.trainer.daycare_pokemon
-      "Pokemon Daycare"
+      "Daycare"
     end
   end
 
@@ -56,6 +56,6 @@ class Pokemon < ApplicationRecord
       new_stat_two = self.speed * 1.05
     end
     self.update(occupied: false, stat_one => new_stat_one, stat_two => new_stat_two)
-    "#{self.name} gained #{(self[stat_one]*0.05).floor} #{stat_one.gsub("_", " ")} and #{(self[stat_two]*0.05).floor} #{stat_two.gsub("_", " ")}."
+    "#{self.name} gained #{(self[stat_one]*0.05).floor} #{stat_one.gsub("_", " ").gsub(/\S+/, &:capitalize)} and #{(self[stat_two]*0.05).floor} #{stat_two.gsub("_", " ")}."
   end
 end
