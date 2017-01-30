@@ -77,7 +77,7 @@
       <% elsif @pokemon.gym %>
         <%= link_to "#{@pokemon.gym.name} Gym", gym_path(@pokemon.gym) %>
       <% else %>
-        <span class="orange-text">Training</span>
+        <span class="orange-text"><%= @pokemon.status %></span>
       <% end %>
     </h4>
   </div>

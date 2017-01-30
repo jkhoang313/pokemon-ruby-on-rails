@@ -29,7 +29,11 @@ class WildPokemonController < ApplicationController
     @chance = 1
     find_wild_pokemon
 
-    capture_pokemon(@chance, "Master Ball", 5)
+    capture_pokemon(@chance, "Master Ball", 7)
+  end
+
+  def captured
+    @pokemon_pos = params[:pokemon_id]
   end
 
   private
@@ -52,7 +56,7 @@ class WildPokemonController < ApplicationController
           @wild_pokemon.create_pokemon(current_trainer)
           @pokemon_count = current_trainer.pokemons.count
 
-          redirect_to pokemon_path(current_trainer, @pokemon_count)
+          redirect_to captured_path(current_trainer, @pokemon_count)
       elsif @chance <= 50 || @chance % 2 == 0
           flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
           @wild_pokemon = @wild_pokemon.name

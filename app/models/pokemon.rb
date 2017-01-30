@@ -29,7 +29,13 @@ class Pokemon < ApplicationRecord
   end
 
   def status
-    # for show page
+    if self == self.trainer.training_pokemon
+      "Training"
+    elsif self == self.trainer.contest_pokemon
+      "Pokemon Contest"
+    elsif self == self.trainer.daycare_pokemon
+      "Pokemon Daycare"
+    end
   end
 
   def action(kind)

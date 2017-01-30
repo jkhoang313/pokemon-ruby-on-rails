@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post '/wild_encounter/:pokemon_name/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
   post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
   get '/wild_encounter', to: 'wild_pokemon#wild'
+  get '/wild_encounter/:trainer_id/:pokemon_id', to: 'wild_pokemon#captured', as: "captured"
 
   get '/login', to: 'sessions#new', as: "login"
   post '/login', to: 'sessions#create', as: "new_session"
