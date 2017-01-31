@@ -5,6 +5,7 @@ class Pokedex < ApplicationRecord
   has_many :types, through: :pokedex_types
   has_many :weaknesses, through: :types
   has_many :strengths, through: :types
+  belongs_to :evolution, class_name: "Pokedex"
 
   def create_pokemon(trainer)
     group = trainer.starters.count < 6 ? "starters" : "storage"

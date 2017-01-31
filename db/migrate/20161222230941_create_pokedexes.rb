@@ -9,6 +9,7 @@ class CreatePokedexes < ActiveRecord::Migration[5.0]
       t.integer :special_attack
       t.integer :special_defense
       t.integer :speed
+      t.integer :evolution_id, default: nil
 
       t.timestamps
     end

@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.integer  "special_attack"
     t.integer  "special_defense"
     t.integer  "speed"
+    t.integer  "evolution_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

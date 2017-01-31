@@ -72,6 +72,16 @@
         <td>Speed:</td>
         <td><%= @pokemon.speed %></td>
       </tr>
+      <tr>
+        <td>Evolves Into:</td>
+        <td>
+          <% if @pokemon.evolution %>
+            <%= link_to @pokemon.evolution.name, pokedex_path(@pokemon.evolution) %>
+          <% else %>
+              None
+          <% end %>
+        </td>
+      </tr>
       </tbody>
     </table>
     <br>
