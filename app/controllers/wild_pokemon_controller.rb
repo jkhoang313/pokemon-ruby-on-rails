@@ -1,7 +1,6 @@
 class WildPokemonController < ApplicationController
   def wild
     @wild_pokemon = Pokedex.wild
-    #for some reason, this lists 2nd last pokemon when you click button while on page
   end
 
   def pokeball
@@ -56,7 +55,6 @@ class WildPokemonController < ApplicationController
           @wild_pokemon.create_pokemon(current_trainer)
           @pokemon_count = current_trainer.pokemons.count
 
-          # redirect_to captured_path(current_trainer, @pokemon_count)
           render :'wild_pokemon/captured'
           flash.clear
       elsif @chance <= 50 || @chance % 2 == 0

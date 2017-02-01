@@ -61,40 +61,64 @@ def create_strengths
   end
 end
 
+# def create_gyms
+#   Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
+#   Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 7, last_taken: Time.now)
+#   Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 2, gym_pokemon_id: 8, last_taken: Time.now)
+#   Gym.create(name: "Celadon", specialty: "Grass", gym_leader_id: 1, gym_pokemon_id: 3, last_taken: Time.now)
+#   Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 2, gym_pokemon_id: 9, last_taken: Time.now)
+#   Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 1, gym_pokemon_id: 4, last_taken: Time.now)
+#   Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 2, gym_pokemon_id: 10, last_taken: Time.now)
+#   Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 5, last_taken: Time.now)
+# end
+
+# def seed_trainer_jackson
+#   @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, leading_pokemon_id: 1, poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
+#   Pokedex.find_by(name: "Charmander").create_pokemon(@jackson)
+#   Pokedex.find_by(name: "Onix").create_pokemon(@jackson).update(occupied: true)
+#   Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson).update(occupied: true)
+#   Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson).update(occupied: true)
+#   Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson).update(occupied: true)
+# end
+#
+# def seed_trainer_lily
+#   @lily = Trainer.create(name: "Lily", email: "lily@lily.com", password: "jackson", password_confirmation: "jackson", age: 24, leading_pokemon_id: 6, poke_tokens: 100, gender: "Female", last_token: Time.now.to_i)
+#   Pokedex.find_by(name: "Squirtle").create_pokemon(@lily)
+#   Pokedex.find_by(name: "Starmie").create_pokemon(@lily).update(occupied: true)
+#   Pokedex.find_by(name: "Raichu").create_pokemon(@lily).update(occupied: true)
+#   Pokedex.find_by(name: "Venomoth").create_pokemon(@lily).update(occupied: true)
+#   Pokedex.find_by(name: "Magmar").create_pokemon(@lily).update(occupied: true)
+# end
+
+def seed_gym_leader
+  @gym_leader = Trainer.create(name: "Gym Leader", email: "gym-leader@gym-leader.com", password: "random", password_confirmation: "random", age: 24, leading_pokemon_id: 1, poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
+  Pokedex.find_by(name: "Onix").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Starmie").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Raichu").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Vileplume").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Venomoth").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Alakazam").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Magmar").create_pokemon(@gym_leader).update(occupied: true)
+  Pokedex.find_by(name: "Nidoking").create_pokemon(@gym_leader).update(occupied: true)
+end
+
 def create_gyms
-  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
-  Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 2, gym_pokemon_id: 7, last_taken: Time.now)
-  Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 2, gym_pokemon_id: 8, last_taken: Time.now)
-  Gym.create(name: "Celadon", specialty: "Grass", gym_leader_id: 1, gym_pokemon_id: 3, last_taken: Time.now)
-  Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 2, gym_pokemon_id: 9, last_taken: Time.now)
-  Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 1, gym_pokemon_id: 4, last_taken: Time.now)
-  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 2, gym_pokemon_id: 10, last_taken: Time.now)
-  Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 5, last_taken: Time.now)
-end
-
-def seed_trainer_jackson
-  @jackson = Trainer.create(name: "Jackson", email: "jackson@jackson.com", password: "lily", password_confirmation: "lily", age: 24, leading_pokemon_id: 1, poke_tokens: 100, gender: "Male", last_token: Time.now.to_i)
-  Pokedex.find_by(name: "Charmander").create_pokemon(@jackson)
-  Pokedex.find_by(name: "Onix").create_pokemon(@jackson).update(occupied: true)
-  Pokedex.find_by(name: "Vileplume").create_pokemon(@jackson).update(occupied: true)
-  Pokedex.find_by(name: "Alakazam").create_pokemon(@jackson).update(occupied: true)
-  Pokedex.find_by(name: "Nidoking").create_pokemon(@jackson).update(occupied: true)
-end
-
-def seed_trainer_lily
-  @lily = Trainer.create(name: "Lily", email: "lily@lily.com", password: "jackson", password_confirmation: "jackson", age: 24, leading_pokemon_id: 6, poke_tokens: 100, gender: "Female", last_token: Time.now.to_i)
-  Pokedex.find_by(name: "Squirtle").create_pokemon(@lily)
-  Pokedex.find_by(name: "Starmie").create_pokemon(@lily).update(occupied: true)
-  Pokedex.find_by(name: "Raichu").create_pokemon(@lily).update(occupied: true)
-  Pokedex.find_by(name: "Venomoth").create_pokemon(@lily).update(occupied: true)
-  Pokedex.find_by(name: "Magmar").create_pokemon(@lily).update(occupied: true)
+  Gym.create(name: "Pewter", specialty: "Rock", gym_leader_id: 1, gym_pokemon_id: 1, last_taken: Time.now)
+  Gym.create(name: "Cerulean", specialty: "Water", gym_leader_id: 1, gym_pokemon_id: 2, last_taken: Time.now)
+  Gym.create(name: "Vermilion", specialty: "Electric", gym_leader_id: 1, gym_pokemon_id: 3, last_taken: Time.now)
+  Gym.create(name: "Celadon", specialty: "Grass", gym_leader_id: 1, gym_pokemon_id: 4, last_taken: Time.now)
+  Gym.create(name: "Fuchsia", specialty: "Poison", gym_leader_id: 1, gym_pokemon_id: 5, last_taken: Time.now)
+  Gym.create(name: "Saffron", specialty: "Psychic", gym_leader_id: 1, gym_pokemon_id: 6, last_taken: Time.now)
+  Gym.create(name: "Cinnabar", specialty: "Fire", gym_leader_id: 1, gym_pokemon_id: 7, last_taken: Time.now)
+  Gym.create(name: "Viridian", specialty: "Ground", gym_leader_id: 1, gym_pokemon_id: 8, last_taken: Time.now)
 end
 
 create_pokedex
 create_types
 create_pokedex_types
-seed_trainer_jackson
-seed_trainer_lily
+# seed_trainer_jackson
+# seed_trainer_lily
+seed_gym_leader
 create_gyms
 create_weaknesses
 create_strengths
