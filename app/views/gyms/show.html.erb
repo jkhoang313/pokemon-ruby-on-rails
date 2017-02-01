@@ -65,7 +65,7 @@
         <tr>
           <td>Type:</td>
           <td><% @gym.gym_pokemon.types.each do |type| %>
-            <%= image_tag("types/#{type.name}", class: "type") %>
+            <%= image_tag("types/#{type.name}.png", class: "type") %>
           <% end %>
           </td>
         </tr>
@@ -124,7 +124,7 @@
         <tr>
           <td>Type:</td>
           <td><% @gym.challenger_pokemon.types.each do |type| %><span class="green-text">
-            <%= image_tag("types/#{type.name}", class: "type") %>
+            <%= image_tag("types/#{type.name}.png", class: "type") %>
           <% end %></td>
         </tr>
         <tr>
