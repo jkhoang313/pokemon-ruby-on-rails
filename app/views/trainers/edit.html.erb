@@ -21,7 +21,7 @@
       <br></br>
       <%= f.submit class: "btn" %>
     <% end %>
-    <%= button_to "Cancel", trainer_path(@trainer), method: :get, class: "btn" %>
+    <%= link_to "Cancel", trainer_path(@trainer), class: "btn" %>
   </div>
   <div class="col s5 offset-s1">
     <%= image_tag("Venusaur.png", class: "med-image") %>

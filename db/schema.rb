@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20170125151306) do
 
   create_table "pokedexes", force: :cascade do |t|
     t.string   "name"
-    t.integer  "level",           default: 1
     t.integer  "hp"
     t.integer  "attack"
     t.integer  "defense"
@@ -57,8 +56,8 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.integer  "special_defense"
     t.integer  "speed"
     t.integer  "evolution_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "pokemons", force: :cascade do |t|
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170125151306) do
     t.integer  "speed"
     t.boolean  "occupied",        default: false
     t.string   "group"
+    t.integer  "evolution_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end

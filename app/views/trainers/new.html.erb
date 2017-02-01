@@ -14,7 +14,7 @@
     <%= f.password_field :password_confirmation %>
     <%= f.label :age %>
     <%= f.number_field :age, min: 1 %>
-    <%= f.label :leading_pokemon_id %>
+    <%= f.label :leading_pokemon_id, "Starter Pokemon" %>
     <br>
     <%= f.radio_button :leading_pokemon_id, 1 %>
     <%= f.label :leading_pokemon_id_1, image_tag("pokemon/bulbasaur.jpg", class: "small-picture") %>
@@ -25,16 +25,13 @@
     <%= f.radio_button :leading_pokemon_id, 7 %>
     <%= f.label :leading_pokemon_id_7, image_tag("pokemon/squirtle.jpg", class: "small-picture") %>
     <%= f.label :leading_pokemon_id_7, "Squirtle" %>
-    <%= f.radio_button :leading_pokemon_id, 0 %>
-    <%= f.label :leading_pokemon_id_0, image_tag("question.png", class: "small-picture") %>
-    <%= f.label :leading_pokemon_id_0, "Random" %>
     <br>
     <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>
     <%= f.radio_button :gender, "Female" %><%= f.label :gender_female, "Female" %>
     <br>
     <%= f.submit class: "btn" %>
     <% end %>
-    <%= button_to "Cancel", trainers_path, method: :get, class: "btn" %>
+    <%= link_ti "Cancel", trainers_path, class: "btn" %>
   </div>
   <div class="col s5">
     <%= image_tag('Charizard.png', class: "med-image") %>

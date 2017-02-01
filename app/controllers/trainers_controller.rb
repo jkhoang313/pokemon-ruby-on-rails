@@ -10,7 +10,7 @@ class TrainersController < ApplicationController
   def create
     @trainer = Trainer.new(trainer_params)
     if @trainer.valid? && @trainer.authenticate(params[:trainer][:password_confirmation])
-      @starter = Pokedex.starter_pokemon(params[:trainer][:leading_pokemon_id].to_i)
+      @starter = Pokedex.find(params[:trainer][:leading_pokemon_id].to_i)
       @trainer.create_conditions(@starter)
       session[:trainer_id] = @trainer.id
       flash[:message] = "Welcome to Pokemon Ruby-On-Rails Trainer #{@trainer.name}!"

@@ -14,6 +14,7 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.integer :speed
       t.boolean :occupied, default: :false
       t.string :group
+      t.integer :evolution_id, default: nil
 
       t.timestamps
     end

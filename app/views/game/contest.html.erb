@@ -26,7 +26,7 @@
     <h4>Time Left</h4>
     <h5><%= current_trainer.contest_time_left %></h5>
     <% if current_trainer.contest_time_passed? %>
-      <%= button_to "Finish contest", remove_contest_path, method: :get, class: "btn"%>
+      <%= link_to "Finish contest", remove_contest_path, class: "btn"%>
     <% end %>
   </div>
   <div class="col s3 center">

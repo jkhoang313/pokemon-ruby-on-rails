@@ -6,6 +6,7 @@ class Pokemon < ApplicationRecord
   has_one :gym_challenge, :foreign_key => "challenger_pokemon"
   has_many :weaknesses, through: :types
   has_many :strengths, through: :types
+  belongs_to :evolution, class_name: "Pokedex", optional: true
 
   def total_stats(gym_type)
     if self.types.pluck(:name).include?(gym_type)

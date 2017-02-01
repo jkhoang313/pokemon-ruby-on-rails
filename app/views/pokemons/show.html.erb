@@ -60,13 +60,23 @@
           <td>Speed:</td>
           <td><%= @pokemon.speed %></td>
         </tr>
+        <tr>
+          <td>Evolves Into:</td>
+          <td>
+            <% if @pokemon.evolution %>
+              <%= link_to @pokemon.evolution.name, pokedex_path(@pokemon.evolution) %>
+            <% else %>
+              None
+            <% end %>
+          </td>
+        </tr>
       </tbody>
     </table>
     <br>
 
     <%= button_to "Release Pokemon", delete_pokemon_path(@trainer, @index), method: :delete, class: 'new-line btn', data: {confirm: "Are you sure you want to release your #{@pokemon.name}?"} if current_trainer == @trainer %>
-    <%= button_to "Back To All Pokemon", pokemons_path(@trainer), method: :get, class: "btn" %>
-    <%= button_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), method: :get, class: "btn" %>
+    <%= link_to "Back To All Pokemon", pokemons_path(@trainer), class: "btn" %>
+    <%= link_to "Back To Trainer #{@trainer.name}'s Page", trainer_path(@trainer), class: "btn" %>
   </div>
 
   <div class="col s4 offset-s4 center-align">

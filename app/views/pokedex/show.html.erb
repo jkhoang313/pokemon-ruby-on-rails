@@ -23,10 +23,6 @@
     <table class="striped">
       <tbody>
       <tr>
-        <td>Level:</td>
-        <td><%= @pokemon.level %></td>
-      </tr>
-      <tr>
         <td>Type:</td>
         <td><% @pokemon.types.each do |type| %>
           <%= image_tag("types/#{type.name}", class: "type") %>
@@ -77,8 +73,12 @@
         <td>
           <% if @pokemon.evolution %>
             <%= link_to @pokemon.evolution.name, pokedex_path(@pokemon.evolution) %>
+          <% elsif @pokemon.id == 133 %>
+            <%= link_to "Vaporeon, ", pokedex_path(134) %>
+            <%= link_to "Jolteon, ", pokedex_path(135) %>
+            <%= link_to "Flareon", pokedex_path(136) %>
           <% else %>
-              None
+            None
           <% end %>
         </td>
       </tr>
@@ -90,8 +90,9 @@
 
 <div class="row">
   <div class="col s12">
-    <%= button_to "Back to All Pokemon", pokedex_index_path, method: :get, class: "btn" %>
-    <%= button_to "Previous Pokemon", pokedex_path(@pokemon.id-1), method: :get, class: "left btn" unless @pokemon.id == 1%>
-    <%= button_to "Next Pokemon", pokedex_path(@pokemon.id+1), method: :get, class: "right btn" unless @pokemon.id == 151 %>
+    <%= link_to "Back to All Pokemon", pokedex_index_path, class: "btn" %>
+    <br>
+    <%= link_to "Previous Pokemon", pokedex_path(@pokemon.id-1), class: "left btn" unless @pokemon.id == 1 %>
+    <%= link_to "Next Pokemon", pokedex_path(@pokemon.id+1), class: "right btn" unless @pokemon.id == 151 %>
   </div>
 </div>
