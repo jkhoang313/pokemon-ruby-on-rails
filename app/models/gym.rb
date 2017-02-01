@@ -34,13 +34,11 @@ class Gym < ApplicationRecord
   end
 
   def challenge_over?
-    # self.challenge_time + 7200 < current_time
-    self.challenge_time + 10 < current_time
+    self.challenge_time + 7200 < current_time
   end
 
   def grace_over?
-    # self.challenge_time + 10800 < current_time
-    self.challenge_time + 20 < current_time
+    self.challenge_time + 10800 < current_time
   end
 
   def challenger_percentage_win
