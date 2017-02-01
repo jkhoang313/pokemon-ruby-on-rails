@@ -14,7 +14,7 @@ class PokemonsController < ApplicationController
   end
 
   def destroy
-    if current_user == params[:trainer_id]
+    if current_user == params[:id]
       find_trainer
       @index = params[:pokemon_id].to_i
       if @index <= 6
@@ -41,6 +41,10 @@ class PokemonsController < ApplicationController
 
         redirect_to pokemons_path(@trainer)
       end
+    else
+      flash[:message] = "YOU THOUGHT"
+
+      redirect_to trainer_path(current_trainer)
     end
   end
 
