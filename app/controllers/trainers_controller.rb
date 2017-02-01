@@ -49,11 +49,15 @@ class TrainersController < ApplicationController
   end
 
   def claim_token
-    find_trainer
-    @trainer.claim_token
-    flash[:message] = "Claimed Poke-Token"
+    if @trainer.token_time_passed?
+      find_trainer
+      @trainer.claim_token
+      flash[:message] = "Claimed Poke-Token"
 
-    redirect_to trainer_path(@trainer)
+      redirect_to trainer_path(@trainer)
+    else
+      redirect_to trainer_path(@trainer)
+    end
   end
 
   def run_away

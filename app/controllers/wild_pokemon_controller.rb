@@ -6,7 +6,6 @@ class WildPokemonController < ApplicationController
 
   def pokeball
     @chance = rand(1..100)
-    # find_wild_pokemon
     @wild_pokemon = Pokedex.find_by(name: session[:wild_pokemon])
 
     capture_pokemon(@chance, "Pokeball", 1)
@@ -14,7 +13,6 @@ class WildPokemonController < ApplicationController
 
   def great_ball
     @chance = rand(1..80)
-    # find_wild_pokemon
     @wild_pokemon = Pokedex.find_by(name: session[:wild_pokemon])
 
     capture_pokemon(@chance, "Great Ball", 2)
@@ -22,7 +20,6 @@ class WildPokemonController < ApplicationController
 
   def ultra_ball
     @chance = rand(1..60)
-    # find_wild_pokemon
     @wild_pokemon = Pokedex.find_by(name: session[:wild_pokemon])
 
     capture_pokemon(@chance, "Ultra Ball", 3)
