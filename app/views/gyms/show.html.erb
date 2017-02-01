@@ -1,5 +1,5 @@
 <div class="row center-align">
-  <h2><%= image_tag("badges/#{@gym.name}", class: "badge") %> <%= @gym.name %> Gym <%= image_tag("badges/#{@gym.name}", class: "badge") %></h2>
+  <h2><%= image_tag("badges/#{@gym.name}.png", class: "badge") %> <%= @gym.name %> Gym <%= image_tag("badges/#{@gym.name}.png", class: "badge") %></h2>
   <%= image_tag("types/#{@gym.specialty}.png", class: "type center-image") %>
   <h5><%= @gym.status %></h5>
   <h5><%= link_to "Challenge History", results_path(@gym) %></h5>
