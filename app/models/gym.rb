@@ -45,7 +45,7 @@ class Gym < ApplicationRecord
 
   def challenger_percentage_win
     c = attacker_totals(challenger_pokemon, gym_pokemon)
-    g = attacker_totals(gym_pokemon, challenger_pokemon)
+    g = attacker_totals(gym_pokemon, challenger_pokemon)*1.2
 
     c/(c+g).to_f
   end
@@ -82,9 +82,11 @@ class Gym < ApplicationRecord
   def gym_results
     find_winner
     if winner_id == challenger_pokemon_id
+      self.challenger_pokemon.add_experience
       self.gym_pokemon.update(occupied: false)
       self.update(gym_leader_id: challenger_id, gym_pokemon_id: challenger_pokemon_id, last_taken: (self.challenge_time + 10800))
     else
+      self.gym_pokemon.add_experience
       self.challenger_pokemon.update(occupied: false)
     end
     self.update(challenger_id: nil, challenger_pokemon_id: nil, winner_id: nil, challenge_time: nil)

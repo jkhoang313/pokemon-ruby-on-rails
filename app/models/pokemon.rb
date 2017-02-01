@@ -56,8 +56,13 @@ class Pokemon < ApplicationRecord
       stat_two =  'speed'
       new_stat_two = self.speed * 1.05
     end
-    # self.add_experience
     self.update(occupied: false, stat_one => new_stat_one, stat_two => new_stat_two)
-    "#{self.name} gained #{(self[stat_one]*0.05).floor} #{stat_one.gsub("_", " ").gsub(/\S+/, &:capitalize)} and #{(self[stat_two]*0.05).floor} #{stat_two.gsub("_", " ")}."
+    self.add_experience
+    "#{self.name} gained #{(self[stat_one]*0.05).floor} #{stat_one.gsub("_", " ").gsub(/\S+/, &:capitalize)} and #{(self[stat_two]*0.05).floor} #{stat_two.gsub("_", " ").gsub(/\S+/, &:capitalize)}."
+  end
+
+  def add_experience
+    self.update(experience: self.experience+=1)
+    self.update(experience: 0, level: self.level+=1, hp: self.hp*1.05, attack: self.attack*1.05, defense: self.defense*1.05, special_attack: self.special_attack*1.05, special_defense: self.special_defense*1.05, speed: self.speed*1.05) if self.experience >= 5
   end
 end

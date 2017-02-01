@@ -93,6 +93,26 @@ td {
   color: orange;
 }
 
+div.exp-wrapper {
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  z-index: 0;
+}
+
+div.exp {
+  background-color: teal;
+  height: 100%;
+  z-index: -1;
+  position: relative;
+}
+
+.experience {
+  font-size: 25px;
+}
+
 .open {
   color: green;
 }

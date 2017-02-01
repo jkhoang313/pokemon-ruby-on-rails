@@ -34,7 +34,7 @@
     <h4>Current Team:</h4>
     <ul class="roster">
       <% @trainer.starters.each.with_index(1) do |pokemon, index| %>
-      <li class="sprite-image"><%= image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image") %></li>
+      <li class="sprite-image"><%= link_to image_tag("pokemon-sprite/#{pokemon.pokedex_id}.png", class: "sprite-image"), pokemon_path(@trainer, index) %></li>
       <% end %>
     </ul>
     <h5>

@@ -26,7 +26,7 @@
     <h4>Time Left</h4>
     <h5><%= current_trainer.daycare_time_left %></h5>
     <% if current_trainer.daycare_time_passed? %>
-      <%= link_to "Take out of daycare", remove_daycare_path, class: "btn"%>
+      <%= button_to "Take out of daycare", remove_daycare_path, class: "btn" %>
     <% end %>
   </div>
   <div class="col s3 center">
