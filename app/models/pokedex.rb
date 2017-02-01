@@ -27,7 +27,7 @@ class Pokedex < ApplicationRecord
 
     if random_number < 5000
       common.sample
-    elsif random_number < 9500
+    elsif random_number < 9900
       rare.sample
     elsif random_number <= 9999
       super_rare.sample
