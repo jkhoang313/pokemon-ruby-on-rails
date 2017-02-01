@@ -23,13 +23,13 @@ class Pokedex < ApplicationRecord
     super_rare = ["Dratini", "Mr-mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Aerodactyl", "Snorlax", "Tauros", "Lapras", "Kangaskhan", "Eevee", "Rhyhorn"]
     ultra_rare = ["Articuno", "Zapdos", "Moltres", "Mewtwo", "Mew"]
 
-    random_number = rand(1..1000)
+    random_number = rand(1..10000)
 
-    if random_number < 500
+    if random_number < 5000
       common.sample
-    elsif random_number < 950
+    elsif random_number < 9500
       rare.sample
-    elsif random_number < 999
+    elsif random_number <= 9999
       super_rare.sample
     else
       ultra_rare.sample
