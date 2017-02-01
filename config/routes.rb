@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   post '/trainers/:id', to: 'trainers#change_lead'
   resources :trainers
 
-  get '/pokedex', to: 'pokedex#index', as: "pokedex"
-  get '/pokedex', to: 'pokedex#show'
+  get '/pokedex', to: 'pokedex#index', as: "pokedex_index"
+  get '/pokedex/:id', to: 'pokedex#show', as: "pokedex"
 
   post '/wild_encounter/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
   post '/wild_encounter/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
