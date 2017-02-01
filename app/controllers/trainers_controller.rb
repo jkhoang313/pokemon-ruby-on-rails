@@ -53,7 +53,7 @@ class TrainersController < ApplicationController
   end
 
   def claim_token
-    if @trainer.token_time_passed?
+    if current_trainer.token_time_passed?
       find_trainer
       @trainer.claim_token
       flash[:message] = "Claimed Poke-Token"
