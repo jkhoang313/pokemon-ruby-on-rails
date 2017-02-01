@@ -5,7 +5,7 @@
 <div class="row">
   <% @gyms.each do |gym| %>
   <div class="col s12 m3">
-    <div class="card">
+    <div class="card cyan lighten-5">
       <div class="card-image">
         <%= link_to image_tag("gyms/#{gym.name}.png", class: "gym-image"), gym_path(gym) %>
         <span class="card-title"><%= gym.name + " Gym" %></span>
@@ -16,7 +16,7 @@
       <div class="card-content center-align">
         <p>Gym Leader: <%= link_to gym.gym_leader.name, trainer_path(gym.gym_leader) %></p>
         <br>
-        <%= image_tag("pokemon/#{gym.gym_pokemon.name.downcase}.jpg", class: "gym-pokemon") %>
+        <%= image_tag("pokemon/#{gym.gym_pokemon.name}.png", class: "gym-pokemon") %>
         <br>
 
         <% if gym.challenged? %>

@@ -2,7 +2,7 @@
   <div class="col s12 center">
     <h3><%= @old_pokemon %> Evolved into a <%= @pokemon.name %>!</h3>
     <br><br>
-    <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+    <%= image_tag("pokemon/#{@pokemon.name}.png", class: "pokemon-image") %>
     <br><br>
     <%= link_to "See New Pokemon", pokemon_path(current_trainer, @index+1), class: "btn" %>
   </div>

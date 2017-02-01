@@ -30,7 +30,7 @@
     <% end %>
   </div>
   <div class="col s3 center">
-    <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg") %>
+    <%= image_tag("pokemon/#{@pokemon.name}.png", class: "pokemon-image") %>
     <h5><%= @pokemon.name %></h5>
     <table class="striped">
       <tbody>

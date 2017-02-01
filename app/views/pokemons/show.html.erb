@@ -80,7 +80,7 @@
   </div>
 
   <div class="col s3 offset-s5 center-align">
-    <%= image_tag("pokemon/#{@pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+    <%= image_tag("pokemon/#{@pokemon.name}.png", class: "pokemon-image") %>
     <h4>Status:
       <% if !@pokemon.occupied %>
         <span class="green-text">Available</span>

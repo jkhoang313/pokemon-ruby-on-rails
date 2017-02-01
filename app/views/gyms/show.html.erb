@@ -10,7 +10,7 @@
     <h3 class="gym_leader">Gym Leader</h3>
     <h4><%= link_to @gym.gym_leader.name, trainer_path(@gym.gym_leader) %></h4>
     <br>
-    <%= image_tag("pokemon/#{@gym.gym_pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+    <%= image_tag("pokemon/#{@gym.gym_pokemon.name}.png", class: "pokemon-image") %>
     <h5><%= @gym.gym_pokemon.name %></h5>
   </div>
   <div class="col s4 center-align">
@@ -38,7 +38,7 @@
       <h3 class="challenger">Challenger</h3>
       <h4><%= link_to @gym.challenger.name, trainer_path(@gym.challenger) %></h4>
       <br>
-      <%= image_tag("pokemon/#{@gym.challenger_pokemon.name.downcase}.jpg", class: "pokemon-image") %>
+      <%= image_tag("pokemon/#{@gym.challenger_pokemon.name}.png", class: "pokemon-image") %>
       <h5><%= @gym.challenger_pokemon.name %></h5>
     <% elsif logged_in? && current_trainer != @gym.gym_leader %>
       <h3 class="challenger">Challenger</h3>
