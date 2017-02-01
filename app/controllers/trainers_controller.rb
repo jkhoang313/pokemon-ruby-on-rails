@@ -24,12 +24,14 @@ class TrainersController < ApplicationController
   end
 
   def destroy
-    find_trainer
-    @trainer.destroy
-    session.clear
-    flash[:message] = "You have left Pokemon Ruby-On-Rails"
+    if current_user == params[:trainer_id]
+      find_trainer
+      @trainer.destroy
+      session.clear
+      flash[:message] = "You have left Pokemon Ruby-On-Rails"
 
-    redirect_to trainers_path
+      redirect_to trainers_path
+    end
   end
 
   def show
@@ -41,11 +43,13 @@ class TrainersController < ApplicationController
   end
 
   def update
-    find_trainer
+    if current_user == params[:id]
+      find_trainer
     @trainer.update(trainer_params)
     flash[:message] = "Trainer profile successfully updated"
 
-    redirect_to trainer_path(@trainer)
+      redirect_to trainer_path(@trainer)
+    end
   end
 
   def claim_token
