@@ -32,10 +32,17 @@ Rails.application.routes.draw do
 
   resources :pokedex
 
-  post '/wild_encounter/:pokemon_name/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
-  post '/wild_encounter/:pokemon_name/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
-  post '/wild_encounter/:pokemon_name/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
-  post '/wild_encounter/:pokemon_name/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
+  # post '/wild_encounter/:pokemon_name/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
+  # post '/wild_encounter/:pokemon_name/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
+  # post '/wild_encounter/:pokemon_name/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
+  # post '/wild_encounter/:pokemon_name/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
+  # post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
+  # get '/wild_encounter', to: 'wild_pokemon#wild'
+
+  post '/wild_encounter/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
+  post '/wild_encounter/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
+  post '/wild_encounter/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
+  post '/wild_encounter/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
   post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
   get '/wild_encounter', to: 'wild_pokemon#wild'
 
