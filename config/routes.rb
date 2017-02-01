@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   post '/daycare', to: 'game#start_daycare', as: "start_daycare"
   post '/daycare/remove', to: 'game#remove_daycare', as: "remove_daycare"
 
+
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
+  post '/trainers/:id/pokemons/:pokemon_id/evolve', to: 'pokemons#evolve', as: "evolve"
+  post '/trainers/:id/pokemons/:pokemon_id/evolved', to: 'pokemons#evolved', as: "evolved"
   post '/trainers/:id/pokemons', to: 'pokemons#transfer'
   get '/trainers/:id/pokemons/:pokemon_id', to: 'pokemons#show', as: "pokemon"
   get '/trainers/:id/pokemons', to: 'pokemons#index', as: "pokemons"

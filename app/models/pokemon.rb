@@ -65,4 +65,9 @@ class Pokemon < ApplicationRecord
     self.update(experience: self.experience+=1)
     self.update(experience: 0, level: self.level+=1, hp: self.hp*1.05, attack: self.attack*1.05, defense: self.defense*1.05, special_attack: self.special_attack*1.05, special_defense: self.special_defense*1.05, speed: self.speed*1.05) if self.experience >= 5
   end
+
+  def evolve
+    @evolved_pokemon = Pokedex.find(self.evolution_id)
+    self.update(pokedex_id: @evolved_pokemon.id, name: @evolved_pokemon.name, hp: @evolved_pokemon.hp+(self.hp*0.25), attack: @evolved_pokemon.attack+(self.attack*0.25), defense: @evolved_pokemon.defense+(self.defense*0.25), special_attack: @evolved_pokemon.special_attack+(self.special_attack*0.25), special_defense: @evolved_pokemon.special_defense+(self.special_defense*0.25), speed: @evolved_pokemon.speed+(self.speed*0.25), evolution_id: @evolved_pokemon.evolution_id)
+  end
 end

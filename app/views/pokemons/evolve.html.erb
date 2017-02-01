@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col s12 center">
+    <h3>What? <%= @pokemon.name %> is evolving!</h3>
+    <br><br>
+    <%= image_tag('gifs/evolve.gif', class: "gif") %>
+    <%= button_to "Finish Evolution", evolved_path(current_trainer, @index+1), class: "btn" %>
+  </div>
+</div>

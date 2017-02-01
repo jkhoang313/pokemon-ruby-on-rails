@@ -7,7 +7,7 @@ class PokemonsController < ApplicationController
     find_trainer
     @index = params[:pokemon_id].to_i
     if @index <= 6
-    @pokemon = @trainer.starters.order(:id)[params[:pokemon_id].to_i-1]
+      @pokemon = @trainer.starters.order(:id)[params[:pokemon_id].to_i-1]
     else
       @pokemon = @trainer.storage.order(:id)[params[:pokemon_id].to_i-7]
     end
@@ -72,6 +72,28 @@ class PokemonsController < ApplicationController
     else
       flash[:message] = "Transfered #{@storage.name} to current team"
       @storage.update(group: "starters")
+    end
+  end
+
+  def evolve
+    @index = params[:pokemon_id].to_i - 1
+    if @index <= 5
+      @pokemon = current_trainer.starters[@index]
+    else
+      @pokemon = current_trainer.storage[@index]
+    end
+  end
+
+  def evolved
+    @index = params[:pokemon_id].to_i - 1
+    if @index <= 5
+      @pokemon = current_trainer.starters[@index]
+      @old_pokemon = @pokemon.name
+      @pokemon.evolve
+    else
+      @pokemon = current_trainer.storage[@index]
+      @old_pokemon = @pokemon.name
+      @pokemon.evolve
     end
   end
 end
