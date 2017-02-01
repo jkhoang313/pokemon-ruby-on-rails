@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   post '/daycare', to: 'game#start_daycare', as: "start_daycare"
   post '/daycare/remove', to: 'game#remove_daycare', as: "remove_daycare"
 
-
   post '/trainers/:id/claim', to: 'trainers#claim_token', as: "claim_token"
   post '/trainers/:id/pokemons/:pokemon_id/evolve', to: 'pokemons#evolve', as: "evolve"
   post '/trainers/:id/pokemons/:pokemon_id/evolved', to: 'pokemons#evolved', as: "evolved"
@@ -30,14 +29,8 @@ Rails.application.routes.draw do
   post '/trainers/:id', to: 'trainers#change_lead'
   resources :trainers
 
-  resources :pokedex
-
-  # post '/wild_encounter/:pokemon_name/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
-  # post '/wild_encounter/:pokemon_name/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
-  # post '/wild_encounter/:pokemon_name/ultra_ball', to: 'wild_pokemon#ultra_ball', as: 'ultra_ball'
-  # post '/wild_encounter/:pokemon_name/master_ball', to: 'wild_pokemon#master_ball', as: 'master_ball'
-  # post '/wild_encounter', to: 'wild_pokemon#wild', as: 'wild_encounter'
-  # get '/wild_encounter', to: 'wild_pokemon#wild'
+  get '/pokedex', to: 'pokedex#index', as: "pokedex"
+  get '/pokedex', to: 'pokedex#show'
 
   post '/wild_encounter/pokeball', to: 'wild_pokemon#pokeball', as: 'pokeball'
   post '/wild_encounter/great_ball', to: 'wild_pokemon#great_ball', as: 'great_ball'
@@ -53,5 +46,5 @@ Rails.application.routes.draw do
 
   post '/gyms/:id', to: 'gyms#challenge'
   get '/gyms/:id/results', to: 'gyms#results', as: "results"
-  resources :gyms
+  get '/gyms', to: 'gyms#index', as: "gyms"
 end
