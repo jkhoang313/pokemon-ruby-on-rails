@@ -24,6 +24,8 @@ class GameController < ApplicationController
     @pokemon = Pokemon.find(params["trainer"]["pokemons"])
     if @pokemon.occupied
       flash[:message] = "#{@pokemon.name} is already performing an action"
+    elsif current_trainer.poke_tokens < 3
+      flash[:message] = "You don't have enough Poke-tokens"
     else
       current_trainer.minus_token(3)
       current_trainer.update(training_pokemon_id: @pokemon.id, training_start: Time.now.to_i)
@@ -53,6 +55,8 @@ class GameController < ApplicationController
     @pokemon = Pokemon.find(params["trainer"]["pokemons"])
     if @pokemon.occupied
       flash[:message] = "#{@pokemon.name} is already performing an action"
+    elsif current_trainer.poke_tokens < 3
+      flash[:message] = "You don't have enough Poke-tokens"
     else
       current_trainer.minus_token(3)
       current_trainer.update(contest_pokemon_id: @pokemon.id, contest_start: Time.now.to_i)
@@ -82,6 +86,8 @@ class GameController < ApplicationController
     @pokemon = Pokemon.find(params["trainer"]["pokemons"])
     if @pokemon.occupied
       flash[:message] = "#{@pokemon.name} is already performing an action"
+    elsif current_trainer.poke_tokens < 3
+      flash[:message] = "You don't have enough Poke-tokens"
     else
       current_trainer.minus_token(3)
       current_trainer.update(daycare_pokemon_id: @pokemon.id, daycare_start: Time.now.to_i)

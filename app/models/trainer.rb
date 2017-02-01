@@ -40,8 +40,7 @@ class Trainer < ApplicationRecord
   end
 
   def training_time_passed?
-    training_start + 10 < current_time
-    # training_start + 7200 < current_time
+    training_start + 7200 < current_time
   end
 
   def training_time_left
@@ -53,8 +52,7 @@ class Trainer < ApplicationRecord
   end
 
   def contest_time_passed?
-    contest_start + 10 < current_time
-    # training_start + 7200 < current_time
+    training_start + 7200 < current_time
   end
 
   def contest_time_left
@@ -66,8 +64,7 @@ class Trainer < ApplicationRecord
   end
 
   def daycare_time_passed?
-    daycare_start + 10 < current_time
-    # daycare_start + 7200 < current_time
+    daycare_start + 7200 < current_time
   end
 
   def daycare_time_left
