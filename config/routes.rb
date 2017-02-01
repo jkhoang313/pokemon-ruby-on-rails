@@ -46,5 +46,6 @@ Rails.application.routes.draw do
 
   post '/gyms/:id', to: 'gyms#challenge'
   get '/gyms/:id/results', to: 'gyms#results', as: "results"
-  get '/gyms', to: 'gyms#index', as: "gym"
+  get '/gyms', to: 'gyms#index', as: "gyms"
+  get '/gyms/:id', to: 'gyms#show', as: "gym"
 end
