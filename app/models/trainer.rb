@@ -104,4 +104,15 @@ class Trainer < ApplicationRecord
     # self.where('name ILIKE ? OR email ILIKE ?', "%#{keyword}%","%#{keyword}%").order(:id)
     self.where('name ILIKE ?', "%#{keyword}%").order(:id)
   end
+
+  def delete_pokemon
+    self.pokemons.each do |pokemon|
+      pokemon.destroy
+    end
+  end
+
+  def destroy
+    super
+    delete_pokemon
+  end
 end

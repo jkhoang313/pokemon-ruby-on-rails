@@ -25,7 +25,6 @@ class TrainersController < ApplicationController
 
   def destroy
     find_trainer
-    delete_pokemon
     @trainer.destroy
     session.clear
     flash[:message] = "You have left Pokemon Ruby-On-Rails"
@@ -73,11 +72,5 @@ class TrainersController < ApplicationController
 
   def trainer_params
     params.require(:trainer).permit(:name, :email, :password, :password_confirmation, :age, :gender, :leading_pokemon_id)
-  end
-
-  def delete_pokemon
-    @trainer.pokemons.each do |pokemon|
-      pokemon.destroy
-    end
   end
 end
