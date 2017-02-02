@@ -24,7 +24,7 @@ class TrainersController < ApplicationController
   end
 
   def destroy
-    if current_user == params[:id]
+    if current_trainer == Trainer.find(params[:id])
       find_trainer
       @trainer.destroy
       session.clear
@@ -32,7 +32,7 @@ class TrainersController < ApplicationController
 
       redirect_to trainers_path
     else
-      flash[:message] = "YOU THOUGHT"
+      flash[:message] = "absolutely not"
 
       redirect_to trainer_path(current_trainer)
     end
@@ -43,14 +43,21 @@ class TrainersController < ApplicationController
   end
 
   def edit
-    find_trainer
+    if current_trainer == Trainer.find(params[:id])
+      find_trainer
+    else
+      flash[:message] = "nope."
+
+      redirect_to trainer_path(current_trainer)
+    end
   end
 
   def update
-    if current_user == params[:id]
+    if current_trainer == Trainer.find(params[:id])
       find_trainer
-    @trainer.update(trainer_params)
-    flash[:message] = "Trainer profile successfully updated"
+      # can't update age
+      @trainer.update(trainer_params)
+      flash[:message] = "Trainer profile successfully updated"
 
       redirect_to trainer_path(@trainer)
     else

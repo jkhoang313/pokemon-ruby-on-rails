@@ -52,7 +52,7 @@ class Trainer < ApplicationRecord
   end
 
   def contest_time_passed?
-    training_start + 7200 < current_time
+    contest_start + 7200 < current_time
   end
 
   def contest_time_left

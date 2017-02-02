@@ -14,7 +14,7 @@ class PokemonsController < ApplicationController
   end
 
   def destroy
-    if current_user == params[:id]
+    if current_trainer == Trainer.find(params[:id])
       find_trainer
       @index = params[:pokemon_id].to_i
       if @index <= 6
@@ -42,42 +42,60 @@ class PokemonsController < ApplicationController
         redirect_to pokemons_path(@trainer)
       end
     else
-      flash[:message] = "YOU THOUGHT"
+      flash[:message] = "Alright this is starting to get annoying"
 
       redirect_to trainer_path(current_trainer)
     end
   end
 
   def transfer
-    find_trainer
-    if params["trainer"]["starters"]
-      transfer_starter
-    elsif params["trainer"]["storage"]
-      transfer_storage
-    end
+    if current_trainer == Trainer.find(params[:id])
+      find_trainer
+      if params["trainer"]["starters"]
+        transfer_starter
+      elsif params["trainer"]["storage"]
+        transfer_storage
+      end
 
-    redirect_to pokemons_path(@trainer)
+      redirect_to pokemons_path(@trainer)
+    else
+      flash[:message] = "I'm going to hack YOUR game"
+
+      redirect_to trainer_path(current_trainer)
+    end
   end
 
   def transfer_starter
-    @starter = Pokemon.find(params["trainer"]["starters"])
-    if @starter.occupied
-      flash[:message] = "#{@starter.name} is occupied, unable to transfer"
-    elsif @starter == current_trainer.leading_pokemon
-      flash[:message] = "Unable to transfer Lead Pokemon"
+    if current_trainer == Trainer.find(params[:id])
+      @starter = Pokemon.find(params["trainer"]["starters"])
+      if @starter.occupied
+        flash[:message] = "#{@starter.name} is occupied, unable to transfer"
+      elsif @starter == current_trainer.leading_pokemon
+        flash[:message] = "Unable to transfer Lead Pokemon"
+      else
+        flash[:message] = "Transfered #{@starter.name} to storage"
+        @starter.update(group: "storage")
+      end
     else
-      flash[:message] = "Transfered #{@starter.name} to storage"
-      @starter.update(group: "storage")
+      flash[:message] = "Try again, (not really thought)"
+
+      redirect_to trainer_path(current_trainer)
     end
   end
 
   def transfer_storage
-    @storage = Pokemon.find(params["trainer"]["storage"])
-    if current_trainer.starters.count == 6
-      flash[:message] = "Transfer failed, current team is full"
+    if current_trainer == Trainer.find(params[:id])
+      @storage = Pokemon.find(params["trainer"]["storage"])
+      if current_trainer.starters.count == 6
+        flash[:message] = "Transfer failed, current team is full"
+      else
+        flash[:message] = "Transfered #{@storage.name} to current team"
+        @storage.update(group: "starters")
+      end
     else
-      flash[:message] = "Transfered #{@storage.name} to current team"
-      @storage.update(group: "starters")
+      flash[:message] = "stop it please..."
+
+      redirect_to trainer_path(current_trainer)
     end
   end
 
@@ -88,16 +106,25 @@ class PokemonsController < ApplicationController
     else
       @pokemon = current_trainer.storage[@index]
     end
+
+    if !(@pokemon.evolution && @pokemon.level >= 8) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 4)
+      flash[:message] = "NOT TODAY"
+
+      redirect_to trainer_path(current_trainer)
+    end
   end
 
   def evolved
     @index = params[:pokemon_id].to_i - 1
     if @index <= 5
       @pokemon = current_trainer.starters[@index]
-      @old_pokemon = @pokemon.name
-      @pokemon.evolve
     else
       @pokemon = current_trainer.storage[@index]
+    end
+
+    if !(@pokemon.evolution && @pokemon.level >= 8) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 4)
+      flash[:message] = "STOP MESSING WITH MY CODE"
+    else
       @old_pokemon = @pokemon.name
       @pokemon.evolve
     end

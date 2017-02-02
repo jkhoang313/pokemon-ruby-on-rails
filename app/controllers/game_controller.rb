@@ -36,10 +36,14 @@ class GameController < ApplicationController
   end
 
   def remove_training
-    flash[:message] = current_trainer.training_pokemon.action("train")
-    current_trainer.update(training_pokemon_id: nil)
+    if current_trainer.training_time_passed?
+      flash[:message] = current_trainer.training_pokemon.action("train")
+      current_trainer.update(training_pokemon_id: nil)
 
-    redirect_to training_path
+      redirect_to training_path
+    else
+      flash[:message] = "STOP TRYING TO HACK MY CODE"
+    end
   end
 
   def contest
@@ -67,10 +71,14 @@ class GameController < ApplicationController
   end
 
   def remove_contest
-    flash[:message] = current_trainer.contest_pokemon.action("contest")
-    current_trainer.update(contest_pokemon_id: nil)
+    if current_trainer.contest_time_passed?
+      flash[:message] = current_trainer.contest_pokemon.action("contest")
+      current_trainer.update(contest_pokemon_id: nil)
 
-    redirect_to contest_path
+      redirect_to contest_path
+    else
+      flash[:message] = "Not going to get it"
+    end
   end
 
   def daycare
@@ -98,9 +106,13 @@ class GameController < ApplicationController
   end
 
   def remove_daycare
-    flash[:message] = current_trainer.daycare_pokemon.action("daycare")
-    current_trainer.update(daycare_pokemon_id: nil)
+    if current_trainer.daycare_time_passed?
+      flash[:message] = current_trainer.daycare_pokemon.action("daycare")
+      current_trainer.update(daycare_pokemon_id: nil)
 
-    redirect_to daycare_path
+      redirect_to daycare_path
+    else
+      flash[:message] = "Of all things why try to hack a daycare"
+    end
   end
 end

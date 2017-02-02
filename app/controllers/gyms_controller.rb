@@ -22,6 +22,8 @@ class GymsController < ApplicationController
       flash[:message] = "#{@pokemon_choice.name} is already performing an action"
 
       redirect_to gym_path(@gym)
+    elsif @gym.challenged?
+      flash[:message] = "It's already challenged...."
     else
       flash[:message] = "You challenged the #{@gym.name} City Gym!"
       @pokemon_choice.update(occupied: true)
