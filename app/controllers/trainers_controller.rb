@@ -71,7 +71,7 @@ class TrainersController < ApplicationController
     if current_trainer.token_time_passed?
       find_trainer
       @trainer.claim_token
-      flash[:message] = "Claimed Poke-Token"
+      flash[:message] = "Claimed 2 Poke-Tokens"
 
       redirect_to trainer_path(@trainer)
     else
