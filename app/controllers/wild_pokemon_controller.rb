@@ -51,7 +51,7 @@ class WildPokemonController < ApplicationController
       flash.clear
     else
       current_trainer.minus_token(tokens)
-      if @chance <= 30
+      if @chance <= 40
           flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
           @wild_pokemon.create_pokemon(current_trainer)
           @pokemon_count = current_trainer.pokemons.count

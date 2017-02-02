@@ -76,7 +76,7 @@ class Trainer < ApplicationRecord
   end
 
   def claim_token
-    self.update(poke_tokens: self.poke_tokens+2)
+    self.update(poke_tokens: self.poke_tokens+3)
     set_token_time
   end
 
