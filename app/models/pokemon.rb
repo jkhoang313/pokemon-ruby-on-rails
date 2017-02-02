@@ -36,6 +36,8 @@ class Pokemon < ApplicationRecord
       "Pokemon Contest"
     elsif self == self.trainer.daycare_pokemon
       "Daycare"
+    else
+      "Gym Battle"
     end
   end
 
