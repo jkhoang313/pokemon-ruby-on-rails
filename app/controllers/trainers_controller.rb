@@ -30,10 +30,8 @@ class TrainersController < ApplicationController
       session.clear
       flash[:message] = "You have left Pokemon Ruby-On-Rails"
 
-      redirect_to trainers_path
+      redirect_to signup_path
     else
-      flash[:message] = "absolutely not"
-
       redirect_to trainer_path(current_trainer)
     end
   end
@@ -46,8 +44,6 @@ class TrainersController < ApplicationController
     if current_trainer == Trainer.find(params[:id])
       find_trainer
     else
-      flash[:message] = "nope."
-
       redirect_to trainer_path(current_trainer)
     end
   end
@@ -58,13 +54,8 @@ class TrainersController < ApplicationController
       # can't update age
       @trainer.update(trainer_params)
       flash[:message] = "Trainer profile successfully updated"
-
-      redirect_to trainer_path(@trainer)
-    else
-      flash[:message] = "YOU THOUGHT"
-
-      redirect_to trainer_path(current_trainer)
     end
+    redirect_to trainer_path(@trainer)
   end
 
   def claim_token
@@ -72,11 +63,8 @@ class TrainersController < ApplicationController
       find_trainer
       @trainer.claim_token
       flash[:message] = "Claimed 3 Poke-Tokens"
-
-      redirect_to trainer_path(@trainer)
-    else
-      redirect_to trainer_path(current_trainer)
     end
+    redirect_to trainer_path(current_trainer)
   end
 
   def run_away

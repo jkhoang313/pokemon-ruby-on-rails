@@ -4,7 +4,6 @@ class GameController < ApplicationController
     flash[:message] = "No Trainer Matches Your Search" if @search.empty?
     render :'game/search'
     flash.clear
-    # same problem as pokemon capture
   end
 
   def get_search
@@ -39,11 +38,8 @@ class GameController < ApplicationController
     if current_trainer.training_time_passed?
       flash[:message] = current_trainer.training_pokemon.action("train")
       current_trainer.update(training_pokemon_id: nil)
-
-      redirect_to training_path
-    else
-      flash[:message] = "STOP TRYING TO HACK MY CODE"
     end
+    redirect_to training_path
   end
 
   def contest
@@ -74,11 +70,8 @@ class GameController < ApplicationController
     if current_trainer.contest_time_passed?
       flash[:message] = current_trainer.contest_pokemon.action("contest")
       current_trainer.update(contest_pokemon_id: nil)
-
-      redirect_to contest_path
-    else
-      flash[:message] = "Not going to get it"
     end
+    redirect_to contest_path
   end
 
   def daycare
@@ -109,10 +102,7 @@ class GameController < ApplicationController
     if current_trainer.daycare_time_passed?
       flash[:message] = current_trainer.daycare_pokemon.action("daycare")
       current_trainer.update(daycare_pokemon_id: nil)
-
-      redirect_to daycare_path
-    else
-      flash[:message] = "Of all things why try to hack a daycare"
     end
+    redirect_to daycare_path
   end
 end

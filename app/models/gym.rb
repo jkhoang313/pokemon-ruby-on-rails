@@ -10,6 +10,10 @@ class Gym < ApplicationRecord
     self.challenged? ? "Currently being challenged" : "Open to Challengers"
   end
 
+  def poke_tokens_loot
+    (self.current_time - self.last_taken)/14400
+  end
+
   def current_streak
     total_time = current_time - self.last_taken
     time_format(total_time)
@@ -81,6 +85,7 @@ class Gym < ApplicationRecord
     find_winner
     if winner_id == challenger_pokemon_id
       self.challenger_pokemon.add_experience
+      self.gym_leader.update(poke_tokens: self.gym_leader.poke_tokens+=self.poke_tokens_loot)
       self.gym_pokemon.update(occupied: false)
       self.update(gym_leader_id: challenger_id, gym_pokemon_id: challenger_pokemon_id, last_taken: (self.challenge_time + 10800))
     else
