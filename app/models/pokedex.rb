@@ -25,9 +25,9 @@ class Pokedex < ApplicationRecord
 
     random_number = rand(1..10000)
 
-    if random_number < 5000
+    if random_number < 4000
       common.sample
-    elsif random_number < 9900
+    elsif random_number < 9000
       rare.sample
     elsif random_number <= 9999
       super_rare.sample

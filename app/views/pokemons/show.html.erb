@@ -97,7 +97,7 @@
     </div>
     <h6 class="left">Experience</h6>
     <br>
-    <% if (@pokemon.evolution && @pokemon.level >= 8) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 4)%>
+    <% if (@pokemon.evolution && @pokemon.level >= 6) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 3)%>
       <%= button_to "Evolve!", evolve_path(current_trainer, @index), class: "btn", data: {confirm: "Are you sure you want to evolve #{@pokemon.name}?"} %>
     <% end %>
   </div>
