@@ -75,9 +75,12 @@ class Trainer < ApplicationRecord
     end
   end
 
+  def count_claim
+    (current_time - last_token)/7200
+  end
+
   def claim_token
-    self.update(poke_tokens: self.poke_tokens+3)
-    set_token_time
+    self.update(poke_tokens: self.poke_tokens+(self.count_claim*3), last_token: self.last_token+(7200*self.count_claim))
   end
 
   def minus_token(number)
