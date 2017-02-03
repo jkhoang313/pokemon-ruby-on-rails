@@ -76,7 +76,8 @@ class Trainer < ApplicationRecord
   end
 
   def count_claim
-    (current_time - last_token)/7200
+    current = (current_time - last_token)/7200
+    current > 8 ? 8 : current
   end
 
   def claim_token
