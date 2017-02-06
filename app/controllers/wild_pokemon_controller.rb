@@ -57,6 +57,7 @@ class WildPokemonController < ApplicationController
           @pokemon_count = current_trainer.pokemons.count
 
           render :'wild_pokemon/captured'
+          session[:wp] = nil
           flash.clear
       elsif @chance <= 50 || @chance % 2 == 0
           flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
@@ -66,6 +67,7 @@ class WildPokemonController < ApplicationController
           flash.clear
       else
         flash[:message] = "Threw a(n) #{ball}. Wild #{@wild_pokemon.name} ran away!"
+        session[:wp] = nil
 
         redirect_to trainer_path(current_trainer)
       end

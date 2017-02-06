@@ -20,7 +20,7 @@
     </ul>
 
     <% if current_trainer == @trainer %>
-      <%= button_to "Claim #{@trainer.count_claim*3} Poke-Tokens", claim_token_path(@trainer), class: 'new-line btn' if @trainer.token_time_passed? %>
+      <%= button_to "Claim #{@trainer.count_claim*2} Poke-Tokens", claim_token_path(@trainer), class: 'new-line btn' if @trainer.token_time_passed? %>
       <%= link_to "Edit Trainer", edit_trainer_path, class: 'btn' %>
       <%= button_to "Delete Trainer", @trainer, class: 'btn', method: :delete, data: {confirm: 'Are you sure you want to delete this trainer?'} %>
     <% end %>

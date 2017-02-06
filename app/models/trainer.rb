@@ -82,9 +82,9 @@ class Trainer < ApplicationRecord
 
   def claim_token
     if self.count_claim == 8
-      self.update(poke_tokens: self.poke_tokens+24, last_token: Time.now)
+      self.update(poke_tokens: self.poke_tokens+16, last_token: Time.now)
     else
-      self.update(poke_tokens: self.poke_tokens+(self.count_claim*3), last_token: self.last_token+(7200*self.count_claim))
+      self.update(poke_tokens: self.poke_tokens+(self.count_claim*2), last_token: self.last_token+(7200*self.count_claim))
     end
   end
 
