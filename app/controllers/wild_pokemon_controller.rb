@@ -31,7 +31,7 @@ class WildPokemonController < ApplicationController
 
   def master_ball
     @chance = 1
-    find_wild_pokemon
+    @wild_pokemon = Pokedex.find_by(name: session[:wp])
 
     capture_pokemon(@chance, "Master Ball", 7)
   end
