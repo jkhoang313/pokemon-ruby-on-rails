@@ -18,6 +18,7 @@ class Pokedex < ApplicationRecord
   end
 
   def self.wild
+    # change so that schema includes rarity
     common = ["Caterpie", "Weedle", "Pidgey", "Rattata", "Spearow", "Ekans", "Magikarp", "Geodude", "Tentacool"]
     rare = ["Ditto", "Hitmonlee", "Hitmonchan", "Onix", "Tangela", "Chansey", "Horsea", "Goldeen", "Staryu", "Pikachu", "Sandshrew", "Nidoran-f", "Nidoran-m", "Clefairy", "Vulpix", "Jigglypuff", "Zubat", "Oddish", "Paras", "Venonat", "Diglett", "Meowth", "Psyduck", "Mankey", "Growlithe", "Poliwag", "Abra", "Machop", "Bellsprout",   "Ponyta", "Slowpoke", "Magnemite", "Farfetchd", "Doduo", "Seel", "Grimer", "Shellder", "Gastly",  "Drowzee", "Krabby", "Voltorb", "Exeggcute", "Cubone",  "Lickitung", "Koffing", "Porygon", "Omanyte", "Kabuto"]
     super_rare = ["Dratini", "Mr-mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Aerodactyl", "Snorlax", "Tauros", "Lapras", "Kangaskhan", "Eevee", "Rhyhorn"]
@@ -26,13 +27,13 @@ class Pokedex < ApplicationRecord
     random_number = rand(1..10000)
 
     if random_number < 4000
-      common.sample
-    elsif random_number < 9000
-      rare.sample
+      [common.sample, "common"]
+    elsif random_number < 9500
+      [rare.sample, "rare"]
     elsif random_number <= 9999
-      super_rare.sample
+      [super_rare.sample, "super-rare"]
     else
-      ultra_rare.sample
+      [ultra_rare.sample, "ultra-rare"]
     end
   end
 

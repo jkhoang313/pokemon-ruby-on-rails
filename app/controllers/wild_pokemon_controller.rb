@@ -1,7 +1,11 @@
 class WildPokemonController < ApplicationController
   def wild
-    @wild_pokemon = Pokedex.wild
+    @wild = Pokedex.wild
+    @wild_pokemon = @wild[0]
+    @rarity = @wild[1]
+    session[:r] = @rarity
     session[:wp] = @wild_pokemon
+    @captured = current_trainer.pokemons.where(name: @wild_pokemon).count > 0
   end
 
   def pokeball
@@ -52,19 +56,21 @@ class WildPokemonController < ApplicationController
     else
       current_trainer.minus_token(tokens)
       if @chance <= 40
-          flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
-          @wild_pokemon.create_pokemon(current_trainer)
-          @pokemon_count = current_trainer.pokemons.count
+        flash[:message] = "Threw a(n) #{ball}.You caught a(n) #{@wild_pokemon.name}!"
+        @wild_pokemon.create_pokemon(current_trainer)
+        @pokemon_count = current_trainer.pokemons.count
 
-          render :'wild_pokemon/captured'
-          session[:wp] = nil
-          flash.clear
+        render :'wild_pokemon/captured'
+        session[:wp] = nil
+        flash.clear
       elsif @chance <= 50 || @chance % 2 == 0
-          flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
-          @wild_pokemon = @wild_pokemon.name
+        flash[:message] = "Threw a(n) #{ball} but the wild #{@wild_pokemon.name} broke free!"
+        @wild_pokemon = @wild_pokemon.name
+        @captured = current_trainer.pokemons.where(name: @wild_pokemon).count > 0
+        @rarity = session[:r]
 
-          render :'wild_pokemon/wild'
-          flash.clear
+        render :'wild_pokemon/wild'
+        flash.clear
       else
         flash[:message] = "Threw a(n) #{ball}. Wild #{@wild_pokemon.name} ran away!"
         session[:wp] = nil

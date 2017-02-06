@@ -12,7 +12,7 @@
   </div>
   <div class="col s3 offset-s5">
     <%= image_tag("pokemon/#{@wild_pokemon}.png", class: "pokemon-image") %>
-    <h5>Wild <%= @wild_pokemon %> </h5>
+    <h5 class="<%= @rarity %>">Wild <%= @wild_pokemon %> <%= image_tag('pokeballs/pokeball.png', class: 'captured-ball') if @captured %></h5>
   </div>
 </div>
 
@@ -23,5 +23,17 @@
     <%= link_to image_tag('pokeballs/ultra_ball.png', class: "ball"), ultra_ball_path, class: "btn", data: {confirm: "Spend 3 Poke-Tokens to throw an Ultra Ball?"}, method: :post %>
     <%= link_to image_tag('pokeballs/master_ball.png', class: "ball"), master_ball_path, class: "btn", data: {confirm: "Spend 7 Poke-Tokens to throw an Master Ball?"}, method: :post %>
     <%= button_to "Run Away", run_away_path(current_trainer), class: "btn"%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s2 offset-s9 legend">
+    <h5>Legend</h5>
+    <hr>
+    <h6 class="common">Common</h6>
+    <h6 class="rare">Rare</h6>
+    <h6 class="super-rare">Super Rare</h6>
+    <h6 class="ultra-rare">Ultra Rare</h6>
+    <h6><%= image_tag('pokeballs/pokeball.png', class: "captured-ball") %> = Captured</h6>
   </div>
 </div>

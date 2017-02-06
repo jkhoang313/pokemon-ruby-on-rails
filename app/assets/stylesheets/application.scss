@@ -212,3 +212,27 @@ img.gif {
 img.ball {
   height: 100%;
 }
+
+img.captured-ball {
+  height: 25px;
+}
+
+.common {
+  color: black;
+}
+
+.rare {
+  color: green;
+}
+
+.super-rare {
+  color: blue;
+}
+
+.ultra-rare {
+  color: #ffd600;
+}
+
+.legend {
+  border-style: solid;
+}
