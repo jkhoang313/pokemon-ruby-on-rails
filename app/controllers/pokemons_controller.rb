@@ -85,7 +85,7 @@ class PokemonsController < ApplicationController
       @pokemon = current_trainer.storage[@index]
     end
 
-    if !(@pokemon.evolution && @pokemon.level >= 8) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 4)
+    if !(@pokemon.evolution && @pokemon.level >= 6) || (@pokemon.evolution && @pokemon.evolution.evolution && @pokemon.level >= 3)
       redirect_to trainer_path(current_trainer)
     end
   end
