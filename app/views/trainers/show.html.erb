@@ -7,6 +7,7 @@
   <div class="col s4">
     <ul class="collection">
       <li class="collection-item">Lead Pokemon: <%= @trainer.leading_pokemon.name %></li>
+      <li class="collection-item">Pokemon found: <%= @trainer.pokemons.pluck(:name).uniq.count %></li>
       <li class="collection-item">Gender: <%= @trainer.gender %></li>
       <li class="collection-item">Age: <%= @trainer.age %></li>
       <li class="collection-item">Current Poke-tokens: <%= @trainer.poke_tokens %></li>
