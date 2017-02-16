@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col s12">
+    <h2 class="center">Pokemon Battle!</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h4 class="center">Current Battle</h4>
+  </div>
+  <div class="col s4 center-align">
+    <h3 class="current">Trainer</h3>
+    <h4><%= link_to current_trainer.name, trainer_path(current_trainer) %></h4>
+    <br>
+  </div>
+  <div class="col s4 center-align">
+
+  </div>
+  <div class="col s4 center-align">
+    <h3 class="current">Enemy</h3>
+    <h4><%= link_to current_trainer.name, trainer_path(current_trainer) %></h4>
+    <br>
+  </div>
+</div>
+
+<div class="row center">
+  <h4>Battle History</h4>
+  <div class="col s6">
+    <h4>Challenger</h4>
+    <% if @challenge_history && !@challenge_history.empty? %>
+      <table class="bordered centered">
+        <thead>
+          <tr>
+            <th>Battle Date</th>
+            <th>Trainer</th>
+            <th>Pokemon</th>
+            <th>Winner</th>
+            <th>Pokemon</th>
+            <th>Enemy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @challenge_history.each do |challenge| %>
+            <tr>
+              <td class="grey"><%= challenge.created_at.strftime('%_m/%d/%Y %_I:%M %p %Z') %></td>
+              <td class="red white-text"><%= challenge.gym_leader %></td>
+              <td class="red white-text"><%= challenge.gym_pokemon %></td>
+              <% if challenge.winner == "Gym Leader" %>
+                <td class="red white-text"><%= challenge.winner %></td>
+              <% else %>
+                <td class="blue white-text"><%= challenge.winner %></td>
+              <% end %>
+              <td class="blue white-text"><%= challenge.challenger_pokemon %></td>
+              <td class="blue white-text"><%= challenge.challenger %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br><br><br>
+    <% else %>
+      <h4 class="center red-text">None</h4>>
+    <% end %>
+  </div>
+
+  <div class="col s6">
+    <h4>Challenged</h4>
+  </div>
+</div>

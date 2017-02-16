@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'trainers#new', as: "signup"
   post '/trainers/:id', to: 'trainers#change_lead'
   resources :trainers
+  get '/battle', to: 'battles#index', as: "battle"
+  post '/trainers/1/battle', to: 'battles#battle_challenge', as: "battle_challenge"
 
   get '/pokedex', to: 'pokedex#index', as: "pokedex_index"
   get '/pokedex/:id', to: 'pokedex#show', as: "pokedex"

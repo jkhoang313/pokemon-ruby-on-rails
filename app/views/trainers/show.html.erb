@@ -47,6 +47,8 @@
         <%= collection_select :trainer, :starters, current_trainer.starters, :id, :name, {:selected => @trainer.leading_pokemon_id},  {class: "browser-default"}%>
         <%= submit_tag "Change Lead Pokemon", class: "btn" %>
       <% end %>
+    <% else %>
+      <%= button_to "Challenge to a Battle", battle_challenge_path, {class: "btn"} %>
     <% end %>
   </div>
 </div>

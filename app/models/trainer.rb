@@ -5,7 +5,9 @@ class Trainer < ApplicationRecord
   belongs_to :contest_pokemon, class_name: "Pokemon", optional: true
   belongs_to :daycare_pokemon, class_name: "Pokemon", optional: true
   has_many :gyms, :foreign_key => "gym_leader_id"
-  has_many :challenged_gyms, :foreign_key => "challenger_id"
+  has_many :challenged_gyms, :foreign_key => "challenger_id", class_name: "Gym"
+  has_many :challenging_battles, :foreign_key => "challenger_id", class_name: "Battle"
+  has_many :challenged_battles, :foreign_key => "challenged_id", class_name: "Battle"
   has_secure_password
   # validates :password, length: { minimum: 4 }
   validates :name, :age, :gender, :leading_pokemon_id, presence: true
