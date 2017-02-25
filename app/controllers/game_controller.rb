@@ -10,6 +10,9 @@ class GameController < ApplicationController
     redirect_to root_path
   end
 
+  def patch_notes
+  end
+
   def training
     if logged_in?
       @status = current_trainer.training_pokemon ? "In Use" : "Open"
