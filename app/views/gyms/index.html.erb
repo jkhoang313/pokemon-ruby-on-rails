@@ -16,7 +16,7 @@
       <div class="card-content center-align">
         <p>Gym Leader: <%= link_to gym.gym_leader.name, trainer_path(gym.gym_leader) %></p>
         <br>
-        <%= image_tag("pokemon/#{gym.gym_pokemon.name}.png", class: "gym-pokemon") %>
+        <%= image_tag("trainers/#{gym.gym_leader.avatar}.png", class: "avatar-small") %>
         <br>
 
         <% if gym.challenged? %>

@@ -17,5 +17,5 @@
 
 $(document).ready(function() {
   $('select').material_select()
-  Materialize.toast('yo')
+  // Materialize.toast('yo')
 });
