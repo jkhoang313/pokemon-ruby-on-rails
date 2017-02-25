@@ -9,6 +9,7 @@ class TrainersController < ApplicationController
 
   def create
     @trainer = Trainer.new(trainer_params)
+    @trainer.avatar = @trainer.gender
     if @trainer.valid? && @trainer.authenticate(params[:trainer][:password_confirmation])
       @starter = Pokedex.find(params[:trainer][:leading_pokemon_id].to_i)
       @trainer.create_conditions(@starter)
@@ -43,6 +44,7 @@ class TrainersController < ApplicationController
   def edit
     if current_trainer == Trainer.find(params[:id])
       find_trainer
+      @avatars = @trainer.gender == "Male" ? ["Red", "Ethan", "Brendan", "Lucas", "Hilbert", "Nate", "Calem", "Sun"] : ["Kris", "May", "Leaf", "Dawn", "Lyra", "Hilda", "Rosa", "Serena", "Moon"]
     else
       redirect_to trainer_path(current_trainer)
     end
@@ -51,7 +53,6 @@ class TrainersController < ApplicationController
   def update
     if current_trainer == Trainer.find(params[:id])
       find_trainer
-      # can't update age
       @trainer.update(trainer_params)
       flash[:message] = "Trainer profile successfully updated"
     end
@@ -82,6 +83,6 @@ class TrainersController < ApplicationController
   private
 
   def trainer_params
-    params.require(:trainer).permit(:name, :email, :password, :password_confirmation, :age, :gender, :leading_pokemon_id)
+    params.require(:trainer).permit(:name, :email, :password, :password_confirmation, :age, :gender, :leading_pokemon_id, :avatar)
   end
 end

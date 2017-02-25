@@ -42,11 +42,13 @@
         <li><%= link_to "Pokemon Contest", contest_path %></li>
         <li><%= link_to "Daycare", daycare_path %></li>
       </ul>
-      <ul id="profile-dropdown" class="dropdown-content">
-        <li><%= link_to "My Profile", trainer_path(current_trainer) %></li>
-        <li><%= link_to "My Pokemon", pokemons_path(current_trainer) %></li>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
-      </ul>
+      <% if logged_in? %>
+        <ul id="profile-dropdown" class="dropdown-content">
+          <li><%= link_to "Profile", trainer_path(current_trainer) %></li>
+          <li><%= link_to "My Pokemon", pokemons_path(current_trainer) %></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        </ul>
+      <% end %>
     </nav>
   </head>
   <body>

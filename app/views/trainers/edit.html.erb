@@ -16,8 +16,12 @@
       <%= f.password_field :password_confirmation %>
       <%= f.label :age %>
       <%= f.number_field :age, min: 1 %>
-      <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>
-      <%= f.radio_button :gender, "Female" %><%= f.label :gender_female, "Female" %>
+      <!-- <%= f.radio_button :gender, "Male" %><%= f.label :gender_male, "Male" %>
+      <%= f.radio_button :gender, "Female" %><%= f.label :gender_female, "Female" %> -->
+      <% @avatars.each do |avatar| %>
+        <%= f.radio_button :avatar, avatar %>
+        <%= f.label "avatar_#{avatar.downcase}", image_tag("trainers/#{avatar}.png", class: "avatar-small") %>
+      <% end %>
       <br></br>
       <%= f.submit class: "btn" %>
     <% end %>
