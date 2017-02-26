@@ -18,7 +18,7 @@
        <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
           <li><%= link_to "Capture Pokemon", wild_encounter_path, method: :post %></li>
-          <li><a class="dropdown-button" data-activates="training-dropdown">Pokemon Training<i class="material-icons right">arrow_drop_down</i></a></li>
+          <!-- <li><a class="dropdown-button" data-activates="training-dropdown">Pokemon Training<i class="material-icons right">arrow_drop_down</i></a></li> -->
           <li><a class="dropdown-button" data-activates="profile-dropdown"><%= current_trainer.name %><i class="material-icons right">arrow_drop_down</i></a></li>
         <% else  %>
           <li><%= link_to "Sign Up", signup_path %></li>
@@ -37,15 +37,16 @@
           </li>
         </ul>
       </div>
-      <ul id="training-dropdown" class="dropdown-content">
-        <li><%= link_to "Physical Training", training_path %></li>
-        <li><%= link_to "Pokemon Contest", contest_path %></li>
-        <li><%= link_to "Daycare", daycare_path %></li>
-      </ul>
+      <!-- <ul id="training-dropdown" class="dropdown-content">
+
+      </ul> -->
       <% if logged_in? %>
         <ul id="profile-dropdown" class="dropdown-content">
           <li><%= link_to "Profile", trainer_path(current_trainer) %></li>
           <li><%= link_to "My Pokemon", pokemons_path(current_trainer) %></li>
+          <li><%= link_to "Physical Training", training_path %></li>
+          <li><%= link_to "Pokemon Contest", contest_path %></li>
+          <li><%= link_to "Daycare", daycare_path %></li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
         </ul>
       <% end %>

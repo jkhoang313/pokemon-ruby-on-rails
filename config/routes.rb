@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'game#index'
   get '/about', to: 'game#about', as: "about"
   get '/patch_notes', to: 'game#patch_notes', as: "patch_notes"
+  post '/demo_login', to: 'sessions#demo_login', as: "demo_login"
+
 
   post '/search', to: 'game#search', as: "search"
   get '/search', to: 'game#get_search'

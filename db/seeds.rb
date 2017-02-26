@@ -122,3 +122,4 @@ seed_gym_leader
 create_gyms
 create_weaknesses
 create_strengths
+## create demo trainer
