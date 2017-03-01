@@ -9,7 +9,7 @@
     <h3>Caught By:</h3>
     <ul>
       <% if !@pokemon.trainers.empty? %>
-        <% @pokemon.trainers.each do |trainer| %>
+        <% @pokemon.trainers.uniq.each do |trainer| %>
         <li><h5><%= link_to trainer.name, trainer_path(trainer)%><h5></li>
         <% end %>
       <% else %>
