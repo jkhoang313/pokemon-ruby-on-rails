@@ -2,7 +2,7 @@
   <div class="col s12">
     <h2>Pokédex</h2>
     <% @pokedex.each.with_index(1) do |pokemon, index| %>
-    <h5><%= "#{index}. #{pokemon.name}: "%> <%= link_to "#{pokemon.pokemons.count} trainer(s)", pokedex_path(pokemon) %></h5>
+    <h5><%= "#{index}. #{pokemon.name}: "%> <%= link_to "#{pokemon.pokemons.count} caught", pokedex_path(pokemon) %></h5>
     <% end %>
   </div>
 </div>
